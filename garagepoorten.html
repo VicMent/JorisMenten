@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garagepoorten</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="nav">
+      <nav class="navbar" style="background-color: #333">
+        <div class="logo">
+          <img
+            src="images/joris_white2.png"
+            alt="Logo"
+            onclick="location.href='index.html'"
+          />
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projecten.html">Projecten</a></li>
+          <li><a href="index.html#product">Aanbod</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <section id="garagepoorten" class="garage-section">
+      <h1>Garagepoorten</h1>
+      <div class="zigzag-layout">
+        <div class="zigzag-row">
+          <div
+            class="zigzag-img"
+            style="background-image: url('images/test.png')"
+          ></div>
+          <div class="zigzag-text">
+            <h2>Veiligheid en Stijl</h2>
+            <p>
+              Onze garagepoorten bieden een perfecte balans tussen veiligheid en
+              esthetiek. Met verschillende ontwerpen, kleuren en technologieën
+              bieden we een oplossing op maat voor elke klant.
+            </p>
+          </div>
+        </div>
+        <div class="zigzag-row">
+          <div class="zigzag-text">
+            <h2>Duurzaamheid en Kwaliteit</h2>
+            <p>
+              Onze poorten zijn gemaakt van de hoogste kwaliteit materialen die
+              bestand zijn tegen de zwaarste weersomstandigheden en intensief
+              gebruik, zodat uw investering jarenlang meegaat.
+            </p>
+          </div>
+          <div
+            class="zigzag-img"
+            style="background-image: url('images/test.png')"
+          ></div>
+        </div>
+        <div class="zigzag-row">
+          <div
+            class="zigzag-img"
+            style="background-image: url('images/test.png')"
+          ></div>
+          <div class="zigzag-text">
+            <h2>Automatisering en Comfort</h2>
+            <p>
+              Ontdek het gemak van automatische garagepoorten die u met een druk
+              op de knop kunt bedienen. Veilig, snel en vooral comfortabel.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <p>© 2024 Joris Menten bv. Alle rechten voorbehouden.</p>
+      </div>
+    </footer>
+
+    <style>
+      h1 {
+        font-size: 3rem;
+        color: #333;
+        margin-bottom: 3rem;
+        margin-top: 2rem;
+        position: relative;
+        display: inline-block;
+        text-align: center; /* Ensure text is centered */
+      }
+
+      h1::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 8px;
+        background-color: #fbd601;
+        border-radius: 5px;
+        margin-top: 5px;
+      }
+
+      h2 {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 5px;
+        background-color: #fbd601;
+        border-radius: 5px;
+        margin-top: 5px;
+      }
+
+      .garage-section {
+        margin: 5.5rem;
+        margin-bottom: 3rem;
+        margin-top: 11rem;
+        background-color: #fff;
+        padding: 3rem;
+        border-radius: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .zigzag-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+      }
+
+      .zigzag-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .zigzag-text {
+        width: 45%;
+        padding: 1rem;
+      }
+
+      .zigzag-img {
+        width: 45%;
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      @media (max-width: 768px) {
+        .zigzag-row {
+          flex-direction: column;
+        }
+
+        .zigzag-img,
+        .zigzag-text {
+          width: 100%;
+        }
+
+        .garage-section {
+          margin: 2rem;
+        }
+      }
+    </style>
+  </body>
+</html>

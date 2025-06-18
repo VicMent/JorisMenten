@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onze Projecten</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="nav">
+      <nav class="navbar" style="background-color: #333">
+        <div class="logo">
+          <img
+            src="images/joris_white2.png"
+            alt=""
+            onclick="location.href='index.html'"
+          />
+        </div>
+        <ul class="nav-links">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/projecten.html">Projecten</a></li>
+          <li><a href="/index.html#product">Aanbod</a></li>
+          <li><a href="/index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <section>
+      <h1 style="margin-top: 3rem">Onze Projecten</h1>
+
+      <div id="gallery" class="gallery-container" style="margin-bottom: 0rem">
+        <img
+          src="images/projecten/1.jpeg"
+          alt="Project 1"
+          class="gallery-img"
+        />
+        <img src="images/projecten/2.jpg" alt="Project 2" class="gallery-img" />
+        <img src="images/projecten/3.jpg" alt="Project 3" class="gallery-img" />
+        <img src="images/projecten/4.jpg" alt="Project 4" class="gallery-img" />
+        <img src="images/projecten/5.jpg" alt="Project 5" class="gallery-img" />
+        <img src="images/projecten/6.jpg" alt="Project 6" class="gallery-img" />
+        <img src="images/projecten/7.jpg" alt="Project 7" class="gallery-img" />
+        <img src="images/projecten/8.jpg" alt="Project 8" class="gallery-img" />
+        <img src="images/projecten/9.jpg" alt="Project 9" class="gallery-img" />
+        <img
+          src="images/projecten/10.jpg"
+          alt="Project 10"
+          class="gallery-img"
+        />
+        <img
+          src="images/projecten/11.jpg"
+          alt="Project 11"
+          class="gallery-img"
+        />
+        <img
+          src="images/projecten/12.jpg"
+          alt="Project 12"
+          class="gallery-img"
+        />
+        <img
+          src="images/projecten/13.jpg"
+          alt="Project 13"
+          class="gallery-img"
+        />
+        <img
+          src="images/projecten/14.jpg"
+          alt="Project 14"
+          class="gallery-img"
+        />
+      </div>
+    </section>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      section {
+        margin: 5.5rem;
+        margin-bottom: 3rem;
+        margin-top: 11rem;
+        background-color: #fff;
+        padding: 3rem;
+        border-radius: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: #333;
+        margin-bottom: 5rem;
+        margin-top: 0rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      h1::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 8px;
+        background-color: #fbd601;
+        border-radius: 5px;
+        margin-top: 5px;
+      }
+
+      .gallery-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 0px;
+      }
+
+      .gallery-img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.1s ease-out; /* Smooth transition for movement */
+      }
+
+      @media (min-width: 768px) {
+        .gallery-img {
+          max-width: 200px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        section {
+          margin-left: 1rem;
+          margin-right: 1rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .gallery-img {
+          max-width: 250px;
+        }
+      }
+    </style>
+
+    <script>
+      document.addEventListener("mousemove", function (e) {
+        const galleryImages = document.querySelectorAll(".gallery-img");
+        const speed = 2; // Adjust for parallax intensity
+        const { clientX, clientY } = e;
+
+        galleryImages.forEach(function (img) {
+          const rect = img.getBoundingClientRect();
+          const x = ((clientX - rect.left) / rect.width - 0.5) * speed;
+          const y = ((clientY - rect.top) / rect.height - 0.5) * speed;
+
+          img.style.transform = `translate(${x}px, ${y}px)`;
+        });
+      });
+    </script>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-links">
+          <a href="#">Privacybeleid</a>
+          <a href="#">Algemene Voorwaarden</a>
+          <a href="#">FAQ</a>
+          <a href="#">Volg ons op Sociale Media</a>
+        </div>
+        <p>© 2024 Joris Menten bv. Alle rechten voorbehouden.</p>
+      </div>
+    </footer>
+  </body>
+</html>
