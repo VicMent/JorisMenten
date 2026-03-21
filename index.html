@@ -1,195 +1,314 @@
 <!DOCTYPE html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Joris Menten bv | Garagepoorten & Zonwering</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <div class="container" style="">
-      <nav class="navbar">
-        <div class="logo">
-          <img src="images/joris_white2.png" alt="" />
-          <!-- <a href="#">Joris Menten bv</a> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Joris Menten bv ontwerpt en plaatst garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen met 15+ jaar ervaring.">
+    <title>Joris Menten bv | Garagepoorten, Zonwering & Maatwerk</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="java/script.js" defer></script>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="site-header" data-header>
+            <a class="brand" href="index.html" aria-label="Joris Menten bv - home">
+                <img class="brand-mark" src="images/joris_white2.png" alt="Joris Menten bv logo">
+                <span class="brand-copy">
+                    <strong>Joris Menten bv</strong>
+                    <span>Garagepoorten · Zonwering · Afwerking</span>
+                </span>
+            </a>
+
+            <button class="nav-toggle" type="button" data-nav-toggle aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigatie">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="site-nav" id="primary-nav" data-site-nav>
+                <a href="#diensten">Diensten</a>
+                <a href="#aanpak">Aanpak</a>
+                <a href="projecten.html">Projecten</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-inner">
+                    <div class="hero-copy reveal">
+                        <div class="eyebrow">15+ jaar vakmanschap</div>
+                        <h1>Premium oplossingen voor buitenkant en comfort.</h1>
+                        <p>
+                            Joris Menten bv plaatst garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen.
+                            Strakke afwerking, duidelijke communicatie en een resultaat dat direct vertrouwen uitstraalt.
+                        </p>
+
+                        <div class="hero-actions">
+                            <a class="button button-primary" href="projecten.html">Bekijk realisaties</a>
+                            <a class="button button-secondary" href="#contact">Neem contact op</a>
+                        </div>
+
+                        <div class="hero-meta">
+                            <div class="meta-chip">
+                                <strong>Maatwerk</strong>
+                                <span>Afgestemd op woning en situatie</span>
+                            </div>
+                            <div class="meta-chip">
+                                <strong>Montage</strong>
+                                <span>Professioneel geplaatst en afgewerkt</span>
+                            </div>
+                            <div class="meta-chip">
+                                <strong>Service</strong>
+                                <span>Heldere opvolging en vlotte communicatie</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual reveal" data-hero-carousel aria-label="Uitgelichte bedrijfsbeelden">
+                        <div class="hero-carousel-track" data-hero-carousel-track>
+                            <figure class="hero-slide is-active" data-hero-slide>
+                                <img src="images/garage.jpg" alt="Moderne garagepoort geplaatst door Joris Menten bv">
+                            </figure>
+                            <figure class="hero-slide" data-hero-slide>
+                                <img src="images/zonwering.jpg" alt="Zonwering voor een strakke en comfortabele gevel">
+                            </figure>
+                            <figure class="hero-slide" data-hero-slide>
+                                <img src="images/projecten/2.jpg" alt="Uitgevoerde realisatie met premium afwerking">
+                            </figure>
+                            <figure class="hero-slide" data-hero-slide>
+                                <img src="images/terras.jpg" alt="Terrasoverkapping met moderne uitstraling">
+                            </figure>
+                        </div>
+
+                        <div class="hero-carousel-ui">
+                            <button class="hero-carousel-btn hero-carousel-prev" type="button" data-hero-carousel-prev aria-label="Vorige afbeelding">‹</button>
+                            <div class="hero-carousel-dots" data-hero-carousel-dots aria-label="Caroussel navigatie"></div>
+                            <button class="hero-carousel-btn hero-carousel-next" type="button" data-hero-carousel-next aria-label="Volgende afbeelding">›</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stat-strip reveal">
+                <div class="stat-strip-inner">
+                    <div class="stat-card">
+                        <strong>15+</strong>
+                        <span>jaar ervaring in plaatsing en afwerking</span>
+                    </div>
+                    <div class="stat-card">
+                        <strong>5</strong>
+                        <span>kernoplossingen met sterke visuele impact</span>
+                    </div>
+                    <div class="stat-card">
+                        <strong>100%</strong>
+                        <span>focus op kwaliteit, detail en uitstraling</span>
+                    </div>
+                    <div class="stat-card">
+                        <strong>1</strong>
+                        <span>aanspreekpunt voor advies, plaatsing en opvolging</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="diensten" class="section surface">
+                <div class="section-inner">
+                    <div class="section-head reveal">
+                        <div class="section-kicker">Wat we doen</div>
+                        <h2 class="section-title">Heldere diensten. Sterke uitvoering.</h2>
+                        <p class="section-intro">
+                            Geen ruis, geen overbodige praat. Enkel de onderdelen die voor een klant tellen:
+                            kwaliteit, uitstraling en een strakke plaatsing.
+                        </p>
+                    </div>
+
+                    <div class="grid-3">
+                        <article class="service-card reveal">
+                            <div class="service-media service-poorten"></div>
+                            <div class="card-tag">01 · Toegang</div>
+                            <h3>Garagepoorten</h3>
+                            <p>Veilig, stil en visueel strak geïntegreerd in de gevel.</p>
+                            <div class="service-footer">
+                                <span class="info-pill">Topprioriteit</span>
+                                <a class="link-pill" href="garagepoorten.html">Meer info</a>
+                            </div>
+                        </article>
+
+                        <article class="service-card reveal">
+                            <div class="service-media service-rolluiken"></div>
+                            <div class="card-tag">02 · Bescherming</div>
+                            <h3>Rolluiken</h3>
+                            <p>Meer privacy, betere isolatie en extra comfort in elke ruimte.</p>
+                            <div class="service-footer">
+                                <span class="info-pill">Functioneel</span>
+                                <a class="link-pill" href="#contact">Offerte</a>
+                            </div>
+                        </article>
+
+                        <article class="service-card reveal">
+                            <div class="service-media service-zonwering"></div>
+                            <div class="card-tag">03 · Comfort</div>
+                            <h3>Zonwering</h3>
+                            <p>Een nette afwerking die hitte en zon op een elegante manier temt.</p>
+                            <div class="service-footer">
+                                <span class="info-pill">Strak</span>
+                                <a class="link-pill" href="#contact">Contact</a>
+                            </div>
+                        </article>
+
+                        <article class="service-card reveal">
+                            <div class="service-media service-terras"></div>
+                            <div class="card-tag">04 · Buitenleven</div>
+                            <h3>Terrasoverkappingen</h3>
+                            <p>Meer gebruiksruimte en een luxe uitstraling voor terras en tuin.</p>
+                            <div class="service-footer">
+                                <span class="info-pill">Sfeervol</span>
+                                <a class="link-pill" href="projecten.html">Projecten</a>
+                            </div>
+                        </article>
+
+                        <article class="service-card reveal">
+                            <div class="service-media service-vliegen"></div>
+                            <div class="card-tag">05 · Frisse lucht</div>
+                            <h3>Vliegenramen</h3>
+                            <p>Comfortabel ventileren zonder in te boeten op rust of netheid.</p>
+                            <div class="service-footer">
+                                <span class="info-pill">Discreet</span>
+                                <a class="link-pill" href="#contact">Vraag info</a>
+                            </div>
+                        </article>
+
+                        <article class="service-card reveal">
+                            <div class="service-media service-projecten"></div>
+                            <div class="card-tag">06 · Realisaties</div>
+                            <h3>Maatwerk & projecten</h3>
+                            <p>Foto’s van gerealiseerde werken en een stijl die meteen vertrouwen geeft.</p>
+                            <div class="service-footer">
+                                <span class="info-pill">Portfolio</span>
+                                <a class="link-pill" href="projecten.html">Bekijk</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="aanpak" class="section">
+                <div class="section-inner split-layout reveal">
+                    <div class="split-copy">
+                        <div class="section-kicker">Waarom dit werkt</div>
+                        <h2>Een stijl die professioneel voelt, zonder druk te doen.</h2>
+                        <p>
+                            De kracht van deze website zit niet in drukke effecten, maar in een helder verhaal:
+                            echte vakkennis, duidelijke diensten en sterk beeldmateriaal.
+                        </p>
+                        <ul>
+                            <li>Rustige maar krachtige presentatie van het merk</li>
+                            <li>Beeld staat voorop; tekst ondersteunt enkel de kern</li>
+                            <li>Moderne uitstraling die vertrouwen opbouwt in enkele seconden</li>
+                        </ul>
+                    </div>
+
+                    <div class="showcase-image" aria-hidden="true"></div>
+                </div>
+            </section>
+
+            <section class="section surface">
+                <div class="section-inner">
+                    <div class="section-head reveal">
+                        <div class="section-kicker">Uitgelichte realisaties</div>
+                        <h2 class="section-title">Een selectie van werk dat meteen binnenkomt.</h2>
+                        <p class="section-intro">
+                            De projectpagina toont de kwaliteit van het werk zonder afleiding. Grote beelden, minimalistische
+                            opbouw en een galerie die meteen overtuigt.
+                        </p>
+                    </div>
+
+                    <div class="grid-3">
+                        <article class="copy-card reveal">
+                            <div class="card-tag">Project 01</div>
+                            <h3>Strakke plaatsing</h3>
+                            <p>Elke realisatie krijgt aandacht voor verhouding, detail en afwerking.</p>
+                        </article>
+                        <article class="copy-card reveal">
+                            <div class="card-tag">Project 02</div>
+                            <h3>Consistente look</h3>
+                            <p>Het beeldmateriaal vormt samen een professioneel en betrouwbaar geheel.</p>
+                        </article>
+                        <article class="copy-card reveal">
+                            <div class="card-tag">Project 03</div>
+                            <h3>Directe indruk</h3>
+                            <p>Bezoekers zien in één oogopslag waar het bedrijf voor staat.</p>
+                        </article>
+                    </div>
+
+                    <div class="hero-actions reveal">
+                        <a class="button button-primary" href="projecten.html">Naar projecten</a>
+                        <a class="button button-secondary" href="#contact">Offerte aanvragen</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section">
+                <div class="section-inner">
+                    <div class="section-head reveal">
+                        <div class="section-kicker">Contact</div>
+                        <h2 class="section-title">Neem rechtstreeks contact op.</h2>
+                        <p class="section-intro">
+                            Voor advies, planning of een concrete vraag: een telefoon of e-mail volstaat.
+                        </p>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="contact-stack">
+                            <article class="contact-card reveal">
+                                <h3>Telefoon</h3>
+                                <p>+31 6 12345678</p>
+                            </article>
+                            <article class="contact-card reveal">
+                                <h3>E-mail</h3>
+                                <p>info@jorismentenbv.nl</p>
+                            </article>
+                            <article class="contact-card reveal">
+                                <h3>Focus</h3>
+                                <p>Garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen.</p>
+                            </article>
+                        </div>
+
+                        <div class="map-wrap reveal">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.2517819605096!2d5.0155397!3d51.0114972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c14773089189bf%3A0x9443e19137ac5165!2sJoris%20Menten!5e0!3m2!1snl!2sbe!4v1728492625367!5m2!1snl!2sbe" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Locatie Joris Menten bv"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-top">
+                    <a class="brand" href="index.html" aria-label="Joris Menten bv - home">
+                        <img class="brand-mark" src="images/joris_white2.png" alt="Joris Menten bv logo">
+                        <span class="brand-copy">
+                            <strong>Joris Menten bv</strong>
+                            <span>Premium buitenoplossingen</span>
+                        </span>
+                    </a>
+                    <div class="footer-links">
+                        <a href="projecten.html">Projecten</a>
+                        <a href="garagepoorten.html">Garagepoorten</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <p>© 2026 Joris Menten bv. Alle rechten voorbehouden.</p>
+            </div>
+        </footer>
+
+        <div class="lightbox" data-lightbox aria-hidden="true">
+            <button class="lightbox-close" type="button" data-lightbox-close aria-label="Sluit afbeelding">×</button>
+            <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Afbeelding in groot formaat">
+                <img data-lightbox-image alt="">
+                <div class="lightbox-caption" data-lightbox-caption></div>
+            </div>
         </div>
-        <ul class="nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="/projecten.html">Projecten</a></li>
-          <li><a href="#product">Aanbod</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="content">
-        <h1>Uw specialist in<br />Garagepoorten & Zonwering</h1>
-        <p>
-          Professionele installatie van garagepoorten, gevelbekleding,<br />rolluiken,
-          terrasoverkappingen, vliegenramen en zonwering.
-        </p>
-        <button
-          class="cta-button"
-          onclick="window.location.href='/projecten.html'"
-        >
-          Bekijk onze projecten
-        </button>
-      </div>
-      <div class="bg-image"></div>
     </div>
-
-    <section
-      id="product"
-      class="product-overview"
-      style="
-        margin-bottom: 0rem;
-        padding-top: 5rem;
-        background-color: #333;
-        padding-bottom: 10rem;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
-        padding-left: 5rem;
-        padding-right: 5rem;
-      "
-    >
-      <h2 style="color: #f5f5f5">Ons Aanbod</h2>
-      <div
-        class="product-container"
-        onclick="window.location.href='/garagepoorten.html'"
-      >
-        <div
-          class="product-box"
-          style="background-image: url('/images/garage.jpg')"
-        >
-          <div class="product-info">
-            <h3>Garagepoorten</h3>
-            <p>Veilige en stijlvolle garageoplossingen.</p>
-          </div>
-        </div>
-        <div
-          class="product-box"
-          style="background-image: url('/images/gevelbekleding.jpg')"
-        >
-          <div class="product-info">
-            <h3>Gevelbekleding</h3>
-            <p>Mooi en duurzaam gevelmateriaal.</p>
-          </div>
-        </div>
-        <div
-          class="product-box"
-          style="background-image: url('/images/rolluiken.jpg')"
-        >
-          <div class="product-info">
-            <h3>Rolluiken</h3>
-            <p>Efficiënte bescherming en privacy.</p>
-          </div>
-        </div>
-        <div
-          class="product-box"
-          style="background-image: url('/images/terras.jpg')"
-        >
-          <div class="product-info">
-            <h3>Terrasoverkappingen</h3>
-            <p>Geniet van uw terras, ongeacht het weer.</p>
-          </div>
-        </div>
-        <div
-          class="product-box"
-          style="background-image: url('/images/vliegen.jpg')"
-        >
-          <div class="product-info">
-            <h3>Vliegenramen</h3>
-            <p>Houd insecten buiten met stijl.</p>
-          </div>
-        </div>
-        <div
-          class="product-box"
-          style="background-image: url('/images/zonwering.jpg')"
-        >
-          <div class="product-info">
-            <h3>Zonwering</h3>
-            <p>Perfecte schaduw en comfort.</p>
-          </div>
-        </div>
-      </div>
-      <!-- <img
-        src="/images/arrow.png"
-        alt=""
-        class="arrow"
-        onclick="window.location.href='#contact'"
-      /> -->
-    </section>
-
-    <!-- <section
-      style="
-        padding-bottom: 10rem;
-        background: linear-gradient(to top, transparent, #333 90%);
-      "
-    ></section> -->
-
-    <section
-      id="contact"
-      class="contact-info"
-      style="margin-bottom: 5rem; margin-top: 3rem"
-    >
-      <h2>Contactinformatie</h2>
-      <div class="contact-container">
-        <div>
-          <div class="contact-details" style="margin-top: 3.5rem">
-            <p>
-              <strong>Adres:</strong> Joris Menten bv, Straatnaam 123, 1234 AB
-              Stad
-            </p>
-          </div>
-          <div class="contact-details">
-            <p><strong>Telefoon:</strong> +31 6 12345678</p>
-          </div>
-          <div class="contact-details">
-            <p><strong>Email:</strong> info@jorismentenbv.nl</p>
-          </div>
-        </div>
-        <div class="map-container">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.2517819605096!2d5.0155397!3d51.0114972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c14773089189bf%3A0x9443e19137ac5165!2sJoris%20Menten!5e0!3m2!1snl!2sbe!4v1728492625367!5m2!1snl!2sbe"
-            width="600"
-            height="450"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
-      <!-- <img src="/images/arrow.png" alt="" class="arrow"
-      onclick="window.location.href='/index.html'" style="rotate: 180deg";" /> -->
-    </section>
-
-    <script src="java/script.js"></script>
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-links">
-          <a href="#">Privacybeleid</a>
-          <a href="#">Algemene Voorwaarden</a>
-          <a href="#">FAQ</a>
-          <a href="#">Volg ons op Sociale Media</a>
-        </div>
-        <p>© 2024 Joris Menten bv. Alle rechten voorbehouden.</p>
-      </div>
-    </footer>
-
-    <style>
-      h2 {
-        position: relative;
-        display: inline-block;
-        margin-bottom: 1rem;
-      }
-
-      h2::after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 8px;
-        background-color: #fbd601;
-        border-radius: 5px;
-        margin-top: 5px;
-      }
-    </style>
-  </body>
+</body>
 </html>
