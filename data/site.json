@@ -1,0 +1,455 @@
+{
+  "shared": {
+    "brand": {
+      "name": "Joris Menten bv",
+      "logo": "images/joris_white2.png"
+    },
+    "contact": {
+      "phone": "+31 6 12345678",
+      "email": "info@jorismentenbv.nl"
+    },
+    "map": {
+      "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.2517819605096!2d5.0155397!3d51.0114972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c14773089189bf%3A0x9443e19137ac5165!2sJoris%20Menten!5e0!3m2!1snl!2sbe!4v1728492625367!5m2!1snl!2sbe",
+      "title": "Locatie Joris Menten bv"
+    }
+  },
+  "pages": {
+    "index": {
+      "meta": {
+        "title": "Joris Menten bv | Garagepoorten, Zonwering & Maatwerk",
+        "description": "Joris Menten bv ontwerpt en plaatst garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen met 15+ jaar ervaring."
+      },
+      "hero": {
+        "eyebrow": "15+ jaar vakmanschap",
+        "title": "Premium oplossingen voor buitenkant en comfort.",
+        "lead": "Joris Menten bv plaatst garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen. Strakke afwerking, duidelijke communicatie en een resultaat dat direct vertrouwen uitstraalt.",
+        "ctas": [
+          {
+            "label": "Bekijk realisaties",
+            "href": "projecten.html"
+          },
+          {
+            "label": "Neem contact op",
+            "href": "#contact"
+          }
+        ],
+        "carousel": [
+          {
+            "src": "images/garage.jpg",
+            "alt": "Moderne garagepoort geplaatst door Joris Menten bv"
+          },
+          {
+            "src": "images/zonwering.jpg",
+            "alt": "Zonwering voor een strakke en comfortabele gevel"
+          },
+          {
+            "src": "images/projecten/2.jpg",
+            "alt": "Uitgevoerde realisatie met premium afwerking"
+          },
+          {
+            "src": "images/terras.jpg",
+            "alt": "Terrasoverkapping met moderne uitstraling"
+          }
+        ]
+      },
+      "servicesSection": {
+        "kicker": "Wat we doen",
+        "title": "Heldere diensten. Sterke uitvoering.",
+        "lead": "Geen ruis, geen overbodige praat. Enkel de onderdelen die voor een klant tellen: kwaliteit, uitstraling en een strakke plaatsing."
+      },
+      "heroMeta": [
+        {
+          "title": "Maatwerk",
+          "text": "Afgestemd op woning en situatie"
+        },
+        {
+          "title": "Montage",
+          "text": "Professioneel geplaatst en afgewerkt"
+        },
+        {
+          "title": "Service",
+          "text": "Heldere opvolging en vlotte communicatie"
+        }
+      ],
+      "stats": [
+        {
+          "value": "15+",
+          "label": "jaar ervaring in plaatsing en afwerking"
+        },
+        {
+          "value": "5",
+          "label": "kernoplossingen met sterke visuele impact"
+        },
+        {
+          "value": "100%",
+          "label": "focus op kwaliteit, detail en uitstraling"
+        },
+        {
+          "value": "1",
+          "label": "aanspreekpunt voor advies, plaatsing en opvolging"
+        }
+      ],
+      "services": [
+        {
+          "eyebrow": "01 · Toegang",
+          "title": "Garagepoorten",
+          "description": "Veilig, stil en visueel strak geïntegreerd in de gevel.",
+          "badge": "Topprioriteit",
+          "linkLabel": "Meer info",
+          "linkHref": "garagepoorten.html",
+          "image": "images/garage.jpg"
+        },
+        {
+          "eyebrow": "02 · Bescherming",
+          "title": "Rolluiken",
+          "description": "Meer privacy, betere isolatie en extra comfort in elke ruimte.",
+          "badge": "Functioneel",
+          "linkLabel": "Offerte",
+          "linkHref": "#contact",
+          "image": "images/rolluiken.jpg"
+        },
+        {
+          "eyebrow": "03 · Comfort",
+          "title": "Zonwering",
+          "description": "Een nette afwerking die hitte en zon op een elegante manier temt.",
+          "badge": "Strak",
+          "linkLabel": "Contact",
+          "linkHref": "#contact",
+          "image": "images/zonwering.jpg"
+        },
+        {
+          "eyebrow": "04 · Buitenleven",
+          "title": "Terrasoverkappingen",
+          "description": "Meer gebruiksruimte en een luxe uitstraling voor terras en tuin.",
+          "badge": "Sfeervol",
+          "linkLabel": "Projecten",
+          "linkHref": "projecten.html",
+          "image": "images/terras.jpg"
+        },
+        {
+          "eyebrow": "05 · Frisse lucht",
+          "title": "Vliegenramen",
+          "description": "Comfortabel ventileren zonder in te boeten op rust of netheid.",
+          "badge": "Discreet",
+          "linkLabel": "Vraag info",
+          "linkHref": "#contact",
+          "image": "images/vliegen.jpg"
+        },
+        {
+          "eyebrow": "06 · Realisaties",
+          "title": "Maatwerk & projecten",
+          "description": "Foto’s van gerealiseerde werken en een stijl die meteen vertrouwen geeft.",
+          "badge": "Portfolio",
+          "linkLabel": "Bekijk",
+          "linkHref": "projecten.html",
+          "image": "images/projecten/1.jpeg"
+        }
+      ],
+      "approach": {
+        "kicker": "Waarom dit werkt",
+        "title": "Een stijl die professioneel voelt, zonder druk te doen.",
+        "lead": "De kracht van deze website zit niet in drukke effecten, maar in een helder verhaal: echte vakkennis, duidelijke diensten en sterk beeldmateriaal.",
+        "bullets": [
+          "Rustige maar krachtige presentatie van het merk",
+          "Beeld staat voorop; tekst ondersteunt enkel de kern",
+          "Moderne uitstraling die vertrouwen opbouwt in enkele seconden"
+        ],
+        "image": "images/projecten/2.jpg"
+      },
+      "featured": {
+        "kicker": "Uitgelichte realisaties",
+        "title": "Een selectie van werk dat meteen binnenkomt.",
+        "lead": "De projectpagina toont de kwaliteit van het werk zonder afleiding. Grote beelden, minimalistische opbouw en een galerie die meteen overtuigt.",
+        "cards": [
+          {
+            "eyebrow": "Project 01",
+            "title": "Strakke plaatsing",
+            "description": "Elke realisatie krijgt aandacht voor verhouding, detail en afwerking."
+          },
+          {
+            "eyebrow": "Project 02",
+            "title": "Consistente look",
+            "description": "Het beeldmateriaal vormt samen een professioneel en betrouwbaar geheel."
+          },
+          {
+            "eyebrow": "Project 03",
+            "title": "Directe indruk",
+            "description": "Bezoekers zien in één oogopslag waar het bedrijf voor staat."
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Naar projecten",
+            "href": "projecten.html"
+          },
+          {
+            "label": "Offerte aanvragen",
+            "href": "#contact"
+          }
+        ]
+      },
+      "contact": {
+        "kicker": "Contact",
+        "title": "Neem rechtstreeks contact op.",
+        "lead": "Voor advies, planning of een concrete vraag: een telefoon of e-mail volstaat.",
+        "cards": [
+          {
+            "title": "Telefoon",
+            "text": "+31 6 12345678"
+          },
+          {
+            "title": "E-mail",
+            "text": "info@jorismentenbv.nl"
+          },
+          {
+            "title": "Focus",
+            "text": "Garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen."
+          }
+        ]
+      },
+      "footer": {
+        "brandLine": "Premium buitenoplossingen",
+        "links": [
+          {
+            "label": "Projecten",
+            "href": "projecten.html"
+          },
+          {
+            "label": "Garagepoorten",
+            "href": "garagepoorten.html"
+          },
+          {
+            "label": "Contact",
+            "href": "#contact"
+          }
+        ]
+      }
+    },
+    "garagepoorten": {
+      "meta": {
+        "title": "Garagepoorten | Joris Menten bv",
+        "description": "Garagepoorten van Joris Menten bv: veiligheid, uitstraling en een strakke plaatsing met premium afwerking."
+      },
+      "hero": {
+        "eyebrow": "Service detail",
+        "title": "Garagepoorten die veiligheid en uitstraling combineren.",
+        "lead": "Een garagepoort moet meer doen dan sluiten. Ze moet soepel werken, lang meegaan en de gevel sterker maken. Dit is precies waar Joris Menten bv op inzet.",
+        "ctas": [
+          {
+            "label": "Vraag advies",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Bekijk werk",
+            "href": "projecten.html"
+          }
+        ],
+        "chips": [
+          "Veilig",
+          "Stil",
+          "Stijlvol"
+        ],
+        "image": "images/garage.jpg"
+      },
+      "benefitsSection": {
+        "kicker": "Voordelen",
+        "title": "Sterke punten in één oogopslag.",
+        "lead": "De focus ligt op wat echt telt: betrouwbare werking, nette montage en een resultaat dat er gewoon goed uitziet."
+      },
+      "benefits": [
+        {
+          "icon": "🔒",
+          "title": "Veiligheid",
+          "description": "Een stevige constructie die uw woning beschermt en de toegang controleerbaar houdt."
+        },
+        {
+          "icon": "⚙️",
+          "title": "Betrouwbare werking",
+          "description": "Soepel openen en sluiten met een afwerking die afgestemd is op dagelijks gebruik."
+        },
+        {
+          "icon": "✨",
+          "title": "Premium uitstraling",
+          "description": "Een poort kan de gevel optillen; dit ontwerp doet precies dat zonder schreeuwerig te worden."
+        },
+        {
+          "icon": "🛠️",
+          "title": "Professionele plaatsing",
+          "description": "Exact werk, nette afwerking en aandacht voor detail van begin tot einde."
+        },
+        {
+          "icon": "🧱",
+          "title": "Duurzame materialen",
+          "description": "Materialen die tegen dagelijks gebruik en wisselende omstandigheden bestand zijn."
+        },
+        {
+          "icon": "📐",
+          "title": "Strakke integratie",
+          "description": "De poort wordt visueel onderdeel van de woning in plaats van een los element te lijken."
+        }
+      ],
+      "approach": {
+        "kicker": "Aanpak",
+        "title": "Alles draait om een stevige eerste indruk.",
+        "lead": "Een garagepoort is vaak één van de meest zichtbare onderdelen van de woning. Daarom moet de plaatsing niet alleen technisch juist zijn, maar ook visueel kloppen.",
+        "bullets": [
+          "Heldere communicatie van aanvraag tot oplevering",
+          "Afwerking die meedraait in het totaalbeeld van de woning",
+          "Oplossingen die zijn gemaakt voor comfort en gebruiksgemak"
+        ],
+        "image": "images/garage.jpg"
+      },
+      "closing": {
+        "kicker": "Klaar voor de volgende stap",
+        "title": "Op zoek naar een poort die er even goed uitziet als hij werkt?",
+        "lead": "Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.",
+        "ctas": [
+          {
+            "label": "Neem contact op",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Terug naar home",
+            "href": "index.html"
+          }
+        ]
+      },
+      "footer": {
+        "brandLine": "Garagepoorten met impact",
+        "links": [
+          {
+            "label": "Diensten",
+            "href": "index.html#diensten"
+          },
+          {
+            "label": "Projecten",
+            "href": "projecten.html"
+          },
+          {
+            "label": "Contact",
+            "href": "index.html#contact"
+          }
+        ]
+      }
+    },
+    "projecten": {
+      "meta": {
+        "title": "Projecten | Joris Menten bv",
+        "description": "Een krachtige selectie van realisaties van Joris Menten bv: garagepoorten, zonwering en andere buitenoplossingen."
+      },
+      "hero": {
+        "eyebrow": "Realisaties",
+        "title": "Een galerij die het werk laat spreken.",
+        "lead": "Geen lange uitleg nodig. Deze pagina bestaat uit het bewijs: duidelijke beelden, sterke afwerking en projecten die meteen tonen wat het bedrijf doet.",
+        "ctas": [
+          {
+            "label": "Vraag een offerte",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Bekijk garagepoorten",
+            "href": "garagepoorten.html"
+          }
+        ],
+        "chips": [
+          "14 beelden",
+          "Volledige focus op kwaliteit"
+        ],
+        "image": "images/background.jpeg"
+      },
+      "gallerySection": {
+        "kicker": "Portfolio",
+        "title": "Selectie van uitgevoerde werken.",
+        "lead": "De beelden worden groot en rustig gepresenteerd, zodat vorm, materiaal en afwerking centraal staan."
+      },
+      "gallery": [
+        {
+          "src": "images/projecten/1.jpeg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/2.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/3.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/4.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/5.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/6.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/7.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/8.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/9.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/10.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/11.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/12.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/13.jpg",
+          "alt": "Realisatie"
+        },
+        {
+          "src": "images/projecten/14.jpg",
+          "alt": "Realisatie"
+        }
+      ],
+      "closing": {
+        "kicker": "Volgende stap",
+        "title": "Ook een project dat sterk en professioneel moet ogen?",
+        "lead": "Neem contact op voor advies of een offerte. De aanpak blijft eenvoudig: duidelijke communicatie, correcte uitvoering en een eindresultaat dat opvalt zonder overdreven te worden.",
+        "contactCard": {
+          "title": "Joris Menten bv",
+          "text": "+31 6 12345678\ninfo@jorismentenbv.nl"
+        },
+        "cta": {
+          "label": "Contact opnemen",
+          "href": "index.html#contact"
+        }
+      },
+      "footer": {
+        "brandLine": "Realisaties met uitstraling",
+        "links": [
+          {
+            "label": "Home",
+            "href": "index.html"
+          },
+          {
+            "label": "Garagepoorten",
+            "href": "garagepoorten.html"
+          },
+          {
+            "label": "Contact",
+            "href": "index.html#contact"
+          }
+        ]
+      }
+    }
+  }
+}

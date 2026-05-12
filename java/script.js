@@ -1,178 +1,199 @@
 (() => {
-  const header = document.querySelector('[data-header]');
-  const toggle = document.querySelector('[data-nav-toggle]');
-  const nav = document.querySelector('[data-site-nav]');
-  const revealTargets = document.querySelectorAll('.reveal');
-  const lightbox = document.querySelector('[data-lightbox]');
-  const lightboxImage = document.querySelector('[data-lightbox-image]');
-  const lightboxCaption = document.querySelector('[data-lightbox-caption]');
-  const lightboxClose = document.querySelector('[data-lightbox-close]');
-  const heroCarousel = document.querySelector('[data-hero-carousel]');
-  const heroSlides = Array.from(document.querySelectorAll('[data-hero-slide]'));
-  const heroDots = document.querySelector('[data-hero-carousel-dots]');
-  const heroPrev = document.querySelector('[data-hero-carousel-prev]');
-  const heroNext = document.querySelector('[data-hero-carousel-next]');
-  let heroIndex = 0;
-  let heroTimer = null;
+  let started = false;
 
-  const closeNav = () => {
-    if (!toggle || !nav) return;
-    nav.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-  };
+  const start = () => {
+    if (started) {
+      return;
+    }
+    started = true;
 
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
-    });
+    const header = document.querySelector('[data-header]');
+    const toggle = document.querySelector('[data-nav-toggle]');
+    const nav = document.querySelector('[data-site-nav]');
+    const revealTargets = document.querySelectorAll('.reveal');
+    const lightbox = document.querySelector('[data-lightbox]');
+    const lightboxImage = document.querySelector('[data-lightbox-image]');
+    const lightboxCaption = document.querySelector('[data-lightbox-caption]');
+    const lightboxClose = document.querySelector('[data-lightbox-close]');
+    const heroCarousel = document.querySelector('[data-hero-carousel]');
+    const heroSlides = Array.from(document.querySelectorAll('[data-hero-slide]'));
+    const heroDots = document.querySelector('[data-hero-carousel-dots]');
+    const heroPrev = document.querySelector('[data-hero-carousel-prev]');
+    const heroNext = document.querySelector('[data-hero-carousel-next]');
+    let heroIndex = 0;
+    let heroTimer = null;
 
-    nav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', closeNav);
-    });
-  }
+    const closeNav = () => {
+      if (!toggle || !nav) return;
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
 
-  const syncHeaderState = () => {
-    if (!header) return;
-    header.classList.toggle('is-scrolled', window.scrollY > 12);
-  };
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
 
-  syncHeaderState();
-  window.addEventListener('scroll', syncHeaderState, { passive: true });
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeNav);
+      });
+    }
 
-  if ('IntersectionObserver' in window && revealTargets.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
-    );
+    const syncHeaderState = () => {
+      if (!header) return;
+      header.classList.toggle('is-scrolled', window.scrollY > 12);
+    };
 
-    revealTargets.forEach((target) => observer.observe(target));
-  } else {
-    revealTargets.forEach((target) => target.classList.add('is-visible'));
-  }
+    syncHeaderState();
+    window.addEventListener('scroll', syncHeaderState, { passive: true });
 
-  const openLightbox = (src, caption) => {
-    if (!lightbox || !lightboxImage || !lightboxCaption) return;
-    lightboxImage.src = src;
-    lightboxImage.alt = caption || 'Geselecteerde afbeelding';
-    lightboxCaption.textContent = caption || '';
-    lightbox.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  };
+    if ('IntersectionObserver' in window && revealTargets.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+      );
 
-  const closeLightbox = () => {
-    if (!lightbox || !lightboxImage || !lightboxCaption) return;
-    lightbox.classList.remove('is-open');
-    lightboxImage.removeAttribute('src');
-    lightboxImage.removeAttribute('alt');
-    lightboxCaption.textContent = '';
-    document.body.style.overflow = '';
-  };
+      revealTargets.forEach((target) => observer.observe(target));
+    } else {
+      revealTargets.forEach((target) => target.classList.add('is-visible'));
+    }
 
-  document.querySelectorAll('[data-lightbox-trigger]').forEach((trigger) => {
-    trigger.addEventListener('click', () => {
+    const openLightbox = (src, caption) => {
+      if (!lightbox || !lightboxImage || !lightboxCaption) return;
+      lightboxImage.src = src;
+      lightboxImage.alt = caption || 'Geselecteerde afbeelding';
+      lightboxCaption.textContent = caption || '';
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      if (!lightbox || !lightboxImage || !lightboxCaption) return;
+      lightbox.classList.remove('is-open');
+      lightboxImage.removeAttribute('src');
+      lightboxImage.removeAttribute('alt');
+      lightboxCaption.textContent = '';
+      document.body.style.overflow = '';
+    };
+
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-lightbox-trigger]');
+      if (!trigger) {
+        return;
+      }
+
       const img = trigger.querySelector('img');
-      if (!img) return;
+      if (!img) {
+        return;
+      }
+
       openLightbox(img.src, img.alt || trigger.getAttribute('data-caption') || 'Project');
     });
-  });
 
-  if (lightbox) {
-    lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
-    });
-  }
-
-  if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
-  }
-
-  const setHeroSlide = (nextIndex) => {
-    if (!heroSlides.length) return;
-    heroIndex = (nextIndex + heroSlides.length) % heroSlides.length;
-    heroSlides.forEach((slide, index) => {
-      slide.classList.toggle('is-active', index === heroIndex);
-    });
-
-    if (heroDots) {
-      heroDots.querySelectorAll('button').forEach((dot, index) => {
-        dot.classList.toggle('is-active', index === heroIndex);
-        dot.setAttribute('aria-current', index === heroIndex ? 'true' : 'false');
+    if (lightbox) {
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
       });
     }
-  };
 
-  const startHeroCarousel = () => {
-    if (!heroCarousel || heroSlides.length < 2) return;
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
 
-    if (heroDots) {
-      heroDots.innerHTML = '';
+    const setHeroSlide = (nextIndex) => {
+      if (!heroSlides.length) return;
+      heroIndex = (nextIndex + heroSlides.length) % heroSlides.length;
       heroSlides.forEach((slide, index) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.setAttribute('aria-label', `Ga naar afbeelding ${index + 1}`);
-        dot.addEventListener('click', () => {
-          setHeroSlide(index);
-          restartHeroTimer();
-        });
-        heroDots.appendChild(dot);
+        slide.classList.toggle('is-active', index === heroIndex);
       });
-    }
+
+      if (heroDots) {
+        heroDots.querySelectorAll('button').forEach((dot, index) => {
+          dot.classList.toggle('is-active', index === heroIndex);
+          dot.setAttribute('aria-current', index === heroIndex ? 'true' : 'false');
+        });
+      }
+    };
 
     const restartHeroTimer = () => {
       if (heroTimer) window.clearInterval(heroTimer);
       heroTimer = window.setInterval(() => setHeroSlide(heroIndex + 1), 4500);
     };
 
-    if (heroPrev) {
-      heroPrev.addEventListener('click', () => {
-        setHeroSlide(heroIndex - 1);
+    const startHeroCarousel = () => {
+      if (!heroCarousel || heroSlides.length < 2) return;
+
+      if (heroDots) {
+        heroDots.innerHTML = '';
+        heroSlides.forEach((slide, index) => {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.setAttribute('aria-label', `Ga naar afbeelding ${index + 1}`);
+          dot.addEventListener('click', () => {
+            setHeroSlide(index);
+            restartHeroTimer();
+          });
+          heroDots.appendChild(dot);
+        });
+      }
+
+      if (heroPrev) {
+        heroPrev.addEventListener('click', () => {
+          setHeroSlide(heroIndex - 1);
+          restartHeroTimer();
+        });
+      }
+
+      if (heroNext) {
+        heroNext.addEventListener('click', () => {
+          setHeroSlide(heroIndex + 1);
+          restartHeroTimer();
+        });
+      }
+
+      heroCarousel.addEventListener('mouseenter', () => {
+        if (heroTimer) window.clearInterval(heroTimer);
+      });
+
+      heroCarousel.addEventListener('mouseleave', () => {
         restartHeroTimer();
       });
-    }
 
-    if (heroNext) {
-      heroNext.addEventListener('click', () => {
-        setHeroSlide(heroIndex + 1);
+      heroCarousel.addEventListener('touchstart', () => {
+        if (heroTimer) window.clearInterval(heroTimer);
+      }, { passive: true });
+
+      heroCarousel.addEventListener('touchend', () => {
         restartHeroTimer();
       });
-    }
 
-    heroCarousel.addEventListener('mouseenter', () => {
-      if (heroTimer) window.clearInterval(heroTimer);
-    });
-
-    heroCarousel.addEventListener('mouseleave', () => {
+      setHeroSlide(0);
       restartHeroTimer();
+    };
+
+    startHeroCarousel();
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeNav();
+        closeLightbox();
+      }
     });
-
-    heroCarousel.addEventListener('touchstart', () => {
-      if (heroTimer) window.clearInterval(heroTimer);
-    }, { passive: true });
-
-    heroCarousel.addEventListener('touchend', () => {
-      restartHeroTimer();
-    });
-
-    setHeroSlide(0);
-    restartHeroTimer();
   };
 
-  startHeroCarousel();
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeNav();
-      closeLightbox();
-    }
-  });
+  if (document.body?.dataset.cmsReady === '1') {
+    start();
+  } else {
+    document.addEventListener('cms:ready', start, { once: true });
+  }
 })();

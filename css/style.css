@@ -1059,8 +1059,10 @@ body,
 }
 
 .contact-grid {
+    display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     align-items: stretch;
+    gap: 1rem;
 }
 
 .contact-stack {
@@ -1089,7 +1091,8 @@ body,
 }
 
 .map-wrap {
-    min-height: 100%;
+    position: relative;
+    min-height: 440px;
     border-radius: var(--radius-xl);
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.08);
