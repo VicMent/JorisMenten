@@ -71,14 +71,28 @@
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
                 const formData = new FormData(form);
-                const response = await fetch('admin-api.php?action=login', {
-                    method: 'POST',
-                    credentials: 'same-origin',
-                    headers: csrfToken ? { 'X-CSRF-Token': csrfToken } : {},
-                    body: formData
-                });
-                const data = await response.json();
-                if (!data.ok) {
+                let response;
+                try {
+                    response = await fetch('admin-api.php?action=login', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: csrfToken ? { 'X-CSRF-Token': csrfToken } : {},
+                        body: formData
+                    });
+                } catch (error) {
+                    status.textContent = 'Kan geen verbinding maken met de server.';
+                    return;
+                }
+
+                let data;
+                try {
+                    data = await response.json();
+                } catch (error) {
+                    status.textContent = 'Login mislukt. Controleer of de lokale server draait.';
+                    return;
+                }
+
+                if (!response.ok || !data.ok) {
                     status.textContent = data.error || 'Login mislukt.';
                     return;
                 }

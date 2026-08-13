@@ -181,7 +181,12 @@
       restartHeroTimer();
     };
 
-    startHeroCarousel();
+    const initHeroCarousel = () => {
+      startHeroCarousel();
+    };
+
+    initHeroCarousel();
+    document.addEventListener('cms:carousel-updated', initHeroCarousel);
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {

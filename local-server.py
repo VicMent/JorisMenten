@@ -43,8 +43,16 @@ def resolve_secret(name: str) -> str:
     return load_php_define(name)
 
 
-PASSWORD_SALT = resolve_secret("CMS_ADMIN_PASSWORD_SALT").encode("utf-8")
+PASSWORD_SALT_RAW = resolve_secret("CMS_ADMIN_PASSWORD_SALT")
 PASSWORD_HASH = resolve_secret("CMS_ADMIN_PASSWORD_HASH")
+DEFAULT_DEV_SALT = "joris-menten-local-2026"
+DEFAULT_DEV_PASSWORD = "MentenAdmin2026!"
+
+if PASSWORD_SALT_RAW and PASSWORD_HASH:
+    PASSWORD_SALT = PASSWORD_SALT_RAW.encode("utf-8")
+else:
+    PASSWORD_SALT = DEFAULT_DEV_SALT.encode("utf-8")
+    PASSWORD_HASH = hashlib.sha256(PASSWORD_SALT + DEFAULT_DEV_PASSWORD.encode("utf-8")).hexdigest()
 SESSION_SECRET = os.getenv("CMS_SESSION_SECRET", "JorisMentenLocalCmsSession").encode("utf-8")
 SESSION_COOKIE = "cms_admin"
 SESSION_TOKEN = hmac.new(SESSION_SECRET, b"admin", hashlib.sha256).hexdigest()

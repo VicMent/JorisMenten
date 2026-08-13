@@ -29,16 +29,19 @@
       images: [
         { selector: '.brand-mark', path: 'shared.brand.logo', type: 'image' },
         { selector: '#aanpak .showcase-image', path: 'pages.index.approach.image', type: 'background' },
-        { selector: '.featured-hero-block img', path: 'pages.index.featured.heroProject', type: 'image' },
+        { selector: '#featured .featured-hero-block', path: 'pages.index.featured.heroProject', type: 'image' },
       ],
       collections: [
         {
           selector: '.hero-slide',
           path: 'pages.index.hero.carousel',
+          containerSelector: '[data-hero-carousel-track]',
+          addButtonSelector: '.hero-carousel-ui',
+          addLabel: 'Beeld',
+          defaultItem: { src: 'images/garage.jpg', alt: 'Nieuw carousselbeeld' },
           fields: [
             { selector: 'img', type: 'image', source: 'src', altSource: 'alt' },
           ],
-          addLabel: 'Carrouselbeeld toevoegen',
           itemLabel: 'Carrouselbeeld',
         },
         {
@@ -83,8 +86,17 @@
           itemLabel: 'Bullet',
         },
         {
-          selector: '.featured-duo .featured-block',
+          selector: '#featured .featured-duo .featured-block',
           path: 'pages.index.featured.projects',
+          containerSelector: '#featured .featured-duo',
+          addButtonSelector: '#featured .featured-duo',
+          addLabel: 'Project',
+          defaultItem: {
+            src: 'images/projecten/3.jpg',
+            alt: 'Nieuw project',
+            title: 'Nieuw project',
+            caption: 'Korte beschrijving van de realisatie.',
+          },
           fields: [
             { selector: 'img', type: 'image', source: 'src', altSource: 'alt' },
             { selector: '.gallery-overlay strong', type: 'text', source: 'title' },
@@ -148,7 +160,7 @@
       ],
       images: [
         { selector: '.brand-mark', path: 'shared.brand.logo', type: 'image' },
-        { selector: '.page-hero-visual.service-poorten', path: 'pages.garagepoorten.hero.image', type: 'background' },
+        { selector: '.page-hero--bleed .page-hero-visual.service-poorten', path: 'pages.garagepoorten.hero.image', type: 'background' },
         { selector: '.statement-image.service-poorten', path: 'pages.garagepoorten.statement.image', type: 'background' },
         { selector: '#benefits .benefit-band-media.service-poorten', path: 'pages.garagepoorten.benefitsSection.image', type: 'background' },
         { selector: '#approach .benefit-band-media', path: 'pages.garagepoorten.approach.image', type: 'background' },
@@ -215,8 +227,8 @@
       ],
       images: [
         { selector: '.brand-mark', path: 'shared.brand.logo', type: 'image' },
-        { selector: '.page-hero-visual', path: 'pages.projecten.hero.image', type: 'background' },
-        { selector: '#featured-projects .featured-hero-block img', path: 'pages.projecten.featuredProjects.hero', type: 'image' },
+        { selector: '#featured-projects .featured-hero-block', path: 'pages.projecten.featuredProjects.hero', type: 'image' },
+        { selector: '.page-hero--bleed .page-hero-visual', path: 'pages.projecten.hero.image', type: 'background' },
       ],
       collections: [
         {
@@ -230,6 +242,15 @@
         {
           selector: '#featured-projects .featured-duo .featured-block',
           path: 'pages.projecten.featuredProjects.projects',
+          containerSelector: '#featured-projects .featured-duo',
+          addButtonSelector: '#featured-projects .featured-duo',
+          addLabel: 'Project',
+          defaultItem: {
+            src: 'images/projecten/4.jpg',
+            alt: 'Nieuw project',
+            title: 'Nieuw project',
+            caption: 'Korte beschrijving van de realisatie.',
+          },
           fields: [
             { selector: 'img', type: 'image', source: 'src', altSource: 'alt' },
             { selector: '.gallery-overlay strong', type: 'text', source: 'title' },
@@ -253,8 +274,8 @@
         { selector: '#featured-projects .featured-hero-block .gallery-overlay strong', path: 'pages.projecten.featuredProjects.hero.title', type: 'text' },
         { selector: '#featured-projects .featured-hero-block .gallery-overlay span', path: 'pages.projecten.featuredProjects.hero.caption', type: 'text' },
         { selector: '#closing .section-kicker', path: 'pages.projecten.closing.kicker', type: 'text' },
-        { selector: '#closing .section-title', path: 'pages.projecten.closing.title', type: 'text' },
-        { selector: '#closing .section-intro', path: 'pages.projecten.closing.lead', type: 'text' },
+        { selector: '#closing .split-copy h2', path: 'pages.projecten.closing.title', type: 'text' },
+        { selector: '#closing .split-copy p', path: 'pages.projecten.closing.lead', type: 'text' },
         { selector: '.quote-card h3', path: 'pages.projecten.closing.contactCard.title', type: 'text' },
         { selector: '.quote-card p', path: 'pages.projecten.closing.contactCard.text', type: 'text' },
         { selector: '.quote-card .button-primary', path: 'pages.projecten.closing.cta', type: 'link' },
@@ -547,6 +568,7 @@
     if (targetCount > currentCount && template) {
       for (let index = currentCount; index < targetCount; index += 1) {
         const clone = template.cloneNode(true);
+        clone.classList.remove('is-active');
         container.appendChild(clone);
         existing.push(clone);
       }
@@ -557,6 +579,8 @@
         node.remove();
         return;
       }
+
+      node.classList.toggle('is-active', binding.selector === '.hero-slide' && index === 0);
 
       const item = items[index] || {};
       node.dataset.cmsCollection = binding.path;
@@ -578,11 +602,8 @@
       }
     });
 
-    if (state.admin && binding.containerSelector) {
-      const containerElement = document.querySelector(binding.containerSelector);
-      if (containerElement) {
-        injectAddButton(containerElement, binding);
-      }
+    if (state.admin && binding.selector === '.hero-slide') {
+      document.dispatchEvent(new CustomEvent('cms:carousel-updated'));
     }
   }
 
@@ -680,6 +701,7 @@
     createToolbar();
     createModal();
     await fetchLibrary();
+    document.body.classList.add('cms-admin-active');
 
     document.querySelectorAll('[data-cms-path], .cms-edit-target').forEach((element) => {
       const path = element.dataset.cmsPath;
@@ -694,7 +716,14 @@
     });
 
     (getBindingPage().collections || []).forEach((binding) => {
-      const container = binding.containerSelector ? document.querySelector(binding.containerSelector) : document.querySelector(binding.selector)?.parentElement;
+      if (binding.selector === '.hero-slide') {
+        injectHeroCarouselControls(binding);
+        return;
+      }
+
+      const container = binding.containerSelector
+        ? document.querySelector(binding.containerSelector)
+        : document.querySelector(binding.selector)?.parentElement;
       if (container) {
         injectAddButton(container, binding);
       }
@@ -721,6 +750,10 @@
   }
 
   function getElementKind(element) {
+    if (element.dataset.cmsType) {
+      return element.dataset.cmsType;
+    }
+
     if (element.tagName === 'IMG') {
       return 'image';
     }
@@ -760,21 +793,37 @@
   }
 
   function injectAddButton(container, binding) {
-    const host = container.parentElement || container;
-    if (!state.admin || host.querySelector(':scope > .cms-add-button[data-cms-bound="1"]')) {
+    const anchor = binding.addButtonSelector
+      ? document.querySelector(binding.addButtonSelector)
+      : null;
+    const host = anchor || container.parentElement || container;
+
+    if (!state.admin || host.querySelector(`[data-cms-add-path="${binding.path}"]`)) {
       return;
     }
 
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'cms-add-button cms-add-inline';
-    button.textContent = '+';
+    button.textContent = binding.addLabel ? `+ ${binding.addLabel}` : '+';
     button.dataset.cmsBound = '1';
+    button.dataset.cmsAddPath = binding.path;
     button.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
-      openEditor({ kind: 'collection-add', binding, index: null, path: binding.path, item: {} }, container);
+      openEditor({
+        kind: 'collection-add',
+        binding,
+        index: null,
+        path: binding.path,
+        item: binding.defaultItem ? { ...binding.defaultItem } : {},
+      }, container);
     });
+
+    if (anchor) {
+      anchor.insertBefore(button, anchor.firstChild);
+      return;
+    }
 
     if (container.parentElement) {
       container.parentElement.insertBefore(button, container);
@@ -782,6 +831,66 @@
     }
 
     container.appendChild(button);
+  }
+
+  function injectHeroCarouselControls(binding) {
+    if (document.querySelector('[data-cms-hero-carousel-bar="1"]')) {
+      return;
+    }
+
+    const container = binding.containerSelector
+      ? document.querySelector(binding.containerSelector)
+      : document.querySelector(binding.selector)?.parentElement;
+    if (!container) {
+      return;
+    }
+
+    const openActiveSlideEditor = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const slides = Array.from(document.querySelectorAll(binding.selector));
+      const index = Math.max(0, slides.findIndex((slide) => slide.classList.contains('is-active')));
+      const items = getPath(state.content, binding.path, []);
+      openEditor({
+        kind: 'collection-item',
+        binding,
+        index,
+        path: binding.path,
+        item: items[index] || {},
+      }, slides[index] || slides[0]);
+    };
+
+    const bar = document.createElement('div');
+    bar.className = 'cms-hero-carousel-bar';
+    bar.dataset.cmsHeroCarouselBar = '1';
+
+    const addButton = document.createElement('button');
+    addButton.type = 'button';
+    addButton.className = 'cms-hero-carousel-action';
+    addButton.textContent = binding.addLabel ? `+ ${binding.addLabel}` : '+ Item';
+    addButton.dataset.cmsBound = '1';
+    addButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openEditor({
+        kind: 'collection-add',
+        binding,
+        index: null,
+        path: binding.path,
+        item: binding.defaultItem ? { ...binding.defaultItem } : {},
+      }, container);
+    });
+
+    const editButton = document.createElement('button');
+    editButton.type = 'button';
+    editButton.className = 'cms-hero-carousel-action';
+    editButton.textContent = '✎ Beeld';
+    editButton.dataset.cmsBound = '1';
+    editButton.addEventListener('click', openActiveSlideEditor);
+
+    bar.appendChild(addButton);
+    bar.appendChild(editButton);
+    document.body.appendChild(bar);
   }
 
   function createToolbar() {
@@ -1079,13 +1188,38 @@
         return;
       }
 
-      await saveField(target.path, { src: selectedSource.value, alt: altInput.value || deriveAlt(selectedSource.value) });
+      const nextValue = {
+        ...(typeof current === 'object' && current !== null ? current : {}),
+        src: selectedSource.value,
+        alt: altInput.value || deriveAlt(selectedSource.value),
+      };
+      await saveField(target.path, nextValue);
     }, 'primary'));
   }
 
   function buildCollectionForm(modalBody, modalActions, binding, item, index, isNew) {
     const inputs = [];
     const plainTextCollection = binding.fields.length === 1 && binding.fields[0].selector === ':scope' && binding.fields[0].type === 'text';
+    let layoutInput = null;
+
+    if (binding.layoutField) {
+      const layoutWrap = document.createElement('label');
+      layoutWrap.className = 'cms-field';
+      layoutWrap.innerHTML = '<span>Layout</span>';
+      layoutInput = document.createElement('select');
+      const layoutOptions = binding.layoutField.startsWith('layout')
+        ? ['layout-hero', 'layout-wide', 'layout-tall', 'layout-standard']
+        : ['band-statement', 'band-left', 'band-right', 'band-full'];
+      layoutOptions.forEach((optionValue) => {
+        const option = document.createElement('option');
+        option.value = optionValue;
+        option.textContent = optionValue;
+        layoutInput.appendChild(option);
+      });
+      layoutInput.value = (item && item[binding.layoutField]) || layoutOptions[0];
+      layoutWrap.appendChild(layoutInput);
+      modalBody.appendChild(layoutWrap);
+    }
 
     binding.fields.forEach((field) => {
       if (field.selector === ':scope' && field.type === 'text') {
@@ -1262,7 +1396,7 @@
     });
 
     modalActions.appendChild(createActionButton(isNew ? 'Toevoegen' : 'Opslaan', async () => {
-      const nextItem = buildItemFromInputs(inputs, binding, plainTextCollection);
+      const nextItem = buildItemFromInputs(inputs, binding, plainTextCollection, layoutInput);
       if (isNew) {
         await addCollectionItem(binding.path, nextItem, index);
       } else {
@@ -1285,7 +1419,7 @@
     }
   }
 
-  function buildItemFromInputs(inputs, binding, plainTextCollection = false) {
+  function buildItemFromInputs(inputs, binding, plainTextCollection = false, layoutInput = null) {
     if (plainTextCollection && inputs[0]?.input) {
       return inputs[0].input.value;
     }
@@ -1318,6 +1452,10 @@
 
       item[field.source || 'value'] = entry.input.value;
     });
+
+    if (binding.layoutField && layoutInput) {
+      item[binding.layoutField] = layoutInput.value;
+    }
 
     return item;
   }

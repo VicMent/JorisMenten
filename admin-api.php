@@ -17,7 +17,8 @@ if ($action === 'content') {
     cms_json_response([
         'ok' => true,
         'content' => $content,
-        'admin' => cms_is_admin()
+        'admin' => cms_is_admin(),
+        'csrfToken' => cms_csrf_token(),
     ]);
 }
 
@@ -99,15 +100,17 @@ if ($action === 'set-collection-item') {
     }
 
     $items = cms_data_get($content, $path, []);
-    if (!is_array($items) || !array_key_exists($index, $items) || !is_array($items[$index])) {
+    if (!is_array($items) || !array_key_exists($index, $items)) {
         cms_error('Collectie-item niet gevonden.', 404);
     }
 
     $value = cms_parse_value(cms_value_from_request('value', ''));
     if ($field === 'payload') {
         $items[$index] = $value;
-    } else {
+    } elseif (is_array($items[$index])) {
         $items[$index][$field] = $value;
+    } else {
+        cms_error('Dit veld kan niet worden bijgewerkt voor dit item.', 400);
     }
     cms_data_set($content, $path, array_values($items));
 
