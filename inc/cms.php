@@ -21,8 +21,21 @@ if (empty($_SESSION['cms_csrf'])) {
 const CMS_CONTENT_FILE = __DIR__ . '/../data/site.json';
 const CMS_IMAGE_DIR = __DIR__ . '/../images';
 const CMS_UPLOAD_DIR = __DIR__ . '/../images/uploads';
-const CMS_ADMIN_PASSWORD_SALT = 'JorisMentenCMSSalt';
-const CMS_ADMIN_PASSWORD_HASH = '181e965bcacc0c8846336c311e5bcaf9de89f25860cbdc588b724b8d65be1209';
+const CMS_LOCAL_CONFIG_FILE = __DIR__ . '/cms.local.php';
+
+if (is_file(CMS_LOCAL_CONFIG_FILE)) {
+    require_once CMS_LOCAL_CONFIG_FILE;
+}
+
+if (!defined('CMS_ADMIN_PASSWORD_SALT')) {
+    $configuredSalt = $_SERVER['CMS_ADMIN_PASSWORD_SALT'] ?? getenv('CMS_ADMIN_PASSWORD_SALT');
+    define('CMS_ADMIN_PASSWORD_SALT', is_string($configuredSalt) ? $configuredSalt : '');
+}
+
+if (!defined('CMS_ADMIN_PASSWORD_HASH')) {
+    $configuredHash = $_SERVER['CMS_ADMIN_PASSWORD_HASH'] ?? getenv('CMS_ADMIN_PASSWORD_HASH');
+    define('CMS_ADMIN_PASSWORD_HASH', is_string($configuredHash) ? $configuredHash : '');
+}
 
 function cms_is_admin(): bool
 {
@@ -45,6 +58,11 @@ function cms_require_csrf(): void
 function cms_admin_hash(string $password): string
 {
     return hash('sha256', CMS_ADMIN_PASSWORD_SALT . $password);
+}
+
+function cms_admin_credentials_configured(): bool
+{
+    return CMS_ADMIN_PASSWORD_SALT !== '' && CMS_ADMIN_PASSWORD_HASH !== '';
 }
 
 function cms_content_file_path(): string
@@ -215,6 +233,7 @@ function cms_list_images(string $directory = CMS_IMAGE_DIR): array
     if (!is_dir($directory)) {
         return $images;
     }
+    $projectRoot = rtrim(cms_normalize_path(dirname(__DIR__)), '/');
 
     $iterator = new RecursiveIteratorIterator(
         new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS),
@@ -225,9 +244,10 @@ function cms_list_images(string $directory = CMS_IMAGE_DIR): array
         if (!$file->isFile()) {
             continue;
         }
-
-        $absolutePath = $file->getPathname();
-        $relativePath = cms_normalize_path(substr($absolutePath, strlen(__DIR__) + 1));
+        $absolutePath = cms_normalize_path($file->getPathname());
+        $relativePath = str_starts_with($absolutePath, $projectRoot . '/')
+            ? substr($absolutePath, strlen($projectRoot) + 1)
+            : $absolutePath;
 
         if (cms_is_allowed_image($relativePath)) {
             $images[] = $relativePath;

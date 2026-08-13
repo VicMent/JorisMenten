@@ -22,9 +22,12 @@ if ($action === 'content') {
 }
 
 if ($action === 'login') {
+    if (!cms_admin_credentials_configured()) {
+        cms_error('Admin wachtwoord is niet geconfigureerd op de server.', 500);
+    }
     cms_require_csrf();
     $password = (string) cms_value_from_request('password', '');
-    if (cms_admin_hash($password) !== CMS_ADMIN_PASSWORD_HASH) {
+    if (!hash_equals(CMS_ADMIN_PASSWORD_HASH, cms_admin_hash($password))) {
         cms_error('Ongeldig wachtwoord.', 401);
     }
 

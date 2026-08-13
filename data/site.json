@@ -20,9 +20,9 @@
         "description": "Joris Menten bv ontwerpt en plaatst garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen met 15+ jaar ervaring."
       },
       "hero": {
-        "eyebrow": "15+ jaar vakmanschap",
+        "eyebrow": "15+ jaar vakmanschap · Limburg & omgeving",
         "title": "Premium oplossingen voor buitenkant en comfort.",
-        "lead": "Joris Menten bv plaatst garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen. Strakke afwerking, duidelijke communicatie en een resultaat dat direct vertrouwen uitstraalt.",
+        "lead": "Garagepoorten, zonwering, rolluiken en maatwerk — professioneel geplaatst, strak afgewerkt.",
         "ctas": [
           {
             "label": "Bekijk realisaties",
@@ -57,92 +57,81 @@
         "title": "Heldere diensten. Sterke uitvoering.",
         "lead": "Geen ruis, geen overbodige praat. Enkel de onderdelen die voor een klant tellen: kwaliteit, uitstraling en een strakke plaatsing."
       },
-      "heroMeta": [
-        {
-          "title": "Maatwerk",
-          "text": "Afgestemd op woning en situatie"
-        },
-        {
-          "title": "Montage",
-          "text": "Professioneel geplaatst en afgewerkt"
-        },
-        {
-          "title": "Service",
-          "text": "Heldere opvolging en vlotte communicatie"
-        }
-      ],
-      "stats": [
-        {
-          "value": "15+",
-          "label": "jaar ervaring in plaatsing en afwerking"
-        },
-        {
-          "value": "5",
-          "label": "kernoplossingen met sterke visuele impact"
-        },
-        {
-          "value": "100%",
-          "label": "focus op kwaliteit, detail en uitstraling"
-        },
-        {
-          "value": "1",
-          "label": "aanspreekpunt voor advies, plaatsing en opvolging"
-        }
-      ],
+      "heroMeta": [],
+      "trust": {
+        "stats": [
+          {
+            "value": "250+",
+            "label": "afgeronde projecten"
+          },
+          {
+            "value": "15+",
+            "label": "jaar ervaring"
+          },
+          {
+            "value": "Limburg",
+            "label": "lokaal werkgebied"
+          },
+          {
+            "value": "1",
+            "label": "aanspreekpunt"
+          }
+        ]
+      },
       "services": [
         {
+          "layout": "band-statement",
           "eyebrow": "01 · Toegang",
           "title": "Garagepoorten",
-          "description": "Veilig, stil en visueel strak geïntegreerd in de gevel.",
+          "description": "Veilig, stil en visueel strak geïntegreerd in de gevel — onze topprioriteit en sterkste visuele signatuur.",
           "badge": "Topprioriteit",
           "linkLabel": "Meer info",
           "linkHref": "garagepoorten.html",
           "image": "images/garage.jpg"
         },
         {
-          "eyebrow": "02 · Bescherming",
-          "title": "Rolluiken",
-          "description": "Meer privacy, betere isolatie en extra comfort in elke ruimte.",
-          "badge": "Functioneel",
-          "linkLabel": "Offerte",
-          "linkHref": "#contact",
-          "image": "images/rolluiken.jpg"
-        },
-        {
-          "eyebrow": "03 · Comfort",
+          "layout": "band-left",
+          "eyebrow": "02 · Comfort",
           "title": "Zonwering",
-          "description": "Een nette afwerking die hitte en zon op een elegante manier temt.",
+          "description": "Een nette afwerking die hitte en zon op een elegante manier temt, zonder het uitzicht te verliezen.",
           "badge": "Strak",
           "linkLabel": "Contact",
           "linkHref": "#contact",
           "image": "images/zonwering.jpg"
         },
         {
+          "layout": "band-right",
+          "eyebrow": "03 · Bescherming",
+          "title": "Rolluiken",
+          "description": "Meer privacy, betere isolatie en extra comfort in elke ruimte — functioneel én netjes afgewerkt.",
+          "badge": "Functioneel",
+          "linkLabel": "Offerte",
+          "linkHref": "#contact",
+          "image": "images/rolluiken.jpg"
+        },
+        {
+          "layout": "band-full",
           "eyebrow": "04 · Buitenleven",
           "title": "Terrasoverkappingen",
-          "description": "Meer gebruiksruimte en een luxe uitstraling voor terras en tuin.",
+          "description": "Meer gebruiksruimte en een luxe uitstraling voor terras en tuin — het buitenleven verlengd met stijl.",
           "badge": "Sfeervol",
           "linkLabel": "Projecten",
           "linkHref": "projecten.html",
           "image": "images/terras.jpg"
-        },
+        }
+      ],
+      "compactServices": [
         {
-          "eyebrow": "05 · Frisse lucht",
           "title": "Vliegenramen",
           "description": "Comfortabel ventileren zonder in te boeten op rust of netheid.",
-          "badge": "Discreet",
           "linkLabel": "Vraag info",
-          "linkHref": "#contact",
-          "image": "images/vliegen.jpg"
+          "linkHref": "#contact"
         },
         {
-          "eyebrow": "06 · Realisaties",
           "title": "Maatwerk & projecten",
-          "description": "Foto’s van gerealiseerde werken en een stijl die meteen vertrouwen geeft.",
-          "badge": "Portfolio",
+          "description": "Foto's van gerealiseerde werken en een stijl die meteen vertrouwen geeft.",
           "linkLabel": "Bekijk",
-          "linkHref": "projecten.html",
-          "image": "images/projecten/1.jpeg"
+          "linkHref": "projecten.html"
         }
       ],
       "approach": {
@@ -158,23 +147,26 @@
       },
       "featured": {
         "kicker": "Uitgelichte realisaties",
-        "title": "Een selectie van werk dat meteen binnenkomt.",
-        "lead": "De projectpagina toont de kwaliteit van het werk zonder afleiding. Grote beelden, minimalistische opbouw en een galerie die meteen overtuigt.",
-        "cards": [
+        "title": "Werk dat meteen binnenkomt.",
+        "lead": "Grote beelden, editorial opbouw en een selectie die meteen overtuigt — zonder afleiding.",
+        "heroProject": {
+          "src": "images/projecten/1.jpeg",
+          "alt": "Strakke garagepoort met premium afwerking",
+          "title": "Strakke plaatsing",
+          "caption": "Elke realisatie krijgt aandacht voor verhouding, detail en afwerking."
+        },
+        "projects": [
           {
-            "eyebrow": "Project 01",
-            "title": "Strakke plaatsing",
-            "description": "Elke realisatie krijgt aandacht voor verhouding, detail en afwerking."
-          },
-          {
-            "eyebrow": "Project 02",
+            "src": "images/projecten/3.jpg",
+            "alt": "Consistente look door het hele portfolio",
             "title": "Consistente look",
-            "description": "Het beeldmateriaal vormt samen een professioneel en betrouwbaar geheel."
+            "caption": "Professioneel en betrouwbaar in één geheel."
           },
           {
-            "eyebrow": "Project 03",
+            "src": "images/projecten/5.jpg",
+            "alt": "Directe indruk bij elke realisatie",
             "title": "Directe indruk",
-            "description": "Bezoekers zien in één oogopslag waar het bedrijf voor staat."
+            "caption": "Bezoekers zien meteen waar het bedrijf voor staat."
           }
         ],
         "ctas": [
@@ -231,7 +223,7 @@
         "description": "Garagepoorten van Joris Menten bv: veiligheid, uitstraling en een strakke plaatsing met premium afwerking."
       },
       "hero": {
-        "eyebrow": "Service detail",
+        "eyebrow": "Service detail · 15+ jaar ervaring",
         "title": "Garagepoorten die veiligheid en uitstraling combineren.",
         "lead": "Een garagepoort moet meer doen dan sluiten. Ze moet soepel werken, lang meegaan en de gevel sterker maken. Dit is precies waar Joris Menten bv op inzet.",
         "ctas": [
@@ -251,42 +243,23 @@
         ],
         "image": "images/garage.jpg"
       },
+      "statement": {
+        "image": "images/projecten/1.jpeg",
+        "title": "Een poort die de gevel optilt",
+        "caption": "Veiligheid, stille werking en een afwerking die meteen vertrouwen uitstraalt — onze kernspecialiteit."
+      },
       "benefitsSection": {
         "kicker": "Voordelen",
         "title": "Sterke punten in één oogopslag.",
-        "lead": "De focus ligt op wat echt telt: betrouwbare werking, nette montage en een resultaat dat er gewoon goed uitziet."
+        "lead": "De focus ligt op wat echt telt: betrouwbare werking, nette montage en een resultaat dat er gewoon goed uitziet.",
+        "image": "images/garage.jpg"
       },
       "benefits": [
-        {
-          "icon": "🔒",
-          "title": "Veiligheid",
-          "description": "Een stevige constructie die uw woning beschermt en de toegang controleerbaar houdt."
-        },
-        {
-          "icon": "⚙️",
-          "title": "Betrouwbare werking",
-          "description": "Soepel openen en sluiten met een afwerking die afgestemd is op dagelijks gebruik."
-        },
-        {
-          "icon": "✨",
-          "title": "Premium uitstraling",
-          "description": "Een poort kan de gevel optillen; dit ontwerp doet precies dat zonder schreeuwerig te worden."
-        },
-        {
-          "icon": "🛠️",
-          "title": "Professionele plaatsing",
-          "description": "Exact werk, nette afwerking en aandacht voor detail van begin tot einde."
-        },
-        {
-          "icon": "🧱",
-          "title": "Duurzame materialen",
-          "description": "Materialen die tegen dagelijks gebruik en wisselende omstandigheden bestand zijn."
-        },
-        {
-          "icon": "📐",
-          "title": "Strakke integratie",
-          "description": "De poort wordt visueel onderdeel van de woning in plaats van een los element te lijken."
-        }
+        "Stevige constructie voor veiligheid en controle",
+        "Soepel openen en sluiten voor dagelijks comfort",
+        "Premium uitstraling zonder schreeuwerig te worden",
+        "Professionele plaatsing met aandacht voor detail",
+        "Duurzame materialen en strakke gevelintegratie"
       ],
       "approach": {
         "kicker": "Aanpak",
@@ -297,7 +270,7 @@
           "Afwerking die meedraait in het totaalbeeld van de woning",
           "Oplossingen die zijn gemaakt voor comfort en gebruiksgemak"
         ],
-        "image": "images/garage.jpg"
+        "image": "images/projecten/2.jpg"
       },
       "closing": {
         "kicker": "Klaar voor de volgende stap",
@@ -338,9 +311,9 @@
         "description": "Een krachtige selectie van realisaties van Joris Menten bv: garagepoorten, zonwering en andere buitenoplossingen."
       },
       "hero": {
-        "eyebrow": "Realisaties",
-        "title": "Een galerij die het werk laat spreken.",
-        "lead": "Geen lange uitleg nodig. Deze pagina bestaat uit het bewijs: duidelijke beelden, sterke afwerking en projecten die meteen tonen wat het bedrijf doet.",
+        "eyebrow": "Realisaties · Limburg",
+        "title": "Een portfolio dat het werk laat spreken.",
+        "lead": "Geen lange uitleg nodig. Deze pagina bestaat uit het bewijs: grote beelden, sterke afwerking en projecten die meteen tonen wat het bedrijf doet.",
         "ctas": [
           {
             "label": "Vraag een offerte",
@@ -352,70 +325,99 @@
           }
         ],
         "chips": [
-          "14 beelden",
-          "Volledige focus op kwaliteit"
+          "250+ projecten",
+          "15+ jaar ervaring",
+          "Lokaal werkgebied"
         ],
-        "image": "images/background.jpeg"
+        "image": "images/projecten/2.jpg"
+      },
+      "featuredSection": {
+        "kicker": "Uitgelicht",
+        "title": "Drie projecten die meteen impact maken.",
+        "lead": "Onze sterkste realisaties krijgen de ruimte die ze verdienen — groot, rustig en zonder afleiding."
+      },
+      "featuredProjects": {
+        "hero": {
+          "src": "images/projecten/1.jpeg",
+          "alt": "Garagepoort met strakke gevelintegratie",
+          "title": "Garagepoort · Gevelintegratie",
+          "caption": "Veilig, stil en visueel onderdeel van de woning."
+        },
+        "projects": [
+          {
+            "src": "images/projecten/4.jpg",
+            "alt": "Zonwering met elegante afwerking",
+            "title": "Zonwering · Comfort",
+            "caption": "Hitte getemd met een nette, discrete afwerking."
+          },
+          {
+            "src": "images/projecten/7.jpg",
+            "alt": "Terrasoverkapping met premium uitstraling",
+            "title": "Terras · Buitenleven",
+            "caption": "Meer ruimte en een luxe uitstraling voor terras en tuin."
+          }
+        ]
       },
       "gallerySection": {
-        "kicker": "Portfolio",
-        "title": "Selectie van uitgevoerde werken.",
-        "lead": "De beelden worden groot en rustig gepresenteerd, zodat vorm, materiaal en afwerking centraal staan."
+        "kicker": "Meer werk",
+        "title": "Verder portfolio.",
+        "lead": "Een editorial selectie van afgerond werk — wisselende schalen, één consistente kwaliteit."
       },
       "gallery": [
         {
-          "src": "images/projecten/1.jpeg",
-          "alt": "Realisatie"
-        },
-        {
+          "layout": "layout-hero",
           "src": "images/projecten/2.jpg",
-          "alt": "Realisatie"
+          "alt": "Realisatie met premium afwerking",
+          "title": "Realisatie 02",
+          "caption": "Strakke afwerking en sterke verhoudingen."
         },
         {
+          "layout": "layout-wide",
           "src": "images/projecten/3.jpg",
           "alt": "Realisatie"
         },
         {
-          "src": "images/projecten/4.jpg",
-          "alt": "Realisatie"
-        },
-        {
+          "layout": "layout-tall",
           "src": "images/projecten/5.jpg",
           "alt": "Realisatie"
         },
         {
+          "layout": "layout-standard",
           "src": "images/projecten/6.jpg",
           "alt": "Realisatie"
         },
         {
-          "src": "images/projecten/7.jpg",
-          "alt": "Realisatie"
-        },
-        {
+          "layout": "layout-wide",
           "src": "images/projecten/8.jpg",
           "alt": "Realisatie"
         },
         {
+          "layout": "layout-standard",
           "src": "images/projecten/9.jpg",
           "alt": "Realisatie"
         },
         {
+          "layout": "layout-standard",
           "src": "images/projecten/10.jpg",
           "alt": "Realisatie"
         },
         {
+          "layout": "layout-wide",
           "src": "images/projecten/11.jpg",
           "alt": "Realisatie"
         },
         {
+          "layout": "layout-standard",
           "src": "images/projecten/12.jpg",
           "alt": "Realisatie"
         },
         {
+          "layout": "layout-standard",
           "src": "images/projecten/13.jpg",
           "alt": "Realisatie"
         },
         {
+          "layout": "layout-standard",
           "src": "images/projecten/14.jpg",
           "alt": "Realisatie"
         }

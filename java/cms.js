@@ -22,14 +22,14 @@
         { selector: '.hero-copy p', path: 'pages.index.hero.lead', type: 'text' },
         { selector: '.hero-actions .button-primary', path: 'pages.index.hero.ctas.0', type: 'link' },
         { selector: '.hero-actions .button-secondary', path: 'pages.index.hero.ctas.1', type: 'link' },
-        { selector: 'main > section.surface:nth-of-type(5) .section-head .section-kicker', path: 'pages.index.featured.kicker', type: 'text' },
-        { selector: 'main > section.surface:nth-of-type(5) .section-head .section-title', path: 'pages.index.featured.title', type: 'text' },
-        { selector: 'main > section.surface:nth-of-type(5) .section-head .section-intro', path: 'pages.index.featured.lead', type: 'text' },
+        { selector: '#featured .section-head .section-kicker', path: 'pages.index.featured.kicker', type: 'text' },
+        { selector: '#featured .section-head .section-title', path: 'pages.index.featured.title', type: 'text' },
+        { selector: '#featured .section-head .section-intro', path: 'pages.index.featured.lead', type: 'text' },
       ],
       images: [
         { selector: '.brand-mark', path: 'shared.brand.logo', type: 'image' },
-        { selector: '.page-visual', path: 'pages.index.approach.image', type: 'background' },
-        { selector: '.showcase-image', path: 'pages.index.approach.image', type: 'background' },
+        { selector: '#aanpak .showcase-image', path: 'pages.index.approach.image', type: 'background' },
+        { selector: '.featured-hero-block img', path: 'pages.index.featured.heroProject', type: 'image' },
       ],
       collections: [
         {
@@ -42,29 +42,40 @@
           itemLabel: 'Carrouselbeeld',
         },
         {
-          selector: '.stat-card',
-          path: 'pages.index.stats',
+          selector: '.trust-bar-item',
+          path: 'pages.index.trust.stats',
           fields: [
             { selector: 'strong', type: 'text', source: 'value' },
             { selector: 'span', type: 'text', source: 'label' },
           ],
-          itemLabel: 'Statistiek',
+          itemLabel: 'Vertrouwensstatistiek',
         },
         {
-          selector: '.service-card',
+          selector: '.service-band',
           path: 'pages.index.services',
+          layoutField: 'layout',
           fields: [
-            { selector: '.service-media', type: 'background', source: 'image' },
+            { selector: '.service-band-media', type: 'background', source: 'image' },
             { selector: '.card-tag', type: 'text', source: 'eyebrow' },
             { selector: 'h3', type: 'text', source: 'title' },
             { selector: 'p', type: 'text', source: 'description' },
             { selector: '.info-pill', type: 'text', source: 'badge' },
             { selector: '.link-pill', type: 'link', labelSource: 'linkLabel', hrefSource: 'linkHref' },
           ],
-          itemLabel: 'Dienstkaart',
+          itemLabel: 'Dienstband',
         },
         {
-          selector: '.split-copy li',
+          selector: '.compact-service',
+          path: 'pages.index.compactServices',
+          fields: [
+            { selector: 'h4', type: 'text', source: 'title' },
+            { selector: 'p', type: 'text', source: 'description' },
+            { selector: '.link-pill', type: 'link', labelSource: 'linkLabel', hrefSource: 'linkHref' },
+          ],
+          itemLabel: 'Compacte dienst',
+        },
+        {
+          selector: '#aanpak .split-copy li',
           path: 'pages.index.approach.bullets',
           fields: [
             { selector: ':scope', type: 'text', source: 'value' },
@@ -72,14 +83,14 @@
           itemLabel: 'Bullet',
         },
         {
-          selector: '.copy-card',
-          path: 'pages.index.featured.cards',
+          selector: '.featured-duo .featured-block',
+          path: 'pages.index.featured.projects',
           fields: [
-            { selector: '.card-tag', type: 'text', source: 'eyebrow' },
-            { selector: 'h3', type: 'text', source: 'title' },
-            { selector: 'p', type: 'text', source: 'description' },
+            { selector: 'img', type: 'image', source: 'src', altSource: 'alt' },
+            { selector: '.gallery-overlay strong', type: 'text', source: 'title' },
+            { selector: '.gallery-overlay span', type: 'text', source: 'caption' },
           ],
-          itemLabel: 'Project teaser',
+          itemLabel: 'Uitgelicht project',
         },
         {
           selector: '.contact-card',
@@ -98,22 +109,10 @@
         { selector: '#aanpak .section-kicker', path: 'pages.index.approach.kicker', type: 'text' },
         { selector: '#aanpak h2', path: 'pages.index.approach.title', type: 'text' },
         { selector: '#aanpak p', path: 'pages.index.approach.lead', type: 'text' },
-        { selector: '.hero-meta .meta-chip:nth-child(1) strong', path: 'pages.index.heroMeta.0.title', type: 'text' },
-        { selector: '.hero-meta .meta-chip:nth-child(1) span', path: 'pages.index.heroMeta.0.text', type: 'text' },
-        { selector: '.hero-meta .meta-chip:nth-child(2) strong', path: 'pages.index.heroMeta.1.title', type: 'text' },
-        { selector: '.hero-meta .meta-chip:nth-child(2) span', path: 'pages.index.heroMeta.1.text', type: 'text' },
-        { selector: '.hero-meta .meta-chip:nth-child(3) strong', path: 'pages.index.heroMeta.2.title', type: 'text' },
-        { selector: '.hero-meta .meta-chip:nth-child(3) span', path: 'pages.index.heroMeta.2.text', type: 'text' },
-        { selector: '.stat-strip .stat-card:nth-child(1) strong', path: 'pages.index.stats.0.value', type: 'text' },
-        { selector: '.stat-strip .stat-card:nth-child(1) span', path: 'pages.index.stats.0.label', type: 'text' },
-        { selector: '.stat-strip .stat-card:nth-child(2) strong', path: 'pages.index.stats.1.value', type: 'text' },
-        { selector: '.stat-strip .stat-card:nth-child(2) span', path: 'pages.index.stats.1.label', type: 'text' },
-        { selector: '.stat-strip .stat-card:nth-child(3) strong', path: 'pages.index.stats.2.value', type: 'text' },
-        { selector: '.stat-strip .stat-card:nth-child(3) span', path: 'pages.index.stats.2.label', type: 'text' },
-        { selector: '.stat-strip .stat-card:nth-child(4) strong', path: 'pages.index.stats.3.value', type: 'text' },
-        { selector: '.stat-strip .stat-card:nth-child(4) span', path: 'pages.index.stats.3.label', type: 'text' },
-        { selector: 'main > section.surface:nth-of-type(5) .hero-actions .button-primary', path: 'pages.index.featured.ctas.0', type: 'link' },
-        { selector: 'main > section.surface:nth-of-type(5) .hero-actions .button-secondary', path: 'pages.index.featured.ctas.1', type: 'link' },
+        { selector: '.featured-hero-block .gallery-overlay strong', path: 'pages.index.featured.heroProject.title', type: 'text' },
+        { selector: '.featured-hero-block .gallery-overlay span', path: 'pages.index.featured.heroProject.caption', type: 'text' },
+        { selector: '#featured .hero-actions .button-primary', path: 'pages.index.featured.ctas.0', type: 'link' },
+        { selector: '#featured .hero-actions .button-secondary', path: 'pages.index.featured.ctas.1', type: 'link' },
         { selector: '#contact .section-kicker', path: 'pages.index.contact.kicker', type: 'text' },
         { selector: '#contact .section-title', path: 'pages.index.contact.title', type: 'text' },
         { selector: '#contact .section-intro', path: 'pages.index.contact.lead', type: 'text' },
@@ -133,41 +132,46 @@
         description: 'pages.garagepoorten.meta.description',
       },
       singles: [
-        { selector: '.page-hero-copy .eyebrow', path: 'pages.garagepoorten.hero.eyebrow', type: 'text' },
-        { selector: '.page-hero-copy h1', path: 'pages.garagepoorten.hero.title', type: 'text' },
-        { selector: '.page-hero-copy p', path: 'pages.garagepoorten.hero.lead', type: 'text' },
-        { selector: '.page-hero-copy .hero-actions .button-primary', path: 'pages.garagepoorten.hero.ctas.0', type: 'link' },
-        { selector: '.page-hero-copy .hero-actions .button-secondary', path: 'pages.garagepoorten.hero.ctas.1', type: 'link' },
-        { selector: 'main > section:nth-of-type(2).surface .section-head .section-kicker', path: 'pages.garagepoorten.benefitsSection.kicker', type: 'text' },
-        { selector: 'main > section:nth-of-type(2).surface .section-head .section-title', path: 'pages.garagepoorten.benefitsSection.title', type: 'text' },
-        { selector: 'main > section:nth-of-type(2).surface .section-head .section-intro', path: 'pages.garagepoorten.benefitsSection.lead', type: 'text' },
+        { selector: '.page-hero-content .eyebrow', path: 'pages.garagepoorten.hero.eyebrow', type: 'text' },
+        { selector: '.page-hero-content h1', path: 'pages.garagepoorten.hero.title', type: 'text' },
+        { selector: '.page-hero-content p', path: 'pages.garagepoorten.hero.lead', type: 'text' },
+        { selector: '.page-hero-content .hero-actions .button-primary', path: 'pages.garagepoorten.hero.ctas.0', type: 'link' },
+        { selector: '.page-hero-content .hero-actions .button-secondary', path: 'pages.garagepoorten.hero.ctas.1', type: 'link' },
+        { selector: '.statement-caption strong', path: 'pages.garagepoorten.statement.title', type: 'text' },
+        { selector: '.statement-caption span', path: 'pages.garagepoorten.statement.caption', type: 'text' },
+        { selector: '#benefits .section-kicker', path: 'pages.garagepoorten.benefitsSection.kicker', type: 'text' },
+        { selector: '#benefits .section-title', path: 'pages.garagepoorten.benefitsSection.title', type: 'text' },
+        { selector: '#benefits .section-intro', path: 'pages.garagepoorten.benefitsSection.lead', type: 'text' },
+        { selector: '#approach .section-kicker', path: 'pages.garagepoorten.approach.kicker', type: 'text' },
+        { selector: '#approach h2', path: 'pages.garagepoorten.approach.title', type: 'text' },
+        { selector: '#approach p', path: 'pages.garagepoorten.approach.lead', type: 'text' },
       ],
       images: [
         { selector: '.brand-mark', path: 'shared.brand.logo', type: 'image' },
-        { selector: '.page-visual.service-poorten', path: 'pages.garagepoorten.hero.image', type: 'background' },
-        { selector: '.showcase-image.service-poorten', path: 'pages.garagepoorten.approach.image', type: 'background' },
+        { selector: '.page-hero-visual.service-poorten', path: 'pages.garagepoorten.hero.image', type: 'background' },
+        { selector: '.statement-image.service-poorten', path: 'pages.garagepoorten.statement.image', type: 'background' },
+        { selector: '#benefits .benefit-band-media.service-poorten', path: 'pages.garagepoorten.benefitsSection.image', type: 'background' },
+        { selector: '#approach .benefit-band-media', path: 'pages.garagepoorten.approach.image', type: 'background' },
       ],
       collections: [
         {
-          selector: '.kicker-row .pill',
+          selector: '.page-hero-content .kicker-row .pill',
           path: 'pages.garagepoorten.hero.chips',
           fields: [
             { selector: ':scope', type: 'text', source: 'value' },
           ],
-          itemLabel: 'Chips',
+          itemLabel: 'Chip',
         },
         {
-          selector: '.feature-card',
+          selector: '#benefits .benefit-list li',
           path: 'pages.garagepoorten.benefits',
           fields: [
-            { selector: '.feature-icon', type: 'text', source: 'icon' },
-            { selector: 'h3', type: 'text', source: 'title' },
-            { selector: 'p', type: 'text', source: 'description' },
+            { selector: ':scope', type: 'text', source: 'value' },
           ],
-          itemLabel: 'Voordeelkaart',
+          itemLabel: 'Voordeel',
         },
         {
-          selector: '.split-copy li',
+          selector: '#approach .benefit-list li',
           path: 'pages.garagepoorten.approach.bullets',
           fields: [
             { selector: ':scope', type: 'text', source: 'value' },
@@ -176,17 +180,11 @@
         },
       ],
       extra: [
-        { selector: '.page-hero-card .kicker-row .pill:nth-child(1)', path: 'pages.garagepoorten.hero.chips.0', type: 'text' },
-        { selector: '.page-hero-card .kicker-row .pill:nth-child(2)', path: 'pages.garagepoorten.hero.chips.1', type: 'text' },
-        { selector: '.page-hero-card .kicker-row .pill:nth-child(3)', path: 'pages.garagepoorten.hero.chips.2', type: 'text' },
-        { selector: '.split-copy .section-kicker', path: 'pages.garagepoorten.approach.kicker', type: 'text' },
-        { selector: '.split-copy h2', path: 'pages.garagepoorten.approach.title', type: 'text' },
-        { selector: '.split-copy p', path: 'pages.garagepoorten.approach.lead', type: 'text' },
-        { selector: 'main > section:nth-of-type(4).surface .section-kicker', path: 'pages.garagepoorten.closing.kicker', type: 'text' },
-        { selector: 'main > section:nth-of-type(4).surface .section-title', path: 'pages.garagepoorten.closing.title', type: 'text' },
-        { selector: 'main > section:nth-of-type(4).surface .section-intro', path: 'pages.garagepoorten.closing.lead', type: 'text' },
-        { selector: 'main > section:nth-of-type(4).surface .hero-actions .button-primary', path: 'pages.garagepoorten.closing.ctas.0', type: 'link' },
-        { selector: 'main > section:nth-of-type(4).surface .hero-actions .button-secondary', path: 'pages.garagepoorten.closing.ctas.1', type: 'link' },
+        { selector: '#closing .section-kicker', path: 'pages.garagepoorten.closing.kicker', type: 'text' },
+        { selector: '#closing .section-title', path: 'pages.garagepoorten.closing.title', type: 'text' },
+        { selector: '#closing .section-intro', path: 'pages.garagepoorten.closing.lead', type: 'text' },
+        { selector: '#closing .hero-actions .button-primary', path: 'pages.garagepoorten.closing.ctas.0', type: 'link' },
+        { selector: '#closing .hero-actions .button-secondary', path: 'pages.garagepoorten.closing.ctas.1', type: 'link' },
       ],
       footer: {
         brandSelectors: [
@@ -203,22 +201,26 @@
         description: 'pages.projecten.meta.description',
       },
       singles: [
-        { selector: '.page-hero-copy .eyebrow', path: 'pages.projecten.hero.eyebrow', type: 'text' },
-        { selector: '.page-hero-copy h1', path: 'pages.projecten.hero.title', type: 'text' },
-        { selector: '.page-hero-copy p', path: 'pages.projecten.hero.lead', type: 'text' },
-        { selector: '.page-hero-copy .hero-actions .button-primary', path: 'pages.projecten.hero.ctas.0', type: 'link' },
-        { selector: '.page-hero-copy .hero-actions .button-secondary', path: 'pages.projecten.hero.ctas.1', type: 'link' },
-        { selector: 'main > section:nth-of-type(2) .section-head .section-kicker', path: 'pages.projecten.gallerySection.kicker', type: 'text' },
-        { selector: 'main > section:nth-of-type(2) .section-head .section-title', path: 'pages.projecten.gallerySection.title', type: 'text' },
-        { selector: 'main > section:nth-of-type(2) .section-head .section-intro', path: 'pages.projecten.gallerySection.lead', type: 'text' },
+        { selector: '.page-hero-content .eyebrow', path: 'pages.projecten.hero.eyebrow', type: 'text' },
+        { selector: '.page-hero-content h1', path: 'pages.projecten.hero.title', type: 'text' },
+        { selector: '.page-hero-content p', path: 'pages.projecten.hero.lead', type: 'text' },
+        { selector: '.page-hero-content .hero-actions .button-primary', path: 'pages.projecten.hero.ctas.0', type: 'link' },
+        { selector: '.page-hero-content .hero-actions .button-secondary', path: 'pages.projecten.hero.ctas.1', type: 'link' },
+        { selector: '#featured-projects .section-head .section-kicker', path: 'pages.projecten.featuredSection.kicker', type: 'text' },
+        { selector: '#featured-projects .section-head .section-title', path: 'pages.projecten.featuredSection.title', type: 'text' },
+        { selector: '#featured-projects .section-head .section-intro', path: 'pages.projecten.featuredSection.lead', type: 'text' },
+        { selector: '#gallery .section-head .section-kicker', path: 'pages.projecten.gallerySection.kicker', type: 'text' },
+        { selector: '#gallery .section-head .section-title', path: 'pages.projecten.gallerySection.title', type: 'text' },
+        { selector: '#gallery .section-head .section-intro', path: 'pages.projecten.gallerySection.lead', type: 'text' },
       ],
       images: [
         { selector: '.brand-mark', path: 'shared.brand.logo', type: 'image' },
-        { selector: '.page-visual', path: 'pages.projecten.hero.image', type: 'background' },
+        { selector: '.page-hero-visual', path: 'pages.projecten.hero.image', type: 'background' },
+        { selector: '#featured-projects .featured-hero-block img', path: 'pages.projecten.featuredProjects.hero', type: 'image' },
       ],
       collections: [
         {
-          selector: '.kicker-row .pill',
+          selector: '.page-hero-content .kicker-row .pill',
           path: 'pages.projecten.hero.chips',
           fields: [
             { selector: ':scope', type: 'text', source: 'value' },
@@ -226,18 +228,33 @@
           itemLabel: 'Chip',
         },
         {
-          selector: '.gallery-card',
-          path: 'pages.projecten.gallery',
+          selector: '#featured-projects .featured-duo .featured-block',
+          path: 'pages.projecten.featuredProjects.projects',
           fields: [
             { selector: 'img', type: 'image', source: 'src', altSource: 'alt' },
+            { selector: '.gallery-overlay strong', type: 'text', source: 'title' },
+            { selector: '.gallery-overlay span', type: 'text', source: 'caption' },
+          ],
+          itemLabel: 'Uitgelicht project',
+        },
+        {
+          selector: '.editorial-block',
+          path: 'pages.projecten.gallery',
+          layoutField: 'layout',
+          fields: [
+            { selector: 'img', type: 'image', source: 'src', altSource: 'alt' },
+            { selector: '.gallery-overlay strong', type: 'text', source: 'title' },
+            { selector: '.gallery-overlay span', type: 'text', source: 'caption' },
           ],
           itemLabel: 'Galerijfoto',
         },
       ],
       extra: [
-        { selector: 'main > section:nth-of-type(3).surface .section-kicker', path: 'pages.projecten.closing.kicker', type: 'text' },
-        { selector: 'main > section:nth-of-type(3).surface .section-title', path: 'pages.projecten.closing.title', type: 'text' },
-        { selector: 'main > section:nth-of-type(3).surface .section-intro', path: 'pages.projecten.closing.lead', type: 'text' },
+        { selector: '#featured-projects .featured-hero-block .gallery-overlay strong', path: 'pages.projecten.featuredProjects.hero.title', type: 'text' },
+        { selector: '#featured-projects .featured-hero-block .gallery-overlay span', path: 'pages.projecten.featuredProjects.hero.caption', type: 'text' },
+        { selector: '#closing .section-kicker', path: 'pages.projecten.closing.kicker', type: 'text' },
+        { selector: '#closing .section-title', path: 'pages.projecten.closing.title', type: 'text' },
+        { selector: '#closing .section-intro', path: 'pages.projecten.closing.lead', type: 'text' },
         { selector: '.quote-card h3', path: 'pages.projecten.closing.contactCard.title', type: 'text' },
         { selector: '.quote-card p', path: 'pages.projecten.closing.contactCard.text', type: 'text' },
         { selector: '.quote-card .button-primary', path: 'pages.projecten.closing.cta', type: 'link' },
@@ -606,6 +623,34 @@
 
       target.textContent = String(sourceValue ?? '');
     });
+
+    applyLayoutClasses(node, binding, item);
+  }
+
+  const LAYOUT_CLASSES = [
+    'band-statement',
+    'band-left',
+    'band-right',
+    'band-full',
+    'layout-hero',
+    'layout-wide',
+    'layout-tall',
+    'layout-standard',
+  ];
+
+  function applyLayoutClasses(node, binding, item) {
+    if (!binding.layoutField || !item || typeof item !== 'object') {
+      return;
+    }
+
+    const layout = item[binding.layoutField];
+    if (!layout) {
+      return;
+    }
+
+    LAYOUT_CLASSES.forEach((className) => node.classList.remove(className));
+    node.classList.add(layout);
+    node.dataset.layout = layout;
   }
 
   function getFieldValue(item, field) {

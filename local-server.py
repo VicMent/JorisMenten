@@ -22,9 +22,30 @@ ROOT = Path(__file__).resolve().parent
 CONTENT_FILE = ROOT / "data" / "site.json"
 IMAGE_DIR = ROOT / "images"
 UPLOAD_DIR = IMAGE_DIR / "uploads"
-PASSWORD_SALT = b"JorisMentenCMSSalt"
-PASSWORD_HASH = "181e965bcacc0c8846336c311e5bcaf9de89f25860cbdc588b724b8d65be1209"
-SESSION_SECRET = b"JorisMentenLocalCmsSession"
+LOCAL_CMS_CONFIG_FILE = ROOT / "inc" / "cms.local.php"
+
+
+def load_php_define(name: str) -> str:
+    if not LOCAL_CMS_CONFIG_FILE.exists():
+        return ""
+    try:
+        content = LOCAL_CMS_CONFIG_FILE.read_text(encoding="utf-8")
+    except OSError:
+        return ""
+    match = re.search(rf"define\(\s*['\"]{re.escape(name)}['\"]\s*,\s*['\"]([^'\"]+)['\"]\s*\)", content)
+    return match.group(1).strip() if match else ""
+
+
+def resolve_secret(name: str) -> str:
+    value = os.getenv(name)
+    if value:
+        return value.strip()
+    return load_php_define(name)
+
+
+PASSWORD_SALT = resolve_secret("CMS_ADMIN_PASSWORD_SALT").encode("utf-8")
+PASSWORD_HASH = resolve_secret("CMS_ADMIN_PASSWORD_HASH")
+SESSION_SECRET = os.getenv("CMS_SESSION_SECRET", "JorisMentenLocalCmsSession").encode("utf-8")
 SESSION_COOKIE = "cms_admin"
 SESSION_TOKEN = hmac.new(SESSION_SECRET, b"admin", hashlib.sha256).hexdigest()
 CSRF_TOKEN = hmac.new(SESSION_SECRET, b"csrf", hashlib.sha256).hexdigest()
@@ -298,11 +319,14 @@ class CmsHandler(SimpleHTTPRequestHandler):
         admin_cookie = self.headers.get("Cookie")
 
         if action == "login":
+            if not PASSWORD_SALT or not PASSWORD_HASH:
+                self.send_json({"ok": False, "error": "Admin wachtwoord is niet geconfigureerd op de server."}, 500)
+                return
             if self.headers.get("X-CSRF-Token", "") != CSRF_TOKEN:
                 self.send_json({"ok": False, "error": "Ongeldige sessie. Vernieuw de pagina en probeer opnieuw."}, 403)
                 return
             password = str(fields.get("password", ""))
-            if admin_hash(password) != PASSWORD_HASH:
+            if not hmac.compare_digest(admin_hash(password), PASSWORD_HASH):
                 self.send_json({"ok": False, "error": "Ongeldig wachtwoord."}, 401)
                 return
             self.send_json(
