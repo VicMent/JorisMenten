@@ -11,8 +11,9 @@
     <script src="java/smart-observer.js" defer></script>
     <script src="java/script.js" defer></script>
 </head>
-<body>
-    <div class="site-shell">
+    <body>
+        <div id="vanta-bg" data-vanta="waves"></div>
+        <div class="site-shell">
         <header class="site-header" data-header>
             <a class="brand" href="index.html" aria-label="Joris Menten bv - home">
                 <img class="brand-mark" src="images/joris_white2.png" alt="Joris Menten bv logo">
@@ -307,5 +308,21 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script>
+        VANTA.WAVES({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x0a1024
+        });
+    </script>
 </body>
 </html>
