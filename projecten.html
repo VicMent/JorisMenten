@@ -10,6 +10,7 @@
     <script src="java/cms.js" defer></script>
     <script src="java/smart-observer.js" defer></script>
     <script src="java/script.js" defer></script>
+    <link rel="icon" href="images/gate.ico" type="image/x-icon">
 </head>
     <body>
         <div id="vanta-bg" data-vanta="waves"></div>
@@ -31,8 +32,11 @@
 
             <nav class="site-nav" id="primary-nav" data-site-nav>
                 <a href="index.html">Home</a>
-                <a href="index.html#diensten">Diensten</a>
-                <a href="garagepoorten.html">Garagepoorten</a>
+                <div class="nav-item--dropdown">
+                    <a href="index.html#producten">Producten</a>
+                    <div class="nav-dropdown" data-cms-nav-products></div>
+                </div>
+                <a href="projecten.html">Projecten</a>
                 <a href="index.html#contact">Contact</a>
             </nav>
         </header>
@@ -42,7 +46,7 @@
                 <div class="page-hero-visual" style="background-image: url('images/projecten/2.jpg')"></div>
                 <div class="page-hero-scrim"></div>
                 <div class="page-hero-content reveal">
-                    <div class="eyebrow">Realisaties · Limburg</div>
+                    <div class="eyebrow">Realisaties · Herselt</div>
                     <h1>Een portfolio dat het werk laat spreken.</h1>
                     <p>
                         Geen lange uitleg nodig. Deze pagina bestaat uit het bewijs: grote beelden, sterke afwerking

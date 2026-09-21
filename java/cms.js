@@ -6,6 +6,7 @@
     library: [],
     csrfToken: '',
     modal: null,
+    productModal: null,
     toolbar: null,
     currentTarget: null,
   };
@@ -115,9 +116,9 @@
         },
       ],
       extra: [
-        { selector: '#diensten .section-head .section-kicker', path: 'pages.index.servicesSection.kicker', type: 'text' },
-        { selector: '#diensten .section-head .section-title', path: 'pages.index.servicesSection.title', type: 'text' },
-        { selector: '#diensten .section-head .section-intro', path: 'pages.index.servicesSection.lead', type: 'text' },
+        { selector: '#producten .section-head .section-kicker', path: 'pages.index.servicesSection.kicker', type: 'text' },
+        { selector: '#producten .section-head .section-title', path: 'pages.index.servicesSection.title', type: 'text' },
+        { selector: '#producten .section-head .section-intro', path: 'pages.index.servicesSection.lead', type: 'text' },
         { selector: '#aanpak .section-kicker', path: 'pages.index.approach.kicker', type: 'text' },
         { selector: '#aanpak h2', path: 'pages.index.approach.title', type: 'text' },
         { selector: '#aanpak p', path: 'pages.index.approach.lead', type: 'text' },
@@ -135,75 +136,6 @@
           { selector: 'footer .footer-links a:nth-child(1)', path: 'pages.index.footer.links.0' },
           { selector: 'footer .footer-links a:nth-child(2)', path: 'pages.index.footer.links.1' },
           { selector: 'footer .footer-links a:nth-child(3)', path: 'pages.index.footer.links.2' },
-        ],
-      },
-    },
-    garagepoorten: {
-      meta: {
-        title: 'pages.garagepoorten.meta.title',
-        description: 'pages.garagepoorten.meta.description',
-      },
-      singles: [
-        { selector: '.page-hero-content .eyebrow', path: 'pages.garagepoorten.hero.eyebrow', type: 'text' },
-        { selector: '.page-hero-content h1', path: 'pages.garagepoorten.hero.title', type: 'text' },
-        { selector: '.page-hero-content p', path: 'pages.garagepoorten.hero.lead', type: 'text' },
-        { selector: '.page-hero-content .hero-actions .button-primary', path: 'pages.garagepoorten.hero.ctas.0', type: 'link' },
-        { selector: '.page-hero-content .hero-actions .button-secondary', path: 'pages.garagepoorten.hero.ctas.1', type: 'link' },
-        { selector: '.statement-caption strong', path: 'pages.garagepoorten.statement.title', type: 'text' },
-        { selector: '.statement-caption span', path: 'pages.garagepoorten.statement.caption', type: 'text' },
-        { selector: '#benefits .section-kicker', path: 'pages.garagepoorten.benefitsSection.kicker', type: 'text' },
-        { selector: '#benefits .section-title', path: 'pages.garagepoorten.benefitsSection.title', type: 'text' },
-        { selector: '#benefits .section-intro', path: 'pages.garagepoorten.benefitsSection.lead', type: 'text' },
-        { selector: '#approach .section-kicker', path: 'pages.garagepoorten.approach.kicker', type: 'text' },
-        { selector: '#approach h2', path: 'pages.garagepoorten.approach.title', type: 'text' },
-        { selector: '#approach p', path: 'pages.garagepoorten.approach.lead', type: 'text' },
-      ],
-      images: [
-        { selector: '.brand-mark', path: 'shared.brand.logo', type: 'image' },
-        { selector: '.page-hero--bleed .page-hero-visual.service-poorten', path: 'pages.garagepoorten.hero.image', type: 'background' },
-        { selector: '.statement-image.service-poorten', path: 'pages.garagepoorten.statement.image', type: 'background' },
-        { selector: '#benefits .benefit-band-media.service-poorten', path: 'pages.garagepoorten.benefitsSection.image', type: 'background' },
-        { selector: '#approach .benefit-band-media', path: 'pages.garagepoorten.approach.image', type: 'background' },
-      ],
-      collections: [
-        {
-          selector: '.page-hero-content .kicker-row .pill',
-          path: 'pages.garagepoorten.hero.chips',
-          fields: [
-            { selector: ':scope', type: 'text', source: 'value' },
-          ],
-          itemLabel: 'Chip',
-        },
-        {
-          selector: '#benefits .benefit-list li',
-          path: 'pages.garagepoorten.benefits',
-          fields: [
-            { selector: ':scope', type: 'text', source: 'value' },
-          ],
-          itemLabel: 'Voordeel',
-        },
-        {
-          selector: '#approach .benefit-list li',
-          path: 'pages.garagepoorten.approach.bullets',
-          fields: [
-            { selector: ':scope', type: 'text', source: 'value' },
-          ],
-          itemLabel: 'Bullet',
-        },
-      ],
-      extra: [
-        { selector: '#closing .section-kicker', path: 'pages.garagepoorten.closing.kicker', type: 'text' },
-        { selector: '#closing .section-title', path: 'pages.garagepoorten.closing.title', type: 'text' },
-        { selector: '#closing .section-intro', path: 'pages.garagepoorten.closing.lead', type: 'text' },
-        { selector: '#closing .hero-actions .button-primary', path: 'pages.garagepoorten.closing.ctas.0', type: 'link' },
-        { selector: '#closing .hero-actions .button-secondary', path: 'pages.garagepoorten.closing.ctas.1', type: 'link' },
-      ],
-      footer: {
-        brandSelectors: [
-          { selector: 'footer .footer-top .brand-copy span', path: 'pages.garagepoorten.footer.brandLine' },
-          { selector: 'footer .footer-links a:nth-child(1)', path: 'pages.garagepoorten.footer.links.0' },
-          { selector: 'footer .footer-links a:nth-child(2)', path: 'pages.garagepoorten.footer.links.1' },
-          { selector: 'footer .footer-links a:nth-child(3)', path: 'pages.garagepoorten.footer.links.2' },
         ],
       },
     },
@@ -291,6 +223,101 @@
     },
   };
 
+  function buildProductBindings(slug) {
+    const svc = `service-${slug}`;
+    return {
+      meta: {
+        title: `pages.${slug}.meta.title`,
+        description: `pages.${slug}.meta.description`,
+      },
+      singles: [
+        { selector: '.page-hero-content .eyebrow', path: `pages.${slug}.hero.eyebrow`, type: 'text' },
+        { selector: '.page-hero-content h1', path: `pages.${slug}.hero.title`, type: 'text' },
+        { selector: '.page-hero-content p', path: `pages.${slug}.hero.lead`, type: 'text' },
+        { selector: '.page-hero-content .hero-actions .button-primary', path: `pages.${slug}.hero.ctas.0`, type: 'link' },
+        { selector: '.page-hero-content .hero-actions .button-secondary', path: `pages.${slug}.hero.ctas.1`, type: 'link' },
+        { selector: '.statement-caption strong', path: `pages.${slug}.statement.title`, type: 'text' },
+        { selector: '.statement-caption span', path: `pages.${slug}.statement.caption`, type: 'text' },
+        { selector: '#benefits .section-kicker', path: `pages.${slug}.benefitsSection.kicker`, type: 'text' },
+        { selector: '#benefits .section-title', path: `pages.${slug}.benefitsSection.title`, type: 'text' },
+        { selector: '#benefits .section-intro', path: `pages.${slug}.benefitsSection.lead`, type: 'text' },
+        { selector: '#approach .section-kicker', path: `pages.${slug}.approach.kicker`, type: 'text' },
+        { selector: '#approach h2', path: `pages.${slug}.approach.title`, type: 'text' },
+        { selector: '#approach p', path: `pages.${slug}.approach.lead`, type: 'text' },
+      ],
+      images: [
+        { selector: '.brand-mark', path: 'shared.brand.logo', type: 'image' },
+        { selector: `.page-hero--bleed .page-hero-visual.${svc}`, path: `pages.${slug}.hero.image`, type: 'background' },
+        { selector: `.statement-image.${svc}`, path: `pages.${slug}.statement.image`, type: 'background' },
+        { selector: `#benefits .benefit-band-media.${svc}`, path: `pages.${slug}.benefitsSection.image`, type: 'background' },
+        { selector: '#approach .benefit-band-media', path: `pages.${slug}.approach.image`, type: 'background' },
+      ],
+      collections: [
+        {
+          selector: '.page-hero-content .kicker-row .pill',
+          path: `pages.${slug}.hero.chips`,
+          fields: [
+            { selector: ':scope', type: 'text', source: 'value' },
+          ],
+          itemLabel: 'Chip',
+        },
+        {
+          selector: '#benefits .benefit-list li',
+          path: `pages.${slug}.benefits`,
+          fields: [
+            { selector: ':scope', type: 'text', source: 'value' },
+          ],
+          itemLabel: 'Voordeel',
+        },
+        {
+          selector: '#approach .benefit-list li',
+          path: `pages.${slug}.approach.bullets`,
+          fields: [
+            { selector: ':scope', type: 'text', source: 'value' },
+          ],
+          itemLabel: 'Bullet',
+        },
+      ],
+      extra: [
+        { selector: '#closing .section-kicker', path: `pages.${slug}.closing.kicker`, type: 'text' },
+        { selector: '#closing .section-title', path: `pages.${slug}.closing.title`, type: 'text' },
+        { selector: '#closing .section-intro', path: `pages.${slug}.closing.lead`, type: 'text' },
+        { selector: '#closing .hero-actions .button-primary', path: `pages.${slug}.closing.ctas.0`, type: 'link' },
+        { selector: '#closing .hero-actions .button-secondary', path: `pages.${slug}.closing.ctas.1`, type: 'link' },
+      ],
+      footer: {
+        brandSelectors: [
+          { selector: 'footer .footer-top .brand-copy span', path: `pages.${slug}.footer.brandLine` },
+          { selector: 'footer .footer-links a:nth-child(1)', path: `pages.${slug}.footer.links.0` },
+          { selector: 'footer .footer-links a:nth-child(2)', path: `pages.${slug}.footer.links.1` },
+          { selector: 'footer .footer-links a:nth-child(3)', path: `pages.${slug}.footer.links.2` },
+        ],
+      },
+    };
+  }
+
+  function renderProductNav() {
+    const products = getPath(state.content, 'shared.products', []);
+    if (!Array.isArray(products)) {
+      return;
+    }
+
+    const navContainers = document.querySelectorAll('[data-cms-nav-products]');
+    if (navContainers.length === 0) {
+      return;
+    }
+
+    navContainers.forEach((container) => {
+      container.innerHTML = '';
+      products.forEach((product) => {
+        const link = document.createElement('a');
+        link.href = `${product.slug}.html`;
+        link.textContent = product.navLabel || product.name;
+        container.appendChild(link);
+      });
+    });
+  }
+
   bootstrap();
 
   async function bootstrap() {
@@ -359,7 +386,19 @@
   }
 
   function getBindingPage() {
-    return PAGE_BINDINGS[PAGE] || null;
+    if (PAGE_BINDINGS[PAGE]) {
+      return PAGE_BINDINGS[PAGE];
+    }
+
+    const products = getPath(state.content, 'shared.products', []);
+    if (Array.isArray(products)) {
+      const product = products.find(p => p.slug === PAGE);
+      if (product) {
+        return buildProductBindings(PAGE);
+      }
+    }
+
+    return null;
   }
 
   function getPath(source, path, fallback = '') {
@@ -417,6 +456,8 @@
   }
 
   function applyPageContent() {
+    renderProductNav();
+
     const page = getBindingPage();
     if (!page || !state.content) {
       return;
@@ -902,6 +943,14 @@
     toolbar.className = 'cms-toolbar';
     toolbar.innerHTML = '<span class="cms-pill">Admin</span><span>Bewerkmodus</span>';
 
+    const productsButton = document.createElement('button');
+    productsButton.type = 'button';
+    productsButton.textContent = 'Producten';
+    productsButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      openProductManager();
+    });
+
     const logoutButton = document.createElement('button');
     logoutButton.type = 'button';
     logoutButton.textContent = 'Uitloggen';
@@ -914,6 +963,7 @@
       window.location.href = 'admin.php';
     });
 
+    toolbar.appendChild(productsButton);
     toolbar.appendChild(logoutButton);
     document.body.appendChild(toolbar);
     state.toolbar = toolbar;
@@ -952,7 +1002,7 @@
     state.modal = modal;
   }
 
-  async function fetchLibrary() {
+  async   function fetchLibrary() {
     try {
       const response = await fetch('admin-api.php?action=library', { credentials: 'same-origin' });
       const data = await response.json();
@@ -960,6 +1010,164 @@
     } catch {
       state.library = [];
     }
+  }
+
+  function createProductModal() {
+    if (state.productModal) {
+      return;
+    }
+
+    const modal = document.createElement('div');
+    modal.className = 'cms-modal';
+    modal.innerHTML = `
+      <div class="cms-modal-card" role="dialog" aria-modal="true" aria-label="Productbeheer">
+        <div class="cms-modal-head">
+          <div class="cms-modal-title">
+            <strong>Productbeheer</strong>
+            <span>Beheer de producten die in de site verschijnen</span>
+          </div>
+          <button type="button" class="cms-close" data-cms-product-close>×</button>
+        </div>
+        <div class="cms-modal-body">
+          <div class="cms-product-list"></div>
+        </div>
+        <div class="cms-modal-foot">
+          <div class="cms-actions cms-modal-actions"></div>
+        </div>
+      </div>
+    `;
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeProductModal();
+      }
+    });
+
+    modal.querySelector('[data-cms-product-close]').addEventListener('click', closeProductModal);
+    document.body.appendChild(modal);
+    state.productModal = modal;
+  }
+
+  async function openProductManager() {
+    createProductModal();
+    await renderProductList();
+    state.productModal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProductModal() {
+    if (!state.productModal) {
+      return;
+    }
+    state.productModal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  function getProductSlug() {
+    const products = getPath(state.content, 'shared.products', []);
+    return Array.isArray(products) ? products : [];
+  }
+
+  async function renderProductList() {
+    const products = getProductSlug();
+    const list = state.productModal.querySelector('.cms-product-list');
+    list.innerHTML = '';
+
+    if (products.length === 0) {
+      list.innerHTML = '<p class="cms-note">Nog geen producten gedefinieerd.</p>';
+    } else {
+      products.forEach((product, index) => {
+        const row = document.createElement('div');
+        row.className = 'cms-product-row';
+        row.innerHTML = `
+          <div class="cms-product-info">
+            <strong>${escapeHtml(product.slug)}</strong>
+            <span>${escapeHtml(product.name || '')}</span>
+            <small>${escapeHtml(product.navLabel || '')}</small>
+          </div>
+          <div class="cms-product-actions">
+            <a href="${product.slug}.html?admin=1" class="button button-secondary cms-product-edit" style="padding:0.4rem 0.8rem;font-size:0.8rem;">Bewerken</a>
+            <button type="button" class="cms-product-delete" data-slug="${escapeHtml(product.slug)}" style="padding:0.4rem 0.8rem;font-size:0.8rem;">Verwijderen</button>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+
+      list.querySelectorAll('.cms-product-delete').forEach((button) => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          const slug = e.currentTarget.dataset.slug;
+          deleteProduct(slug);
+        });
+      });
+    }
+
+    const modalActions = state.productModal.querySelector('.cms-modal-actions');
+    modalActions.innerHTML = '';
+
+    const addButton = createActionButton('Product toevoegen', () => {
+      const slug = prompt('Product slug (wordt gebruikt voor de bestandsnaam, bv. "zonwering"):');
+      if (!slug) {
+        return;
+      }
+      const name = prompt('Productnaam (bv. "Zonwering"):') || slug;
+      const navLabel = prompt('Label in navigatie (bv. "Zonwering"):') || name;
+      if (slug) {
+        createProduct(slug.trim(), name.trim(), navLabel.trim());
+      }
+    }, 'primary');
+
+    modalActions.appendChild(addButton);
+  }
+
+  async function createProduct(slug, name, navLabel) {
+    const formData = new FormData();
+    formData.append('slug', slug);
+    formData.append('name', name);
+    formData.append('navLabel', navLabel);
+    formData.append('image', getPath(state.content, 'shared.brand.logo', 'images/garage.jpg'));
+
+    const response = await fetch('admin-api.php?action=create-product', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: getRequestHeaders(),
+      body: new URLSearchParams({
+        slug,
+        name,
+        navLabel,
+      }),
+    });
+    const data = await response.json();
+    if (!data.ok) {
+      alert(data.error || 'Product kon niet worden aangemaakt.');
+      return;
+    }
+
+    Object.assign(state.content, data.content || {});
+    renderProductNav();
+    await renderProductList();
+  }
+
+  async function deleteProduct(slug) {
+    if (!confirm(`Weet je zeker dat je "${slug}" wilt verwijderen? De pagina en alle inhoud worden verwijderd.`)) {
+      return;
+    }
+
+    const response = await fetch('admin-api.php?action=delete-product', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { ...getRequestHeaders(), 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+      body: new URLSearchParams({ slug }),
+    });
+    const data = await response.json();
+    if (!data.ok) {
+      alert(data.error || 'Product kon niet worden verwijderd.');
+      return;
+    }
+
+    Object.assign(state.content, data.content || {});
+    renderProductNav();
+    await renderProductList();
   }
 
   function openEditor(target, referenceElement) {

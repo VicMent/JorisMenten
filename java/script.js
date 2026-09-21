@@ -28,6 +28,18 @@
       toggle.setAttribute('aria-expanded', 'false');
     };
 
+    const dropdownParents = document.querySelectorAll('.nav-item--dropdown');
+    dropdownParents.forEach((parent) => {
+      const link = parent.querySelector(':scope > a');
+      if (!link) return;
+      link.addEventListener('click', (e) => {
+        const isOpen = parent.classList.toggle('is-open');
+        if (window.innerWidth <= 780) {
+          e.preventDefault();
+        }
+      });
+    });
+
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
         const isOpen = nav.classList.toggle('is-open');
@@ -35,6 +47,9 @@
       });
 
       nav.querySelectorAll('a').forEach((link) => {
+        if (link.parentElement.classList.contains('nav-item--dropdown')) {
+          return;
+        }
         link.addEventListener('click', closeNav);
       });
     }

@@ -298,3 +298,151 @@ function cms_require_admin(): void
         cms_error('Niet geautoriseerd.', 403);
     }
 }
+
+const CMS_PRODUCT_TEMPLATE = __DIR__ . '/../product-template.html';
+
+function cms_slug_to_filename(string $slug): string
+{
+    $slug = trim($slug);
+    $slug = ltrim($slug, '/');
+    if ($slug === '') {
+        return '';
+    }
+
+    $safeSlug = preg_replace('/[^a-z0-9_-]+/i', '-', $slug);
+    $safeSlug = trim((string) $safeSlug, '-');
+    if ($safeSlug === '') {
+        return '';
+    }
+
+    return $safeSlug . '.html';
+}
+
+function cms_default_product_content(string $slug, string $name, string $navLabel): array
+{
+    $image = 'images/garage.jpg';
+    $products = cms_data_get(cms_load_content(), 'shared.products', []);
+    if (is_array($products)) {
+        foreach ($products as $product) {
+            if (($product['slug'] ?? '') === $slug && isset($product['image'])) {
+                $image = $product['image'];
+                break;
+            }
+        }
+    }
+
+    $safeName = (string) $name;
+    return [
+        'meta' => [
+            'title' => $safeName . ' | Joris Menten bv',
+            'description' => $safeName . ' van Joris Menten bv: professionele plaatsing en een verzorgde afwerking voor woning en project.',
+        ],
+        'hero' => [
+            'eyebrow' => 'Service detail · 15+ jaar ervaring',
+            'title' => $safeName . ' die comfort en kwaliteit combineren.',
+            'lead' => 'Bij Joris Menten bv staat ' . strtolower($safeName) . ' voor een oplossing die perfect aansluit bij jouw woning, wensen en levensstijl.',
+            'ctas' => [
+                ['label' => 'Vraag advies', 'href' => 'index.html#contact'],
+                ['label' => 'Bekijk werk', 'href' => 'projecten.html'],
+            ],
+            'chips' => ['Kwaliteit', 'Comfort', 'Stijl'],
+            'image' => $image,
+        ],
+        'statement' => [
+            'image' => 'images/projecten/2.jpg',
+            'title' => 'Een oplossing die de gevel optilt',
+            'caption' => 'Veiligheid, stille werking en een afwerking die met eigen vertrouwen uitstraalt — onze kernspecialiteit.',
+        ],
+        'benefitsSection' => [
+            'kicker' => 'Voordelen',
+            'title' => 'Sterke punten in één oogopslag.',
+            'lead' => 'De focus ligt op wat echt telt: betrouwbare werking, nette montage en een resultaat dat er gewoon goed uitziet.',
+            'image' => $image,
+        ],
+        'benefits' => [
+            'Stevige constructie voor veiligheid en duurzaamheid',
+            'Eenvoudige en stille bediening voor dagelijks comfort',
+            'Premium uitstraling zonder schreeuwerig te worden',
+            'Professionele plaatsing met aandacht voor detail',
+            'Duurzame materialen en een strakke gevelintegratie',
+        ],
+        'approach' => [
+            'kicker' => 'Aanpak',
+            'title' => 'Alles draait om een stevige eerste indruk.',
+            'lead' => 'Een ' . strtolower($safeName) . ' is vaak een van de zichtbare onderdelen van de woning. Daarom moet de plaatsing niet alleen technisch juist zijn, maar ook visueel kloppen.',
+            'bullets' => [
+                'Heldere communicatie van aanvraag tot oplevering',
+                'Afwerking die meedraait in het totaalbeeld van de woning',
+                'Oplossingen die zijn gemaakt voor comfort en gebruiksgemak',
+            ],
+            'image' => 'images/projecten/3.jpg',
+        ],
+        'closing' => [
+            'kicker' => 'Klaar voor de volgende stap',
+            'title' => 'Op zoek naar een ' . strtolower($safeName) . ' die er even goed uitziet als hij werkt?',
+            'lead' => 'Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.',
+            'ctas' => [
+                ['label' => 'Neem contact op', 'href' => 'index.html#contact'],
+                ['label' => 'Terug naar home', 'href' => 'index.html'],
+            ],
+        ],
+        'footer' => [
+            'brandLine' => $safeName,
+            'links' => [
+                ['label' => 'Producten', 'href' => 'index.html#producten'],
+                ['label' => 'Projecten', 'href' => 'projecten.html'],
+                ['label' => 'Contact', 'href' => 'index.html#contact'],
+            ],
+        ],
+    ];
+}
+
+function cms_generate_product_page(string $slug, string $name, string $description, string $image): bool
+{
+    if (!is_file(CMS_PRODUCT_TEMPLATE)) {
+        return false;
+    }
+
+    $html = file_get_contents(CMS_PRODUCT_TEMPLATE);
+    if ($html === false) {
+        return false;
+    }
+
+    $navFile = dirname(CMS_PRODUCT_TEMPLATE) . '/inc/nav.html';
+    if (is_file($navFile)) {
+        $navHtml = file_get_contents($navFile);
+        if ($navHtml !== false) {
+            $html = str_replace('{{NAVIGATION}}', $navHtml, $html);
+        }
+    }
+
+    $html = str_replace('{{PRODUCT_SLUG}}', $slug, $html);
+    $html = str_replace('{{PRODUCT_NAME}}', htmlspecialchars($name, ENT_QUOTES), $html);
+    $html = str_replace('{{PRODUCT_TITLE}}', htmlspecialchars($name . ' | Joris Menten bv', ENT_QUOTES), $html);
+    $html = str_replace('{{PRODUCT_DESCRIPTION}}', htmlspecialchars($description, ENT_QUOTES), $html);
+    $html = str_replace('{{PRODUCT_LEAD}}', htmlspecialchars('Bij Joris Menten bv vind je de perfecte ' . strtolower($name) . ' voor jouw woning — met premium kwaliteit en een strakke afwerking.', ENT_QUOTES), $html);
+    $html = str_replace('{{PRODUCT_IMAGE}}', $image, $html);
+
+    $fileName = cms_slug_to_filename($slug);
+    if ($fileName === '') {
+        return false;
+    }
+
+    $targetPath = __DIR__ . '/../' . $fileName;
+    return file_put_contents($targetPath, $html) !== false;
+}
+
+function cms_delete_product_page(string $slug): bool
+{
+    $fileName = cms_slug_to_filename($slug);
+    if ($fileName === '') {
+        return true;
+    }
+
+    $path = __DIR__ . '/../' . $fileName;
+    if (!file_exists($path)) {
+        return true;
+    }
+
+    return unlink($path);
+}

@@ -118,6 +118,34 @@ body,
     color: #fff9ca;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(4, 7, 18, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--accent-2) 0%, var(--accent) 100%);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 4px 12px rgba(251, 214, 1, 0.18);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 4px 16px rgba(251, 214, 1, 0.32);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #ffd200 #070e1d;
+}
+
 .site-shell {
     position: relative;
     isolation: isolate;
@@ -221,6 +249,42 @@ body,
 .site-nav a:hover::after,
 .site-nav a:focus-visible::after {
     transform: scaleX(1);
+}
+
+.nav-item--dropdown {
+  position: relative;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  display: none;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 160px;
+  padding: 0.5rem;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  z-index: 100;
+}
+
+.nav-item--dropdown:hover .nav-dropdown,
+.nav-item--dropdown.is-open .nav-dropdown {
+  display: flex;
+}
+
+.nav-dropdown a {
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.nav-item--dropdown > a::after {
+  display: none;
 }
 
 .nav-toggle {
@@ -1595,6 +1659,7 @@ body,
 }
 
 .service-poorten { background-image: url('../images/garage.jpg'); }
+.service-garagepoorten { background-image: url('../images/garage.jpg'); }
 .service-rolluiken { background-image: url('../images/rolluiken.jpg'); }
 .service-zonwering { background-image: url('../images/zonwering.jpg'); }
 .service-terras { background-image: url('../images/terras.jpg'); }
@@ -2148,6 +2213,33 @@ body,
     .site-nav a {
         width: 100%;
         padding: 0.95rem 1rem;
+    }
+
+    .nav-item--dropdown {
+        position: static;
+    }
+
+    .nav-dropdown {
+        position: static;
+        display: none;
+        flex-direction: column;
+        gap: 0.2rem;
+        min-width: auto;
+        padding: 0.2rem 0 0.2rem 1rem;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .nav-item--dropdown.is-open .nav-dropdown {
+        display: flex;
+    }
+
+    .nav-dropdown a {
+        padding: 0.6rem 1rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
     }
 
     .hero {

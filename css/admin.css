@@ -593,3 +593,60 @@ body.cms-admin-active .hero-slide:not(.is-active) {
         grid-template-columns: 1fr;
     }
 }
+
+.cms-product-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cms-product-info {
+    display: grid;
+    gap: 0.15rem;
+}
+
+.cms-product-info strong {
+    color: var(--cms-text);
+    font-size: 0.95rem;
+}
+
+.cms-product-info span {
+    color: var(--cms-text);
+    font-size: 0.85rem;
+}
+
+.cms-product-info small {
+    color: var(--cms-muted);
+    font-size: 0.78rem;
+}
+
+.cms-product-actions {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.cms-product-actions .button {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.8rem;
+}
+
+.cms-product-actions button {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(255, 109, 109, 0.3);
+    border-radius: 999px;
+    background: rgba(255, 109, 109, 0.08);
+    color: #ffb4b4;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.cms-product-actions button:hover,
+.cms-product-actions button:focus-visible {
+    background: rgba(255, 109, 109, 0.15);
+    border-color: rgba(255, 109, 109, 0.45);
+}

@@ -23,6 +23,7 @@ CONTENT_FILE = ROOT / "data" / "site.json"
 IMAGE_DIR = ROOT / "images"
 UPLOAD_DIR = IMAGE_DIR / "uploads"
 LOCAL_CMS_CONFIG_FILE = ROOT / "inc" / "cms.local.php"
+PRODUCT_TEMPLATE_FILE = ROOT / "product-template.html"
 
 
 def load_php_define(name: str) -> str:
@@ -229,6 +230,126 @@ def store_uploaded_image(field) -> str:
     return (Path("images") / "uploads" / target_name).as_posix()
 
 
+def slug_to_filename(slug: str) -> str:
+    slug = slug.strip()
+    if not slug:
+        return ""
+    safe = re.sub(r"[^a-z0-9_-]+", "-", slug, flags=re.IGNORECASE)
+    safe = safe.strip("-")
+    if not safe or safe == "index":
+        return ""
+    return f"{safe}.html"
+
+
+def default_product_content(slug: str, name: str, nav_label: str = "") -> dict:
+    if not nav_label:
+        nav_label = name
+    image = "images/garage.jpg"
+    content = read_json_file(CONTENT_FILE)
+    products = get_path(content, "shared.products", [])
+    if isinstance(products, list):
+        for product in products:
+            if isinstance(product, dict) and product.get("slug") == slug and product.get("image"):
+                image = product["image"]
+                break
+
+    return {
+        "meta": {
+            "title": f"{name} | Joris Menten bv",
+            "description": f"{name} van Joris Menten bv: professionele plaatsing en een verzorgde afwerking voor woning en project.",
+        },
+        "hero": {
+            "eyebrow": "Service detail · 15+ jaar ervaring",
+            "title": f"{name} die comfort en kwaliteit combineren.",
+            "lead": f"Bij Joris Menten bv staat {name.lower()} voor een oplossing die perfect aansluit bij jouw woning, wensen en levensstijl.",
+            "ctas": [
+                {"label": "Vraag advies", "href": "index.html#contact"},
+                {"label": "Bekijk werk", "href": "projecten.html"},
+            ],
+            "chips": ["Kwaliteit", "Comfort", "Stijl"],
+            "image": image,
+        },
+        "statement": {
+            "image": "images/projecten/2.jpg",
+            "title": "Een oplossing die de gevel optilt",
+            "caption": "Veiligheid, stille werking en een afwerking die met eigen vertrouwen uitstraalt — onze kernspecialiteit.",
+        },
+        "benefitsSection": {
+            "kicker": "Voordelen",
+            "title": "Sterke punten in één oogopslag.",
+            "lead": "De focus ligt op wat echt telt: betrouwbare werking, nette montage en een resultaat dat er gewoon goed uitziet.",
+            "image": image,
+        },
+        "benefits": [
+            "Stevige constructie voor veiligheid en duurzaamheid",
+            "Eenvoudige en stille bediening voor dagelijks comfort",
+            "Premium uitstraling zonder schreeuwerig te worden",
+            "Professionele plaatsing met aandacht voor detail",
+            "Duurzame materialen en een strakke gevelintegratie",
+        ],
+        "approach": {
+            "kicker": "Aanpak",
+            "title": "Alles draait om een stevige eerste indruk.",
+            "lead": f"Een {name.lower()} is vaak een van de zichtbare onderdelen van de woning. Daarom moet de plaatsing niet alleen technisch juist zijn, maar ook visueel kloppen.",
+            "bullets": [
+                "Heldere communicatie van aanvraag tot oplevering",
+                "Afwerking die meedraait in het totaalbeeld van de woning",
+                "Oplossingen die zijn gemaakt voor comfort en gebruiksgemak",
+            ],
+            "image": "images/projecten/3.jpg",
+        },
+        "closing": {
+            "kicker": "Klaar voor de volgende stap",
+            "title": f"Op zoek naar een {name.lower()} die er even goed uitziet als hij werkt?",
+            "lead": "Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.",
+            "ctas": [
+                {"label": "Neem contact op", "href": "index.html#contact"},
+                {"label": "Terug naar home", "href": "index.html"},
+            ],
+        },
+        "footer": {
+            "brandLine": name,
+            "links": [
+                {"label": "Producten", "href": "index.html#producten"},
+                {"label": "Projecten", "href": "projecten.html"},
+                {"label": "Contact", "href": "index.html#contact"},
+            ],
+        },
+    }
+
+
+def generate_product_page(slug: str, name: str, description: str, image: str) -> bool:
+    if not PRODUCT_TEMPLATE_FILE.exists():
+        return False
+    template = PRODUCT_TEMPLATE_FILE.read_text(encoding="utf-8")
+    html = template.replace("{{PRODUCT_SLUG}}", slug)
+    html = html.replace("{{PRODUCT_NAME}}", name)
+    html = html.replace("{{PRODUCT_TITLE}}", name)
+    html = html.replace("{{PRODUCT_DESCRIPTION}}", description)
+    html = html.replace("{{PRODUCT_LEAD}}", f"Bij Joris Menten bv vind je de perfecte {name.lower()} voor jouw woning — met premium kwaliteit en een strakke afwerking.")
+    html = html.replace("{{PRODUCT_IMAGE}}", image)
+    filename = slug_to_filename(slug)
+    if not filename:
+        return False
+    target = ROOT / filename
+    target.write_text(html, encoding="utf-8")
+    return True
+
+
+def delete_product_page(slug: str) -> bool:
+    filename = slug_to_filename(slug)
+    if not filename:
+        return True
+    target = ROOT / filename
+    if not target.exists():
+        return True
+    try:
+        target.unlink()
+        return True
+    except OSError:
+        return False
+
+
 class CmsHandler(SimpleHTTPRequestHandler):
     def translate_path(self, path):
         path = urlparse(path).path
@@ -316,6 +437,10 @@ class CmsHandler(SimpleHTTPRequestHandler):
                 self.send_json({"ok": False, "error": "Niet geautoriseerd."}, 403)
                 return
             self.send_json({"ok": True, "images": list_images()})
+            return
+
+        if action == "products":
+            self.send_json({"ok": True, "products": get_path(content, "shared.products", [])})
             return
 
         self.send_json({"ok": False, "error": "Onbekende actie."}, 404)
@@ -462,6 +587,67 @@ class CmsHandler(SimpleHTTPRequestHandler):
                 self.send_json({"ok": False, "error": str(error)}, 400)
                 return
             self.send_json({"ok": True, "path": path})
+            return
+
+        if action == "create-product":
+            slug = str(fields.get("slug", "")).strip().lower()
+            name = str(fields.get("name", "")).strip()
+            nav_label = str(fields.get("navLabel", "")).strip()
+            if not slug or not name:
+                self.send_json({"ok": False, "error": "Product slug en naam zijn verplicht."}, 400)
+                return
+            if not re.match(r"^[a-z0-9_-]+$", slug):
+                self.send_json({"ok": False, "error": "De slug mag alleen letters, cijfers, koppeltekens en underscores bevatten."}, 400)
+                return
+            filename = slug_to_filename(slug)
+            if not filename or filename == "index.html":
+                self.send_json({"ok": False, "error": "Ongeldige slug."}, 400)
+                return
+            if (ROOT / filename).exists():
+                self.send_json({"ok": False, "error": "Een pagina met deze slug bestaat al.", "status": "conflict"}, 409)
+                return
+            products = get_path(content, "shared.products", [])
+            if not isinstance(products, list):
+                products = []
+            if any(isinstance(p, dict) and p.get("slug") == slug for p in products):
+                self.send_json({"ok": False, "error": "Een product met deze slug bestaat al.", "status": "conflict"}, 409)
+                return
+            image = get_path(content, "shared.brand.logo", "images/garage.jpg")
+            product = {"slug": slug, "name": name, "navLabel": nav_label or name, "image": image}
+            products.append(product)
+            set_path(content, "shared.products", products)
+            pages = content.setdefault("pages", {})
+            pages[slug] = default_product_content(slug, name, nav_label or name)
+            write_json_file(CONTENT_FILE, content)
+            generate_product_page(slug, name, pages[slug]["meta"]["description"], image)
+            self.send_json({"ok": True, "content": content})
+            return
+
+        if action == "delete-product":
+            slug = str(fields.get("slug", "")).strip().lower()
+            if not slug:
+                self.send_json({"ok": False, "error": "Product slug is verplicht."}, 400)
+                return
+            products = get_path(content, "shared.products", [])
+            if not isinstance(products, list):
+                products = []
+            found = False
+            new_products = []
+            for p in products:
+                if isinstance(p, dict) and p.get("slug") == slug:
+                    found = True
+                else:
+                    new_products.append(p)
+            if not found:
+                self.send_json({"ok": False, "error": "Product niet gevonden.", "status": "not_found"}, 404)
+                return
+            set_path(content, "shared.products", new_products)
+            pages = content.get("pages", {})
+            if slug in pages:
+                del pages[slug]
+            write_json_file(CONTENT_FILE, content)
+            delete_product_page(slug)
+            self.send_json({"ok": True, "content": content})
             return
 
         self.send_json({"ok": False, "error": "Onbekende actie."}, 404)

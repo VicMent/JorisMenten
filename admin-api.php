@@ -240,4 +240,109 @@ if ($action === 'upload-image') {
     ]);
 }
 
+if ($action === 'products') {
+    cms_json_response([
+        'ok' => true,
+        'products' => cms_data_get($content, 'shared.products', []),
+    ]);
+}
+
+if ($action === 'create-product') {
+    cms_require_admin();
+    cms_require_csrf();
+
+    $slug = strtolower(trim((string) cms_value_from_request('slug', '')));
+    $name = trim((string) cms_value_from_request('name', ''));
+    $navLabel = trim((string) cms_value_from_request('navLabel', ''));
+
+    if ($slug === '' || $name === '') {
+        cms_error('Product slug en naam zijn verplicht.');
+    }
+
+    if (!preg_match('/^[a-z0-9_-]+$/', $slug)) {
+        cms_error('De slug mag alleen letters, cijfers, koppeltekens en underscores bevatten.');
+    }
+
+    $fileName = cms_slug_to_filename($slug);
+    if ($fileName === '' || $fileName === 'index.html') {
+        cms_error('Ongeldige slug.');
+    }
+
+    if (file_exists(__DIR__ . '/' . $fileName)) {
+        cms_error('Een pagina met deze slug bestaat al.', 409);
+    }
+
+    $products = cms_data_get($content, 'shared.products', []);
+    if (!is_array($products)) {
+        $products = [];
+    }
+
+    if (in_array($slug, array_column($products, 'slug'), true)) {
+        cms_error('Een product met deze slug bestaat al.', 409);
+    }
+
+    $image = cms_data_get($content, 'shared.brand.logo', 'images/garage.jpg');
+    $product = [
+        'slug' => $slug,
+        'name' => $name,
+        'navLabel' => $navLabel !== '' ? $navLabel : $name,
+        'image' => $image,
+    ];
+
+    $products[] = $product;
+    cms_data_set($content, 'shared.products', array_values($products));
+
+    $content['pages'] = $content['pages'] ?? [];
+    $content['pages'][$slug] = cms_default_product_content($slug, $name, $navLabel !== '' ? $navLabel : $name);
+
+    if (!cms_save_content($content)) {
+        cms_error('Kan wijzigingen niet opslaan.', 500);
+    }
+
+    if (!cms_generate_product_page($slug, $name, $content['pages'][$slug]['meta']['description'], $image)) {
+        cms_error('Product pagina kon niet worden gegenereerd.', 500);
+    }
+
+    cms_json_response([
+        'ok' => true,
+        'content' => $content
+    ]);
+}
+
+if ($action === 'delete-product') {
+    cms_require_admin();
+    cms_require_csrf();
+
+    $slug = strtolower(trim((string) cms_value_from_request('slug', '')));
+    if ($slug === '') {
+        cms_error('Product slug is verplicht.');
+    }
+
+    $products = cms_data_get($content, 'shared.products', []);
+    if (!is_array($products)) {
+        $products = [];
+    }
+
+    $index = array_search($slug, array_column($products, 'slug'), true);
+    if ($index === false) {
+        cms_error('Product niet gevonden.', 404);
+    }
+
+    array_splice($products, (int) $index, 1);
+    cms_data_set($content, 'shared.products', array_values($products));
+
+    cms_data_delete($content, "pages.{$slug}");
+
+    if (!cms_save_content($content)) {
+        cms_error('Kan wijzigingen niet opslaan.', 500);
+    }
+
+    cms_delete_product_page($slug);
+
+    cms_json_response([
+        'ok' => true,
+        'content' => $content
+    ]);
+}
+
 cms_error('Onbekende actie.', 404);
