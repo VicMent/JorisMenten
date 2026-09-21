@@ -112,7 +112,7 @@
           "title": "Garagepoorten",
           "description": "Veilig, stil en visueel strak geïntegreerd in de gevel — onze topprioriteit en sterkste visuele signatuur.",
           "badge": "Topprioriteit",
-          "linkLabel": "Meer info",
+          "linkLabel": "Meer over garagepoorten",
           "linkHref": "garagepoorten.html",
           "image": "images/garage.jpg"
         },
@@ -122,8 +122,8 @@
           "title": "Zonwering",
           "description": "Een nette afwerking die hitte en zon op een elegante manier temt, zonder het uitzicht te verliezen.",
           "badge": "Strak",
-          "linkLabel": "Contact",
-          "linkHref": "#contact",
+          "linkLabel": "Meer over zonwering",
+          "linkHref": "zonwering.html",
           "image": "images/zonwering.jpg"
         },
         {
@@ -132,8 +132,8 @@
           "title": "Rolluiken",
           "description": "Meer privacy, betere isolatie en extra comfort in elke ruimte — functioneel én netjes afgewerkt.",
           "badge": "Functioneel",
-          "linkLabel": "Offerte",
-          "linkHref": "#contact",
+          "linkLabel": "Meer over rolluiken",
+          "linkHref": "rolluiken.html",
           "image": "images/rolluiken.jpg"
         },
         {
@@ -142,8 +142,8 @@
           "title": "Terrasoverkappingen",
           "description": "Meer gebruiksruimte en een luxe uitstraling voor terras en tuin — het buitenleven verlengd met stijl.",
           "badge": "Sfeervol",
-          "linkLabel": "Projecten",
-          "linkHref": "projecten.html",
+          "linkLabel": "Meer over terrasoverkappingen",
+          "linkHref": "terras.html",
           "image": "images/terras.jpg"
         }
       ],
@@ -151,13 +151,13 @@
         {
           "title": "Vliegenramen",
           "description": "Comfortabel ventileren zonder in te boeten op rust of netheid.",
-          "linkLabel": "Vraag info",
+          "linkLabel": "Vraag informatie",
           "linkHref": "#contact"
         },
         {
           "title": "Maatwerk & projecten",
           "description": "Foto's van gerealiseerde werken en een stijl die meteen vertrouwen geeft.",
-          "linkLabel": "Bekijk",
+          "linkLabel": "Bekijk onze realisaties",
           "linkHref": "projecten.html"
         }
       ],

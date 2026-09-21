@@ -660,6 +660,12 @@
         target.textContent = sourceValue.label || '';
         if (sourceValue.href) {
           target.setAttribute('href', sourceValue.href);
+          if (node.tagName === 'A') {
+            node.setAttribute('href', sourceValue.href);
+            if (item.title) {
+              node.setAttribute('aria-label', item.title);
+            }
+          }
         }
         return;
       }

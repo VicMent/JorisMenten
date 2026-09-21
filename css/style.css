@@ -298,9 +298,14 @@ html {
   z-index: 100;
 }
 
-.nav-item--dropdown:hover .nav-dropdown,
 .nav-item--dropdown.is-open .nav-dropdown {
   display: flex;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-item--dropdown:hover .nav-dropdown {
+    display: flex;
+  }
 }
 
 .nav-dropdown a {
@@ -983,7 +988,7 @@ html {
 
 .service-bands {
     display: grid;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    gap: clamp(0.75rem, 1.4vw, 1.1rem);
 }
 
 .service-band {
@@ -992,6 +997,15 @@ html {
     gap: clamp(1rem, 2.5vw, 1.75rem);
     align-items: stretch;
     min-height: clamp(280px, 36vw, 400px);
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.22s ease, border-color 0.22s ease;
+}
+
+a.service-band:hover,
+a.service-band:focus-visible {
+    transform: translateY(-2px);
+    outline: none;
 }
 
 .service-band.band-right {
@@ -1119,7 +1133,7 @@ html {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.85rem;
-    margin-top: 0.5rem;
+    margin-top: 0.15rem;
 }
 
 .compact-service {
@@ -1129,6 +1143,8 @@ html {
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    color: inherit;
+    cursor: pointer;
     transition: border-color 0.22s ease, transform 0.22s ease;
 }
 
@@ -1440,7 +1456,7 @@ html {
 
 .section-inner {
     display: grid;
-    gap: 2rem;
+    gap: 1.15rem;
 }
 
 .section-head {
@@ -1477,13 +1493,13 @@ html {
 
 .sticky-stack {
     position: relative;
-    min-height: 85vh;
+    min-height: auto;
 }
 
 .sticky-stack > .service-band,
 .sticky-stack > .benefit-band {
-    position: sticky;
-    top: 6vh;
+    position: relative;
+    top: auto;
 }
 
 .sticky-stack:nth-child(1) > .service-band,
@@ -2257,6 +2273,10 @@ html {
         border: none;
         border-radius: 0;
         box-shadow: none;
+    }
+
+    .nav-item--dropdown:hover .nav-dropdown {
+        display: none;
     }
 
     .nav-item--dropdown.is-open .nav-dropdown {

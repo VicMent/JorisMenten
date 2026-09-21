@@ -22,28 +22,58 @@
     let heroIndex = 0;
     let heroTimer = null;
 
+    const isTouchNav = () => window.matchMedia('(max-width: 780px), (hover: none)').matches;
+
+    const dropdownParents = Array.from(document.querySelectorAll('.nav-item--dropdown'));
+
+    const setDropdownOpen = (parent, open) => {
+      parent.classList.toggle('is-open', open);
+      const trigger = parent.querySelector(':scope > a');
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', String(open));
+      }
+    };
+
+    const closeDropdowns = () => {
+      dropdownParents.forEach((parent) => setDropdownOpen(parent, false));
+    };
+
     const closeNav = () => {
       if (!toggle || !nav) return;
       nav.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
+      closeDropdowns();
     };
 
-    const dropdownParents = document.querySelectorAll('.nav-item--dropdown');
     dropdownParents.forEach((parent) => {
       const link = parent.querySelector(':scope > a');
       if (!link) return;
-      link.addEventListener('click', (e) => {
-        const isOpen = parent.classList.toggle('is-open');
-        if (window.innerWidth <= 780) {
-          e.preventDefault();
+      link.setAttribute('aria-haspopup', 'true');
+      link.setAttribute('aria-expanded', 'false');
+      link.addEventListener('click', (event) => {
+        if (!isTouchNav()) {
+          return;
         }
+
+        event.preventDefault();
+        const willOpen = !parent.classList.contains('is-open');
+        dropdownParents.forEach((other) => setDropdownOpen(other, other === parent && willOpen));
       });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.nav-item--dropdown')) {
+        closeDropdowns();
+      }
     });
 
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
         const isOpen = nav.classList.toggle('is-open');
         toggle.setAttribute('aria-expanded', String(isOpen));
+        if (!isOpen) {
+          closeDropdowns();
+        }
       });
 
       nav.querySelectorAll('a').forEach((link) => {
