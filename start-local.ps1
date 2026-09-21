@@ -3,6 +3,18 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $root
 
+# Kill any existing processes listening on port 8000
+$listener = netstat -ano 2>&1 | Select-String ":8000" | Select-String "LISTENING"
+if ($listener) {
+    foreach ($line in $listener) {
+        $pidValue = ($line -split '\s+')[-1]
+        if ($pidValue -match '^\d+$') {
+            taskkill /PID $pidValue /F 2>$null
+        }
+    }
+    Start-Sleep -Seconds 1
+}
+
 $python = Get-Command python -ErrorAction SilentlyContinue
 $py = Get-Command py -ErrorAction SilentlyContinue
 $php = Get-Command php -ErrorAction SilentlyContinue

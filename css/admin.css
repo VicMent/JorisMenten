@@ -1,11 +1,11 @@
 :root {
-    --cms-bg: rgba(6, 10, 21, 0.96);
-    --cms-panel: rgba(10, 15, 30, 0.96);
+    --cms-bg: rgba(12, 18, 38, 0.92);
+    --cms-panel: rgba(12, 18, 38, 0.92);
     --cms-line: rgba(255, 255, 255, 0.08);
     --cms-accent: #fbd601;
     --cms-text: #eef2ff;
-    --cms-muted: #9ea8c7;
-    --cms-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+    --cms-muted: #a7b0cb;
+    --cms-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
 
 .cms-toolbar {
@@ -226,7 +226,7 @@ body.cms-admin-active .hero-slide:not(.is-active) {
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    background: rgba(3, 5, 12, 0.82);
+    background: rgba(5, 8, 22, 0.88);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 }
@@ -476,11 +476,14 @@ body.cms-admin-active .hero-slide:not(.is-active) {
     min-height: 42px;
     padding: 0.7rem 0.95rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 800;
+    font-family: 'Manrope', sans-serif;
+    letter-spacing: 0.01em;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
     background: rgba(255, 255, 255, 0.04);
     color: var(--cms-text);
-    cursor: pointer;
-    font: inherit;
 }
 
 .cms-actions button:hover,
@@ -488,8 +491,36 @@ body.cms-admin-active .hero-slide:not(.is-active) {
 .cms-actions button:focus-visible,
 .cms-actions a:focus-visible {
     outline: none;
-    border-color: rgba(251, 214, 1, 0.24);
-    background: rgba(251, 214, 1, 0.08);
+    transform: translateY(-2px);
+}
+
+.cms-actions button.button-primary,
+.cms-actions a.button-primary {
+    color: #1a1400;
+    background: linear-gradient(135deg, #fff4a8 0%, var(--cms-accent) 45%, var(--accent-2) 100%);
+    box-shadow: 0 18px 44px rgba(251, 214, 1, 0.22);
+}
+
+.cms-actions button.button-primary:hover,
+.cms-actions a.button-primary:hover,
+.cms-actions button.button-primary:focus-visible,
+.cms-actions a.button-primary:focus-visible {
+    box-shadow: 0 24px 56px rgba(251, 214, 1, 0.34);
+}
+
+.cms-actions button.button-secondary,
+.cms-actions a.button-secondary {
+    color: var(--cms-text);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.11);
+}
+
+.cms-actions button.button-secondary:hover,
+.cms-actions a.button-secondary:hover,
+.cms-actions button.button-secondary:focus-visible,
+.cms-actions a.button-secondary:focus-visible {
+    border-color: rgba(251, 214, 1, 0.3);
+    background: rgba(251, 214, 1, 0.06);
 }
 
 .cms-actions .danger {
@@ -552,8 +583,8 @@ body.cms-admin-active .hero-slide:not(.is-active) {
     gap: 0.9rem;
     padding: 1.25rem;
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(17, 24, 46, 0.84), rgba(10, 15, 30, 0.9));
+    border: 1px solid var(--cms-line);
+    background: linear-gradient(180deg, rgba(17, 24, 46, 0.84), rgba(11, 16, 31, 0.9));
     box-shadow: var(--cms-shadow);
 }
 
@@ -600,8 +631,8 @@ body.cms-admin-active .hero-slide:not(.is-active) {
     justify-content: space-between;
     gap: 0.75rem;
     padding: 0.9rem 1rem;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--cms-line);
     background: rgba(255, 255, 255, 0.03);
 }
 
