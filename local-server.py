@@ -22,38 +22,8 @@ ROOT = Path(__file__).resolve().parent
 CONTENT_FILE = ROOT / "data" / "site.json"
 IMAGE_DIR = ROOT / "images"
 UPLOAD_DIR = IMAGE_DIR / "uploads"
-LOCAL_CMS_CONFIG_FILE = ROOT / "inc" / "cms.local.php"
 PRODUCT_TEMPLATE_FILE = ROOT / "product-template.html"
-
-
-def load_php_define(name: str) -> str:
-    if not LOCAL_CMS_CONFIG_FILE.exists():
-        return ""
-    try:
-        content = LOCAL_CMS_CONFIG_FILE.read_text(encoding="utf-8")
-    except OSError:
-        return ""
-    match = re.search(rf"define\(\s*['\"]{re.escape(name)}['\"]\s*,\s*['\"]([^'\"]+)['\"]\s*\)", content)
-    return match.group(1).strip() if match else ""
-
-
-def resolve_secret(name: str) -> str:
-    value = os.getenv(name)
-    if value:
-        return value.strip()
-    return load_php_define(name)
-
-
-PASSWORD_SALT_RAW = resolve_secret("CMS_ADMIN_PASSWORD_SALT")
-PASSWORD_HASH = resolve_secret("CMS_ADMIN_PASSWORD_HASH")
-DEFAULT_DEV_SALT = "joris-menten-local-2026"
-DEFAULT_DEV_PASSWORD = "MentenAdmin2026!"
-
-if PASSWORD_SALT_RAW and PASSWORD_HASH:
-    PASSWORD_SALT = PASSWORD_SALT_RAW.encode("utf-8")
-else:
-    PASSWORD_SALT = DEFAULT_DEV_SALT.encode("utf-8")
-    PASSWORD_HASH = hashlib.sha256(PASSWORD_SALT + DEFAULT_DEV_PASSWORD.encode("utf-8")).hexdigest()
+ADMIN_PASSWORD = "jorismenten"
 SESSION_SECRET = os.getenv("CMS_SESSION_SECRET", "JorisMentenLocalCmsSession").encode("utf-8")
 SESSION_COOKIE = "cms_admin"
 SESSION_TOKEN = hmac.new(SESSION_SECRET, b"admin", hashlib.sha256).hexdigest()
@@ -74,10 +44,6 @@ def write_json_file(path: Path, data: dict) -> None:
     tmp_path = path.with_suffix(path.suffix + ".tmp")
     tmp_path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     tmp_path.replace(path)
-
-
-def admin_hash(password: str) -> str:
-    return hashlib.sha256(PASSWORD_SALT + password.encode("utf-8")).hexdigest()
 
 
 def is_admin(cookie_header: str | None) -> bool:
@@ -452,14 +418,8 @@ class CmsHandler(SimpleHTTPRequestHandler):
         admin_cookie = self.headers.get("Cookie")
 
         if action == "login":
-            if not PASSWORD_SALT or not PASSWORD_HASH:
-                self.send_json({"ok": False, "error": "Admin wachtwoord is niet geconfigureerd op de server."}, 500)
-                return
-            if self.headers.get("X-CSRF-Token", "") != CSRF_TOKEN:
-                self.send_json({"ok": False, "error": "Ongeldige sessie. Vernieuw de pagina en probeer opnieuw."}, 403)
-                return
             password = str(fields.get("password", ""))
-            if not hmac.compare_digest(admin_hash(password), PASSWORD_HASH):
+            if not hmac.compare_digest(password, ADMIN_PASSWORD):
                 self.send_json({"ok": False, "error": "Ongeldig wachtwoord."}, 401)
                 return
             self.send_json(

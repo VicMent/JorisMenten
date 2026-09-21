@@ -221,7 +221,7 @@
                 try {
                     data = await response.json();
                 } catch (error) {
-                    status.textContent = 'Login mislukt. Controleer of de lokale server draait.';
+                    status.textContent = 'Login mislukt. Probeer de pagina te vernieuwen.';
                     return;
                 }
 

@@ -1,4 +1,0 @@
-<?php
-
-define('CMS_ADMIN_PASSWORD_SALT', 'joris-menten-local-2026');
-define('CMS_ADMIN_PASSWORD_HASH', '4a107366c3c636f767151b312e1406286dbe1d1cd295bab650f13f2000556883');

@@ -1,12 +1,26 @@
 <?php
 
+// Change this password if you want. It is the only admin login.
+const CMS_ADMIN_PASSWORD = 'Vic.mente1';
+
 if (session_status() !== PHP_SESSION_ACTIVE) {
-    $isHttps = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+    $sessionDir = __DIR__ . '/../data/sessions';
+    if (!is_dir($sessionDir)) {
+        mkdir($sessionDir, 0775, true);
+    }
+    if (is_dir($sessionDir) && is_writable($sessionDir)) {
+        session_save_path($sessionDir);
+    }
+
+    $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+        || (($_SERVER['SERVER_PORT'] ?? '') === '443')
+        || strtolower((string) ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '')) === 'https';
+
     session_set_cookie_params([
         'lifetime' => 0,
         'path' => '/',
         'domain' => '',
-        'secure' => $isHttps,
+        'secure' => $https,
         'httponly' => true,
         'samesite' => 'Lax',
     ]);
@@ -21,21 +35,6 @@ if (empty($_SESSION['cms_csrf'])) {
 const CMS_CONTENT_FILE = __DIR__ . '/../data/site.json';
 const CMS_IMAGE_DIR = __DIR__ . '/../images';
 const CMS_UPLOAD_DIR = __DIR__ . '/../images/uploads';
-const CMS_LOCAL_CONFIG_FILE = __DIR__ . '/cms.local.php';
-
-if (is_file(CMS_LOCAL_CONFIG_FILE)) {
-    require_once CMS_LOCAL_CONFIG_FILE;
-}
-
-if (!defined('CMS_ADMIN_PASSWORD_SALT')) {
-    $configuredSalt = $_SERVER['CMS_ADMIN_PASSWORD_SALT'] ?? getenv('CMS_ADMIN_PASSWORD_SALT');
-    define('CMS_ADMIN_PASSWORD_SALT', is_string($configuredSalt) ? $configuredSalt : '');
-}
-
-if (!defined('CMS_ADMIN_PASSWORD_HASH')) {
-    $configuredHash = $_SERVER['CMS_ADMIN_PASSWORD_HASH'] ?? getenv('CMS_ADMIN_PASSWORD_HASH');
-    define('CMS_ADMIN_PASSWORD_HASH', is_string($configuredHash) ? $configuredHash : '');
-}
 
 function cms_is_admin(): bool
 {
@@ -55,14 +54,9 @@ function cms_require_csrf(): void
     }
 }
 
-function cms_admin_hash(string $password): string
+function cms_admin_password_matches(string $password): bool
 {
-    return hash('sha256', CMS_ADMIN_PASSWORD_SALT . $password);
-}
-
-function cms_admin_credentials_configured(): bool
-{
-    return CMS_ADMIN_PASSWORD_SALT !== '' && CMS_ADMIN_PASSWORD_HASH !== '';
+    return hash_equals(CMS_ADMIN_PASSWORD, $password);
 }
 
 function cms_content_file_path(): string
