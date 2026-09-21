@@ -188,6 +188,20 @@ body.cms-admin-active .page-hero-visual.cms-edit-target {
     z-index: 3;
 }
 
+body.cms-admin-active .page-hero-content {
+    z-index: 4;
+}
+
+body.cms-admin-active .page-hero-content.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+body.cms-admin-active .nav-dropdown {
+    display: flex;
+    z-index: 4001;
+}
+
 body.cms-admin-active .hero-slide:not(.is-active) {
     pointer-events: none;
 }

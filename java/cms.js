@@ -298,10 +298,6 @@
 
   function renderProductNav() {
     const products = getPath(state.content, 'shared.products', []);
-    if (!Array.isArray(products)) {
-      return;
-    }
-
     const navContainers = document.querySelectorAll('[data-cms-nav-products]');
     if (navContainers.length === 0) {
       return;
@@ -309,7 +305,17 @@
 
     navContainers.forEach((container) => {
       container.innerHTML = '';
+      container.classList.toggle('is-empty', !Array.isArray(products) || products.length === 0);
+
+      if (!Array.isArray(products) || products.length === 0) {
+        container.textContent = 'Geen producten beschikbaar';
+        return;
+      }
+
       products.forEach((product) => {
+        if (!product || !product.slug) {
+          return;
+        }
         const link = document.createElement('a');
         link.href = `${product.slug}.html`;
         link.textContent = product.navLabel || product.name;
@@ -351,11 +357,17 @@
       try {
         const response = await fetch(source.url, source.init);
         if (!response.ok) {
+          console.warn(`[CMS] Contentbron gaf HTTP ${response.status}: ${source.url}`);
           continue;
         }
-        return await response.json();
-      } catch {
-        // Try the next source.
+        const payload = await response.json();
+        if (source.url.includes('admin-api.php') && (!payload || typeof payload.content !== 'object' || payload.content === null)) {
+          console.warn(`[CMS] Contentbron bevat geen geldige content: ${source.url}`);
+          continue;
+        }
+        return payload;
+      } catch (error) {
+        console.warn(`[CMS] Contentbron kon niet geladen worden: ${source.url}`, error);
       }
     }
 
@@ -526,6 +538,10 @@
   }
 
   function renderSingle(element, binding, value, path) {
+    if (value == null) {
+      return;
+    }
+
     element.dataset.cmsPath = path;
     element.dataset.cmsType = binding.type || 'text';
     if (state.admin) {
@@ -558,7 +574,7 @@
       return;
     }
 
-    element.textContent = String(value ?? '');
+    element.textContent = String(value);
   }
 
   function renderImageTarget(element, binding, value, path) {
