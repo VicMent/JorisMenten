@@ -5,8 +5,9 @@
       "logo": "images/joris_white2.png"
     },
     "contact": {
-      "phone": "+31 6 12345678",
-      "email": "info@jorismentenbv.nl"
+      "phone": "0494 22 58 59",
+      "email": "info@jorismenten.be",
+      "address": "Ambachtenlaan 19, 3294 Diest"
     },
     "map": {
       "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.2517819605096!2d5.0155397!3d51.0114972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c14773089189bf%3A0x9443e19137ac5165!2sJoris%20Menten!5e0!3m2!1snl!2sbe!4v1728492625367!5m2!1snl!2sbe",
@@ -212,12 +213,16 @@
         "lead": "Voor advies, planning of een concrete vraag: een telefoon of e-mail volstaat.",
         "cards": [
           {
+            "title": "Adres",
+            "text": "Ambachtenlaan 19, 3294 Diest"
+          },
+          {
             "title": "Telefoon",
-            "text": "+31 6 12345678"
+            "text": "0494 22 58 59"
           },
           {
             "title": "E-mail",
-            "text": "info@jorismentenbv.nl"
+            "text": "info@jorismenten.be"
           },
           {
             "title": "Focus",
@@ -717,7 +722,7 @@
         "lead": "Neem contact op voor advies of een offerte. De aanpak blijft eenvoudig: duidelijke communicatie, correcte uitvoering en een eindresultaat dat opvalt zonder overdreven te worden.",
         "contactCard": {
           "title": "Joris Menten bv",
-          "text": "+31 6 12345678\ninfo@jorismentenbv.nl"
+          "text": "Ambachtenlaan 19, 3294 Diest\n0494 22 58 59\ninfo@jorismenten.be"
         },
         "cta": {
           "label": "Contact opnemen",
