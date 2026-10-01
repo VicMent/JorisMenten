@@ -1,0 +1,73 @@
+# Joris Menten bv - SEO en technische configuratie
+# Apache. Zie README.md voor deployment-instructies.
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# 1. HTTPS afdwingen (en www omzetten naar apex)
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://jorismenten.be%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://jorismenten.be%{REQUEST_URI} [L,R=301]
+
+# 2. /index.html en /index.php naar /
+RewriteRule ^index\.(html|php)$ / [R=301,L]
+
+# 3. Legacy WordPress-paginaparameters (?p=1234) naar de homepage
+#    De oude site liet alle ?p= URLs de homepage serveen: duplicaat.
+RewriteCond %{QUERY_STRING} ^(p|page_id|attachment_id)=[0-9]+$
+RewriteRule ^ /? [R=301,L]
+
+# 4. Oude product-pagina's -> nieuwe namen
+#    De live site draait nog de oude bestandsnamen.
+RewriteRule ^garagepoorten\.html$ /poorten.html [R=301,L]
+RewriteRule ^terras\.html$ /overkappingen.html [R=301,L]
+
+# 5. Oude sitemap-bestanden van WordPress weg
+RewriteRule ^sitemap[0-9]+\.xml$ - [R=410,L]
+
+# 6. 404 pagina
+ErrorDocument 404 /404.html
+</IfModule>
+
+# Foutpagina's ook zonder mod_rewrite
+<IfModule !mod_rewrite.c>
+ErrorDocument 404 /404.html
+</IfModule>
+
+# PHP: geen directory-listing, geen index van bestanden
+<FilesMatch "\.(ini|log|sql|bak|json)$">
+Require all denied
+</FilesMatch>
+
+# data/ en inc/ mogen niet publiek geserveerd worden (broncode + wachtwoord)
+RedirectMatch 404 ^/(inc|data)/.*$
+
+# Compressie
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+AddOutputFilterByType DEFLATE application/xml application/rss+xml
+AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpeg "access plus 6 months"
+ExpiresByType image/png "access plus 6 months"
+ExpiresByType image/webp "access plus 6 months"
+ExpiresByType image/svg+xml "access plus 6 months"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# Voorkom dat iemand per ongeluk data/site.json of inc/cms.php opent
+<Files "site.json">
+Require all denied
+</Files>

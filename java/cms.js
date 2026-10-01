@@ -110,7 +110,7 @@
           path: 'pages.index.contact.cards',
           fields: [
             { selector: 'h3', type: 'text', source: 'title' },
-            { selector: 'p', type: 'text', source: 'text' },
+            { selector: 'p', type: 'contact', source: 'text' },
           ],
           itemLabel: 'Contactkaart',
         },
@@ -775,10 +775,55 @@
         return;
       }
 
+      if (field.type === 'contact') {
+        renderContactText(target, sourceValue);
+        return;
+      }
+
       target.textContent = String(sourceValue ?? '');
     });
 
     applyLayoutClasses(node, binding, item);
+  }
+
+  // Contactkaarten tonen een telefoonnummer of e-mailadres. Die moeten
+  // klikbaar blijven, dus een tel:- of mailto:-link opbouwen in plaats van
+  // de tekst plat te schrijven.
+  function renderContactText(target, value) {
+    const text = String(value ?? '').trim();
+    target.textContent = '';
+
+    if (!text) {
+      return;
+    }
+
+    const parts = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+    parts.forEach((line, index) => {
+      if (index > 0) {
+        target.appendChild(document.createElement('br'));
+      }
+      target.appendChild(buildContactLine(line));
+    });
+  }
+
+  function buildContactLine(line) {
+    const phone = line.match(/^(\+?[\d\s().-]{7,}\d)$/);
+    if (phone) {
+      const digits = line.replace(/[^\d+]/g, '');
+      const link = document.createElement('a');
+      link.setAttribute('href', 'tel:' + digits);
+      link.textContent = line;
+      return link;
+    }
+
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(line)) {
+      const link = document.createElement('a');
+      link.setAttribute('href', 'mailto:' + line);
+      link.textContent = line;
+      return link;
+    }
+
+    return document.createTextNode(line);
   }
 
   const LAYOUT_CLASSES = [

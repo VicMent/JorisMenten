@@ -2,3 +2,5 @@
 inc/cms.local.php
 data/sessions/*
 !data/sessions/.htaccess
+
+verify-seo.py

@@ -254,8 +254,8 @@
       },
       "servicesSection": {
         "kicker": "Wat we doen",
-        "title": "Sterke diensten. Sterke uitvoering.",
-        "lead": "Geen ruis, geen overbodige praat. Enkel de onderdelen die voor een klant tellen: kwaliteit, uitstraling en een strakke plaatsing."
+        "title": "Alle buitenoplossingen, professioneel geplaatst.",
+        "lead": "Van adviesgesprek tot strakke plaatsing: vijf producten, één aanspreekpunt."
       },
       "heroMeta": [],
       "trust": {
@@ -281,56 +281,56 @@
       "services": [
         {
           "layout": "band-statement",
-          "eyebrow": "01 · Toegang",
-          "title": "Poorten",
-          "description": "Veilig, stil en visueel strak geïntegreerd in de gevel — onze topprioriteit en sterkste visuele signatuur.",
-          "badge": "Topprioriteit",
-          "linkLabel": "Meer over poorten",
+          "eyebrow": "01 · Poorten",
+          "title": "Garagepoorten",
+          "description": "Sectionale, kantel- en tuinpoorten. Stille werking, stevige constructie en een afwerking die in de gevel wegvalt.",
+          "badge": "Op maat",
+          "linkLabel": "Bekijk onze poorten",
           "linkHref": "poorten.html",
           "image": "images/garage.jpg"
         },
         {
           "layout": "band-left",
-          "eyebrow": "02 · Comfort",
-          "title": "Zonwering",
-          "description": "Een nette afwerking die hitte en zon op een elegante manier temt, zonder het uitzicht te verliezen.",
-          "badge": "Strak",
-          "linkLabel": "Meer over zonwering",
+          "eyebrow": "02 · Zonwering",
+          "title": "Zonwering & screens",
+          "description": "Buitenzonwering, knikarmschermen en zonnetenten. Houden warmte en fel licht buiten zonder het uitzicht te verliezen.",
+          "badge": "Comfort",
+          "linkLabel": "Bekijk onze zonwering",
           "linkHref": "zonwering.html",
           "image": "images/zonwering.jpg"
         },
         {
           "layout": "band-right",
-          "eyebrow": "03 · Bescherming",
+          "eyebrow": "03 · Rolluiken",
           "title": "Rolluiken",
-          "description": "Meer privacy, betere isolatie en extra comfort in elke ruimte — functioneel én netjes afgewerkt.",
-          "badge": "Functioneel",
-          "linkLabel": "Meer over rolluiken",
+          "description": "Voorzet-, inbouw- en garagerolluiken. Privacy en extra isolatie, met een kast die netjes weggewerkt is.",
+          "badge": "Bescherming",
+          "linkLabel": "Bekijk onze rolluiken",
           "linkHref": "rolluiken.html",
           "image": "images/rolluiken.jpg"
         },
         {
           "layout": "band-full",
-          "eyebrow": "04 · Buitenleven",
-          "title": "Overkappingen",
-          "description": "Meer gebruiksruimte en een luxe uitstraling voor terras en tuin — het buitenleven verlengd met stijl.",
-          "badge": "Sfeervol",
-          "linkLabel": "Meer over overkappingen",
+          "eyebrow": "04 · Overkappingen",
+          "title": "Terrasoverkappingen",
+          "description": "Pergola's, carports en lamellendaken. Meer bruikbare ruimte en schaduw, het hele jaar door.",
+          "badge": "Buitenleven",
+          "linkLabel": "Bekijk onze overkappingen",
           "linkHref": "overkappingen.html",
           "image": "images/terras.jpg"
         }
       ],
       "compactServices": [
         {
-          "title": "Vliegenramen",
-          "description": "Comfortabel ventileren zonder in te boeten op rust of netheid.",
-          "linkLabel": "Vraag informatie",
-          "linkHref": "#contact"
+          "title": "Vliegenwering",
+          "description": "Vliegenramen en vliegendeuren op maat. Vrij ventileren, zonder insecten.",
+          "linkLabel": "Bekijk onze vliegenwering",
+          "linkHref": "vliegenwering.html"
         },
         {
-          "title": "Maatwerk & projecten",
-          "description": "Foto's van gerealiseerde werken en een stijl die meteen vertrouwen geeft.",
-          "linkLabel": "Bekijk onze realisaties",
+          "title": "Projecten",
+          "description": "Een selectie afgerond werk. Bekijk wat we voor vergelijkbare woningen geplaatst hebben.",
+          "linkLabel": "Naar alle projecten",
           "linkHref": "projecten.html"
         }
       ],
@@ -396,8 +396,7 @@
           {
             "title": "E-mail",
             "text": "info@jorismenten.be"
-          },
-          {
+          },          {
             "title": "Focus",
             "text": "Poorten, zonwering, rolluiken, overkappingen en vliegenramen."
           }

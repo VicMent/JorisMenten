@@ -73,6 +73,10 @@ Upload the project into `www/` (or the host’s web root). PHP must be enabled. 
 
 ```
 www/
+├── .htaccess              ← HTTPS, redirects, 404, caching (Apache only)
+├── robots.txt
+├── sitemap.xml
+├── 404.html
 ├── admin-api.php
 ├── admin.php
 ├── info.php
@@ -112,8 +116,22 @@ Local-only or tooling files:
 - `local-server.py`
 - `generate-product-pages.py`
 - `start-local.ps1`
+- `add-seo-head.py`, `add-image-dims.py`, `add-font-links.py`
+- `SEO-TODO.md`
 - `__pycache__/`, `.venv/`
 - `.vscode/`, `.git/`, `.kilo/`
+
+## SEO
+
+`SEO-TODO.md` holds the full checklist: what is implemented, what still needs a
+decision (notably the official business address), and the off-page work (Google
+Business Profile, citations, manufacturer dealer listings) that cannot be done
+from the code.
+
+`.htaccess` only works on Apache. On other hosts, reproduce the same rules in
+that host's redirect config: force HTTPS, redirect `www` and `/index.html` to
+`https://jorismenten.be/`, redirect the old `garagepoorten.html` and
+`terras.html` filenames, and set the 404 page to `/404.html`.
 
 ### Permissions
 

@@ -7,6 +7,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(ROOT, 'product-template.html')
 CONTENT = os.path.join(ROOT, 'data', 'site.json')
 NAV_FILE = os.path.join(ROOT, 'inc', 'nav.html')
+SITE_URL = 'https://jorismenten.be/'
 
 with open(TEMPLATE, 'r', encoding='utf-8') as f:
     template = f.read()
@@ -33,10 +34,12 @@ for product in products:
 
     html = template.replace('{{PRODUCT_SLUG}}', slug)
     html = html.replace('{{PRODUCT_NAME}}', name)
+    html = html.replace('{{PRODUCT_NAME_RAW_JSON}}', json.dumps(name, ensure_ascii=False))
     html = html.replace('{{PRODUCT_TITLE}}', title)
     html = html.replace('{{PRODUCT_DESCRIPTION}}', desc)
     html = html.replace('{{PRODUCT_LEAD}}', lead)
     html = html.replace('{{PRODUCT_IMAGE}}', image)
+    html = html.replace('{{PRODUCT_CANONICAL}}', SITE_URL + slug + '.html')
     html = html.replace('{{NAVIGATION}}', nav_html)
 
     output = os.path.join(ROOT, f'{slug}.html')

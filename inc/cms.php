@@ -410,17 +410,24 @@ function cms_generate_product_page(string $slug, string $name, string $descripti
         }
     }
 
-    $html = str_replace('{{PRODUCT_SLUG}}', $slug, $html);
-    $html = str_replace('{{PRODUCT_NAME}}', htmlspecialchars($name, ENT_QUOTES), $html);
-    $html = str_replace('{{PRODUCT_TITLE}}', htmlspecialchars($name . ' | Joris Menten bv', ENT_QUOTES), $html);
-    $html = str_replace('{{PRODUCT_DESCRIPTION}}', htmlspecialchars($description, ENT_QUOTES), $html);
-    $html = str_replace('{{PRODUCT_LEAD}}', htmlspecialchars('Bij Joris Menten bv vind je de perfecte ' . strtolower($name) . ' voor jouw woning — met premium kwaliteit en een strakke afwerking.', ENT_QUOTES), $html);
-    $html = str_replace('{{PRODUCT_IMAGE}}', $image, $html);
-
     $fileName = cms_slug_to_filename($slug);
     if ($fileName === '') {
         return false;
     }
+
+    $jsonName = json_encode($name, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    if (!is_string($jsonName)) {
+        $jsonName = htmlspecialchars($name, ENT_QUOTES);
+    }
+
+    $html = str_replace('{{PRODUCT_SLUG}}', $slug, $html);
+    $html = str_replace('{{PRODUCT_NAME}}', htmlspecialchars($name, ENT_QUOTES), $html);
+    $html = str_replace('{{PRODUCT_NAME_RAW_JSON}}', $jsonName, $html);
+    $html = str_replace('{{PRODUCT_TITLE}}', htmlspecialchars($name . ' | Joris Menten bv', ENT_QUOTES), $html);
+    $html = str_replace('{{PRODUCT_DESCRIPTION}}', htmlspecialchars($description, ENT_QUOTES), $html);
+    $html = str_replace('{{PRODUCT_LEAD}}', htmlspecialchars('Bij Joris Menten bv vind je de perfecte ' . strtolower($name) . ' voor jouw woning — met premium kwaliteit en een strakke afwerking.', ENT_QUOTES), $html);
+    $html = str_replace('{{PRODUCT_IMAGE}}', $image, $html);
+    $html = str_replace('{{PRODUCT_CANONICAL}}', 'https://jorismenten.be/' . $fileName, $html);
 
     $targetPath = __DIR__ . '/../' . $fileName;
     return file_put_contents($targetPath, $html) !== false;
