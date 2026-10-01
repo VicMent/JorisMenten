@@ -199,7 +199,18 @@ body.cms-admin-active .page-hero-content.reveal {
 
 body.cms-admin-active .nav-dropdown {
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
     z-index: 4001;
+}
+
+body.cms-admin-active .nav-dropdown .nav-mega-menu {
+    width: 100%;
+    max-height: min(60vh, 30rem);
+    overflow-y: auto;
 }
 
 body.cms-admin-active .hero-slide:not(.is-active) {

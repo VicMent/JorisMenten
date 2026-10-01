@@ -79,10 +79,11 @@ www/
 ├── projecten.php
 ├── index.html
 ├── product-template.html
-├── garagepoorten.html
+├── poorten.html
 ├── zonwering.html
 ├── rolluiken.html
-├── terras.html
+├── overkappingen.html
+├── vliegenwering.html
 ├── projecten.html
 ├── css/
 │   ├── style.css

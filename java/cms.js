@@ -312,15 +312,85 @@
         return;
       }
 
+      const megaMenu = document.createElement('div');
+      megaMenu.className = 'nav-mega-menu';
+      
       products.forEach((product) => {
         if (!product || !product.slug) {
           return;
         }
-        const link = document.createElement('a');
-        link.href = `${product.slug}.html`;
-        link.textContent = product.navLabel || product.name;
-        container.appendChild(link);
+        
+        if (product.category && product.subcategories && product.subcategories.length > 0) {
+          // Category with subcategories
+          const categoryCol = document.createElement('div');
+          categoryCol.className = 'mega-menu-column';
+          
+          const categoryHeader = document.createElement('div');
+          categoryHeader.className = 'mega-menu-category-header';
+          
+          const categoryLink = document.createElement('a');
+          categoryLink.href = `${product.slug}.html`;
+          categoryLink.textContent = product.navLabel || product.name;
+          categoryHeader.appendChild(categoryLink);
+          
+          categoryCol.appendChild(categoryHeader);
+          
+          const subList = document.createElement('ul');
+          subList.className = 'mega-menu-sub-list';
+          
+          product.subcategories.forEach((sub) => {
+            if (!sub || !sub.slug) return;
+            
+            const li = document.createElement('li');
+            const subLink = document.createElement('a');
+            subLink.href = `${product.slug}.html#${sub.slug}`;
+            subLink.textContent = sub.name;
+            subLink.setAttribute('data-description', sub.description || '');
+            li.appendChild(subLink);
+            
+            // Add sub-subcategories if they exist
+            if (sub.subcategories && sub.subcategories.length > 0) {
+              const subSubList = document.createElement('ul');
+              subSubList.className = 'mega-menu-sub-sub-list';
+              
+              sub.subcategories.forEach((subSub) => {
+                if (!subSub || !subSub.slug) return;
+                const subSubLi = document.createElement('li');
+                const subSubLink = document.createElement('a');
+                subSubLink.href = `${product.slug}.html#${subSub.slug}`;
+                subSubLink.textContent = subSub.name;
+                subSubLink.setAttribute('data-description', subSub.description || '');
+                subSubLi.appendChild(subSubLink);
+                subSubList.appendChild(subSubLi);
+              });
+              
+              li.appendChild(subSubList);
+              li.classList.add('has-sub-sub');
+
+              const subToggle = document.createElement('button');
+              subToggle.type = 'button';
+              subToggle.className = 'mega-menu-sub-toggle';
+              subToggle.setAttribute('aria-expanded', 'false');
+              subToggle.setAttribute('aria-label', `Meer onder ${sub.name}`);
+              subToggle.textContent = '';
+              li.insertBefore(subToggle, subSubList);
+            }
+            
+            subList.appendChild(li);
+          });
+          
+          categoryCol.appendChild(subList);
+          megaMenu.appendChild(categoryCol);
+        } else {
+          // Simple product link (fallback)
+          const link = document.createElement('a');
+          link.href = `${product.slug}.html`;
+          link.textContent = product.navLabel || product.name;
+          megaMenu.appendChild(link);
+        }
       });
+      
+      container.appendChild(megaMenu);
     });
   }
 

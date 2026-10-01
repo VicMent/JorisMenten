@@ -62,6 +62,18 @@
     });
 
     document.addEventListener('click', (event) => {
+      const subToggle = event.target.closest('.mega-menu-sub-toggle');
+      if (subToggle) {
+        event.preventDefault();
+        event.stopPropagation();
+        const item = subToggle.closest('.has-sub-sub');
+        if (!item) return;
+        const willOpen = !item.classList.contains('is-expanded');
+        item.classList.toggle('is-expanded', willOpen);
+        subToggle.setAttribute('aria-expanded', String(willOpen));
+        return;
+      }
+
       if (!event.target.closest('.nav-item--dropdown')) {
         closeDropdowns();
       }

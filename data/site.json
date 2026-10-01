@@ -15,41 +15,214 @@
     },
     "products": [
       {
-        "slug": "garagepoorten",
-        "name": "Garagepoorten",
+        "slug": "poorten",
+        "name": "Poorten",
         "navLabel": "Poorten",
-        "image": "images/garage.jpg"
+        "image": "images/garage.jpg",
+        "category": true,
+        "subcategories": [
+          {
+            "slug": "kantelpoorten",
+            "name": "Kantelpoorten",
+            "description": "Poorten die uit één vast paneel bestaan en bij het openen naar buiten kantelen en naar boven schuiven.",
+            "image": "images/garage.jpg"
+          },
+          {
+            "slug": "sectionale-poorten",
+            "name": "Sectionale poorten",
+            "description": "Poorten opgebouwd uit horizontale panelen die verticaal omhoog schuiven en langs het plafond wegrollen.",
+            "image": "images/garage.jpg",
+            "subcategories": [
+              {
+                "slug": "sectionale-prive",
+                "name": "Privé",
+                "description": "Sectionale poorten speciaal ontworpen voor woningen en garages thuis.",
+                "image": "images/garage.jpg"
+              },
+              {
+                "slug": "sectionale-industrie",
+                "name": "Industrie",
+                "description": "Zwaardere en grotere sectionale poorten voor bedrijfspanden en industriële gebouwen.",
+                "image": "images/garage.jpg"
+              }
+            ]
+          },
+          {
+            "slug": "hekken-tuinpoorten",
+            "name": "Hekkens / Tuinpoorten",
+            "description": "Afsluitingen en looppoorten voor de tuin of oprit.",
+            "image": "images/vliegen.jpg",
+            "subcategories": [
+              {
+                "slug": "hekken-staal",
+                "name": "Staal",
+                "description": "Stevige en robuuste stalen hekken en poorten.",
+                "image": "images/vliegen.jpg"
+              },
+              {
+                "slug": "hekken-alu",
+                "name": "Alu",
+                "description": "Lichtgewicht, roestvrije en onderhoudsvriendelijke aluminium poorten.",
+                "image": "images/vliegen.jpg"
+              }
+            ]
+          }
+        ]
       },
       {
         "slug": "zonwering",
         "name": "Zonwering",
         "navLabel": "Zonwering",
-        "image": "images/zonwering.jpg"
+        "image": "images/zonwering.jpg",
+        "category": true,
+        "subcategories": [
+          {
+            "slug": "screens",
+            "name": "Screens",
+            "description": "Strakke verticale doekzonwering gemonteerd aan de buitenzijde van ramen om warmte en licht te weren.",
+            "image": "images/zonwering.jpg",
+            "subcategories": [
+              {
+                "slug": "screens-zonwerend",
+                "name": "Zonwerend",
+                "description": "Screens die de warmte en felste zonnestralen buiten houden met behoud van doorzicht naar buiten.",
+                "image": "images/zonwering.jpg"
+              },
+              {
+                "slug": "screens-verduisterend",
+                "name": "Verduisterend",
+                "description": "Screens met een speciaal doek dat de ruimte volledig donker kan maken.",
+                "image": "images/zonwering.jpg"
+              }
+            ]
+          },
+          {
+            "slug": "zonnetenten",
+            "name": "Zonnetenten",
+            "description": "Uitvalschermen of knikarmschermen om terrassen te beschermen tegen de zon.",
+            "image": "images/terras.jpg",
+            "subcategories": [
+              {
+                "slug": "zonnetenten-700",
+                "name": "700 x ... (met LED / LX)",
+                "description": "Grotere zonnetentmodellen (tot wel 7 meter breed) met geïntegreerde ledverlichting.",
+                "image": "images/terras.jpg"
+              },
+              {
+                "slug": "zonnetenten-500",
+                "name": "500 x ...",
+                "description": "Standaardformaat zonnetenten (tot circa 5 meter breed).",
+                "image": "images/terras.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "overkappingen",
+        "name": "Overkappingen",
+        "navLabel": "Overkappingen",
+        "image": "images/terras.jpg",
+        "category": true,
+        "subcategories": [
+          {
+            "slug": "pergola-da-vinci",
+            "name": "Pergola Da Vinci",
+            "description": "Een specifiek model terrasoverkapping met lamellen of doek.",
+            "image": "images/terras.jpg"
+          },
+          {
+            "slug": "pinela-glass",
+            "name": "Pinela Glass",
+            "description": "Een stijlvolle terrasoverkapping met een glazen dak voor maximale lichtinval en weersbescherming.",
+            "image": "images/terras.jpg"
+          },
+          {
+            "slug": "pinela-carport",
+            "name": "Pinela Carport",
+            "description": "Een moderne overkapping ontworpen om auto's te beschermen tegen weersinvloeden.",
+            "image": "images/terras.jpg"
+          },
+          {
+            "slug": "lamellendak",
+            "name": "Lamellendak",
+            "description": "Een bioclimatisch daksysteem met kantelbare aluminium lamellen voor zon- en ventilatieregeling.",
+            "image": "images/terras.jpg"
+          },
+          {
+            "slug": "pinela-tilt",
+            "name": "Pinela Tilt",
+            "description": "Een overkapping met kantelbare lamellen uit de Pinela-productlijn.",
+            "image": "images/terras.jpg"
+          },
+          {
+            "slug": "pinela-delight",
+            "name": "Pinela Delight",
+            "description": "Een luxueuze uitvoering binnen de serie van overkappingen.",
+            "image": "images/terras.jpg"
+          }
+        ]
       },
       {
         "slug": "rolluiken",
         "name": "Rolluiken",
         "navLabel": "Rolluiken",
-        "image": "images/rolluiken.jpg"
+        "image": "images/rolluiken.jpg",
+        "category": true,
+        "subcategories": [
+          {
+            "slug": "voorzetrolluiken",
+            "name": "Voorzetrolluiken",
+            "description": "Rolluiken waarbij de kast aan de buitenkant op de muur of het kozijn wordt gemonteerd (ideaal achteraf).",
+            "image": "images/rolluiken.jpg"
+          },
+          {
+            "slug": "inbouwrolluiken",
+            "name": "Inbouw",
+            "description": "Rolluiken waarbij de kast netjes weggewerkt is in de muur boven het raam, vaak bij nieuwbouw.",
+            "image": "images/rolluiken.jpg"
+          },
+          {
+            "slug": "garagerolluiken",
+            "name": "Garage",
+            "description": "Rolluiken die specifiek zijn aangepast en verbreed om als garagedeur te dienen.",
+            "image": "images/garage.jpg"
+          }
+        ]
       },
       {
-        "slug": "terras",
-        "name": "Terrasoverkappingen",
-        "navLabel": "Terrasoverkappingen",
-        "image": "images/terras.jpg"
+        "slug": "vliegenwering",
+        "name": "Vliegenwering",
+        "navLabel": "Vliegenwering",
+        "image": "images/vliegen.jpg",
+        "category": true,
+        "subcategories": [
+          {
+            "slug": "vliegenramen",
+            "name": "Vliegenramen",
+            "description": "Maatwerk horren die eenvoudig in of op raamopeningen geplaatst worden om insecten te weren.",
+            "image": "images/vliegen.jpg"
+          },
+          {
+            "slug": "vliegendeuren",
+            "name": "Vliegendeuren",
+            "description": "Horren in de vorm van een deur (zoals schuif- of pendeldeuren) voor een zorgeloze toegang tot het terras.",
+            "image": "images/vliegen.jpg"
+          }
+        ]
       }
     ]
   },
   "pages": {
     "index": {
       "meta": {
-        "title": "Joris Menten bv | Garagepoorten, Zonwering & Maatwerk",
-        "description": "Joris Menten bv ontwerpt en plaatst garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen met 15+ jaar ervaring."
+        "title": "Joris Menten bv | Poorten, Zonwering & Maatwerk",
+        "description": "Joris Menten bv ontwerpt en plaatst poorten, zonwering, rolluiken, overkappingen en vliegenramen met 15+ jaar ervaring."
       },
       "hero": {
         "eyebrow": "15+ jaar vakmanschap · Herselt & omgeving",
         "title": "Premium oplossingen voor buitenkant en comfort.",
-        "lead": "Garagepoorten, zonwering, rolluiken en maatwerk — professioneel geplaatst, strak afgewerkt.",
+        "lead": "Poorten, zonwering, rolluiken en maatwerk — professioneel geplaatst, strak afgewerkt.",
         "ctas": [
           {
             "label": "Bekijk realisaties",
@@ -62,19 +235,19 @@
         ],
         "carousel": [
           {
-            "src": "images/garage.jpg",
-            "alt": "Moderne garagepoort geplaatst door Joris Menten bv"
+            "src": "images/projecten/1.jpeg",
+            "alt": "Moderne poort geplaatst door Joris Menten bv"
           },
           {
-            "src": "images/zonwering.jpg",
+            "src": "images/Wilms_Referentiebeelden_Rolluiken_Hires/Voorzetrolluiken/Voorzetrolluik_12_hires.jpg",
             "alt": "Zonwering voor een strakke en comfortabele gevel"
           },
           {
-            "src": "images/projecten/2.jpg",
+            "src": "images/Wilms_Referentiebeelden_Rolluiken_Hires/Inbouwrolluiken/Inbouwrolluik_06_hires.jpg",
             "alt": "Uitgevoerde realisatie met premium afwerking"
           },
           {
-            "src": "images/terras.jpg",
+            "src": "images/projecten/14.jpg",
             "alt": "Terrasoverkapping met moderne uitstraling"
           }
         ]
@@ -109,11 +282,11 @@
         {
           "layout": "band-statement",
           "eyebrow": "01 · Toegang",
-          "title": "Garagepoorten",
+          "title": "Poorten",
           "description": "Veilig, stil en visueel strak geïntegreerd in de gevel — onze topprioriteit en sterkste visuele signatuur.",
           "badge": "Topprioriteit",
-          "linkLabel": "Meer over garagepoorten",
-          "linkHref": "garagepoorten.html",
+          "linkLabel": "Meer over poorten",
+          "linkHref": "poorten.html",
           "image": "images/garage.jpg"
         },
         {
@@ -139,11 +312,11 @@
         {
           "layout": "band-full",
           "eyebrow": "04 · Buitenleven",
-          "title": "Terrasoverkappingen",
+          "title": "Overkappingen",
           "description": "Meer gebruiksruimte en een luxe uitstraling voor terras en tuin — het buitenleven verlengd met stijl.",
           "badge": "Sfeervol",
-          "linkLabel": "Meer over terrasoverkappingen",
-          "linkHref": "terras.html",
+          "linkLabel": "Meer over overkappingen",
+          "linkHref": "overkappingen.html",
           "image": "images/terras.jpg"
         }
       ],
@@ -178,7 +351,7 @@
         "lead": "Grote beelden, editorial opbouw en een selectie die meteen overtuigt — zonder afleiding.",
         "heroProject": {
           "src": "images/projecten/1.jpeg",
-          "alt": "Strakke garagepoort met premium afwerking",
+          "alt": "Strakke poort met premium afwerking",
           "title": "Strakke plaatsing",
           "caption": "Elke realisatie krijgt aandacht voor verhouding, detail en afwerking."
         },
@@ -226,7 +399,7 @@
           },
           {
             "title": "Focus",
-            "text": "Garagepoorten, zonwering, rolluiken, terrasoverkappingen en vliegenramen."
+            "text": "Poorten, zonwering, rolluiken, overkappingen en vliegenramen."
           }
         ]
       },
@@ -238,8 +411,8 @@
             "href": "projecten.html"
           },
           {
-            "label": "Garagepoorten",
-            "href": "garagepoorten.html"
+            "label": "Poorten",
+            "href": "poorten.html"
           },
           {
             "label": "Contact",
@@ -248,15 +421,15 @@
         ]
       }
     },
-    "garagepoorten": {
+    "poorten": {
       "meta": {
-        "title": "Garagepoorten | Joris Menten bv",
-        "description": "Garagepoorten van Joris Menten bv: veiligheid, uitstraling en een strakke plaatsing met premium afwerking."
+        "title": "Poorten | Joris Menten bv",
+        "description": "Poorten van Joris Menten bv: veiligheid, uitstraling en een strakke plaatsing met premium afwerking."
       },
       "hero": {
         "eyebrow": "Service detail · 15+ jaar ervaring",
-        "title": "Garagepoorten die veiligheid en uitstraling combineren.",
-        "lead": "Een garagepoort moet meer doen dan sluiten. Ze moet soepel werken, lang meegaan en de gevel sterker maken. Dit is precies waar Joris Menten bv op inzet.",
+        "title": "Poorten die veiligheid en uitstraling combineren.",
+        "lead": "Een poort moet meer doen dan sluiten. Ze moet soepel werken, lang meegaan en de gevel sterker maken. Dit is precies waar Joris Menten bv op inzet.",
         "ctas": [
           {
             "label": "Vraag advies",
@@ -295,7 +468,7 @@
       "approach": {
         "kicker": "Aanpak",
         "title": "Alles draait om een stevige eerste indruk.",
-        "lead": "Een garagepoort is vaak één van de meest zichtbare onderdelen van de woning. Daarom moet de plaatsing niet alleen technisch juist zijn, maar ook visueel kloppen.",
+        "lead": "Een poort is vaak één van de meest zichtbare onderdelen van de woning. Daarom moet de plaatsing niet alleen technisch juist zijn, maar ook visueel kloppen.",
         "bullets": [
           "Heldere communicatie van aanvraag tot oplevering",
           "Afwerking die meedraait in het totaalbeeld van de woning",
@@ -318,291 +491,379 @@
           }
         ]
       },
-       "footer": {
-         "brandLine": "Garagepoorten met impact",
-         "links": [
-           {
-             "label": "Producten",
-             "href": "index.html#producten"
-           },
-           {
-             "label": "Projecten",
-             "href": "projecten.html"
-           },
-           {
-             "label": "Contact",
-             "href": "index.html#contact"
-           }
-         ]
-       }
-     },
-     "zonwering": {
-       "meta": {
-         "title": "Zonwering | Joris Menten bv",
-         "description": "Zonwering van Joris Menten bv: een nette, discrete afwerking die hitte en zon op een elegante manier temt, zonder het uitzicht te verliezen."
-       },
-       "hero": {
-         "eyebrow": "Service detail · 15+ jaar ervaring",
-         "title": "Zonwering die comfort en energiebesparing combineren.",
-         "lead": "De juiste zonwering houdt storende zon en warmte buiten, terwijl de uitstraling van je woning behouden blijft. Dit is precies waar Joris Menten bv op inzet.",
-         "ctas": [
-           {
-             "label": "Vraag advies",
-             "href": "index.html#contact"
-           },
-           {
-             "label": "Bekijk werk",
-             "href": "projecten.html"
-           }
-         ],
-         "chips": [
-           "Comfortabel",
-           "Duurzaam",
-           "Discreet"
-         ],
-         "image": "images/zonwering.jpg"
-       },
-       "statement": {
-         "image": "images/projecten/4.jpg",
-         "title": "Een gevel die de zon temt, niet verbergt",
-         "caption": "Een schone, elegante afwerking die warmte reguleert en een strakke uitstraling koppelt aan optimale ventilatie."
-       },
-       "benefitsSection": {
-         "kicker": "Voordelen",
-         "title": "Comfort, besparing en een schone gevel in één oogopslag.",
-         "lead": "De focus ligt op wat echt telt: optimale lichtinval, energiebesparing en een afwerking die naadloos in de gevel integreert.",
-         "image": "images/zonwering.jpg"
-       },
-       "benefits": [
-         "Effectieve koeling door te verhogen van warmteopnames",
-         "Oude lichtinval blijft behouden dankzij doorzichtige vezels",
-         "Stille, onderhoudsarme motoren en bediening",
-         "Duurzame materialen en een langlevende afwerking",
-         "Flexibele plaatsing: van zichtloos tot expressief design"
-       ],
-       "approach": {
-         "kicker": "Aanpak",
-         "title": "Alles draait om natuurlijk licht én controle.",
-         "lead": "Een zonwering is meer dan een schaduwplaats. Hij moet licht, warmte en privacy perfect in balans brengen — en dat in overeenstemming met de stijl van de woning.",
-         "bullets": [
-           "Persoonlijk advies op maat van de woning en de zonningsbehoefte",
-           "Keuze uit verschillende filterstroken en motoren",
-           "Nette afronding en een stevige, onderhoudsvrije plaatsing"
-         ],
-         "image": "images/projecten/5.jpg"
-       },
-       "closing": {
-         "kicker": "Klaar voor de volgende stap",
-         "title": "Op zoek naar een zonwering die comfort, besparing en stijl combinert?",
-         "lead": "Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.",
-         "ctas": [
-           {
-             "label": "Neem contact op",
-             "href": "index.html#contact"
-           },
-           {
-             "label": "Terug naar home",
-             "href": "index.html"
-           }
-         ]
-       },
-       "footer": {
-         "brandLine": "Comfortabele zonwering",
-         "links": [
-           {
-             "label": "Producten",
-             "href": "index.html#producten"
-           },
-           {
-             "label": "Projecten",
-             "href": "projecten.html"
-           },
-           {
-             "label": "Contact",
-             "href": "index.html#contact"
-           }
-         ]
-       }
-     },
-     "rolluiken": {
-       "meta": {
-         "title": "Rolluiken | Joris Menten bv",
-         "description": "Rolluiken van Joris Menten bv: meer privacy, betere isolatie en extra comfort in elke ruimte — functioneel én netjes afgewerkt."
-       },
-       "hero": {
-         "eyebrow": "Service detail · 15+ jaar ervaring",
-         "title": "Rolluiken die privacy, isolatie en stijl in één oplossing verenigen.",
-         "lead": "Rolluiken bieden meer privacy, helpen warmte en koude buiten te houden en geven je ramen een verzorgde uitstraling. Dit is precies waar Joris Menten bv op inzet.",
-         "ctas": [
-           {
-             "label": "Vraag advies",
-             "href": "index.html#contact"
-           },
-           {
-             "label": "Bekijk werk",
-             "href": "projecten.html"
-           }
-         ],
-         "chips": [
-           "Privacy",
-           "Isolatie",
-           "Comfort"
-         ],
-         "image": "images/rolluiken.jpg"
-       },
-       "statement": {
-         "image": "images/projecten/8.jpg",
-         "title": "Een scherm dat perfect aansluit bij de woning",
-         "caption": "Rolluiken die functionaliteit en stijl combineren — voor een binnen en buiten dat er even strak uitziet."
-       },
-       "benefitsSection": {
-         "kicker": "Voordelen",
-         "title": "Privacy en isolatie in één oogopslag.",
-         "lead": "De focus ligt op wat echt telt: een comfortabele binnentemperatuur, privacy vanbinnen en een nette afwerking die de woning versterkt.",
-         "image": "images/rolluiken.jpg"
-       },
-       "benefits": [
-         "Ideaal voor privacy en gerustheid binnenin",
-         "Isolatie tegen warmte, koude en geluid",
-         "Ruime keuze aan folies en kleuren",
-         "Duurzame materialen en een stevige beug",
-         "Manueel, elektrisch of gestuurd via app"
-       ],
-       "approach": {
-         "kicker": "Aanpak",
-         "title": "Alles draait om een comfortabele en nette afwerking.",
-         "lead": "Een rolluik moet naadloos aansluiten bij de woning — zowel functioneel als visueel. Daarom kiezen we materialen en een plaatsing die het hele plaatje strak maken.",
-         "bullets": [
-           "Exacte afmetingen en een stevige montage",
-           "Keuze uit verschillende folies en bediening",
-           "Een afwerking die er netjes en bedrukbaar uitziet"
-         ],
-         "image": "images/projecten/6.jpg"
-       },
-       "closing": {
-         "kicker": "Klaar voor de volgende stap",
-         "title": "Op zoek naar rolluiken die comfort en stijl combineren?",
-         "lead": "Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.",
-         "ctas": [
-           {
-             "label": "Neem contact op",
-             "href": "index.html#contact"
-           },
-           {
-             "label": "Terug naar home",
-             "href": "index.html"
-           }
-         ]
-       },
-       "footer": {
-         "brandLine": "Comfortabele rolluiken",
-         "links": [
-           {
-             "label": "Producten",
-             "href": "index.html#producten"
-           },
-           {
-             "label": "Projecten",
-             "href": "projecten.html"
-           },
-           {
-             "label": "Contact",
-             "href": "index.html#contact"
-           }
-         ]
-       }
-     },
-     "terras": {
-       "meta": {
-         "title": "Terrasoverkappingen | Joris Menten bv",
-         "description": "Terrasoverkappingen van Joris Menten bv: meer gebruiksruimte en een luxe uitstraling voor terras en tuin — het buitenleven verlengd met stijl."
-       },
-       "hero": {
-         "eyebrow": "Service detail · 15+ jaar ervaring",
-         "title": "Terrasoverkappingen die buitenleven verlengen met stijl.",
-         "lead": "Een terrasoverkapping biedt bescherming tegen zon en weer en geeft je buitenruimte een stijlvolle, comfortabele uitstraling. Dit is precies waar Joris Menten bv op inzet.",
-         "ctas": [
-           {
-             "label": "Vraag advies",
-             "href": "index.html#contact"
-           },
-           {
-             "label": "Bekijk werk",
-             "href": "projecten.html"
-           }
-         ],
-         "chips": [
-           "Buitenleven",
-           "Stijlvol",
-           "Bescherming"
-         ],
-         "image": "images/terras.jpg"
-       },
-       "statement": {
-         "image": "images/projecten/7.jpg",
-         "title": "Een overkapping die ruimte en stijl creëert",
-         "caption": "Meer bereikbaarheid, een schaduwplek die perfect is voor rels en een design dat blijft inspireren."
-       },
-       "benefitsSection": {
-         "kicker": "Voordelen",
-         "title": "Meer gebruiksruimte en een luxe uitstraling in één oogopslag.",
-         "lead": "De focus ligt op wat echt telt: een comfortabele schaduw, een stevige constructie en een design dat naadloos aansluit bij de woning.",
-         "image": "images/terras.jpg"
-       },
-       "benefits": [
-         "Bescherming tegen zon, wind en regen",
-         "Meer nuttige oppervlakte op het terras",
-         "Stevige constructies voor maximale duurzaamheid",
-         "Keuze uit verschillende designopties en afwerkingen",
-         "Naadloze integratie met de woningstijl"
-       ],
-       "approach": {
-         "kicker": "Aanpak",
-         "title": "Alles draait om een terras dat perfect aansluit bij de woning.",
-         "lead": "Een overkapping is een investering in je buitenleven. Daarom kiezen we een design en materiaal dat niet alleen functioneel is, maar ook de stijl van je woning versterkt.",
-         "bullets": [
-           "Maatwerk op basis van het terrasoppervlak en de gewenste schaduw",
-           "Premium materialen die slijtage en weersinvloeden weerstaan",
-           "Een afwerking die er strak en verzorgd uitziet"
-         ],
-         "image": "images/projecten/9.jpg"
-       },
-       "closing": {
-         "kicker": "Klaar voor de volgende stap",
-         "title": "Op zoek naar een terrasoverkapping die stijl en comfort combinert?",
-         "lead": "Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.",
-         "ctas": [
-           {
-             "label": "Neem contact op",
-             "href": "index.html#contact"
-           },
-           {
-             "label": "Terug naar home",
-             "href": "index.html"
-           }
-         ]
-       },
-       "footer": {
-         "brandLine": "Stijlvol buitenleven",
-         "links": [
-           {
-             "label": "Producten",
-             "href": "index.html#producten"
-           },
-           {
-             "label": "Projecten",
-             "href": "projecten.html"
-           },
-           {
-             "label": "Contact",
-             "href": "index.html#contact"
-           }
-         ]
-       }
+        "footer": {
+          "brandLine": "Poorten met impact",
+        "links": [
+          {
+            "label": "Producten",
+            "href": "index.html#producten"
+          },
+          {
+            "label": "Projecten",
+            "href": "projecten.html"
+          },
+          {
+            "label": "Contact",
+            "href": "index.html#contact"
+          }
+        ]
+      }
+    },
+    "zonwering": {
+      "meta": {
+        "title": "Zonwering | Joris Menten bv",
+        "description": "Zonwering van Joris Menten bv: een nette, discrete afwerking die hitte en zon op een elegante manier temt, zonder het uitzicht te verliezen."
       },
+      "hero": {
+        "eyebrow": "Service detail · 15+ jaar ervaring",
+        "title": "Zonwering die comfort en energiebesparing combineren.",
+        "lead": "De juiste zonwering houdt storende zon en warmte buiten, terwijl de uitstraling van je woning behouden blijft. Dit is precies waar Joris Menten bv op inzet.",
+        "ctas": [
+          {
+            "label": "Vraag advies",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Bekijk werk",
+            "href": "projecten.html"
+          }
+        ],
+        "chips": [
+          "Comfortabel",
+          "Duurzaam",
+          "Discreet"
+        ],
+        "image": "images/zonwering.jpg"
+      },
+      "statement": {
+        "image": "images/projecten/4.jpg",
+        "title": "Een gevel die de zon temt, niet verbergt",
+        "caption": "Een schone, elegante afwerking die warmte reguleert en een strakke uitstraling koppelt aan optimale ventilatie."
+      },
+      "benefitsSection": {
+        "kicker": "Voordelen",
+        "title": "Comfort, besparing en een schone gevel in één oogopslag.",
+        "lead": "De focus ligt op wat echt telt: optimale lichtinval, energiebesparing en een afwerking die naadloos in de gevel integreert.",
+        "image": "images/zonwering.jpg"
+      },
+      "benefits": [
+        "Effectieve koeling door te verhogen van warmteopnames",
+        "Oude lichtinval blijft behouden dankzij doorzichtige vezels",
+        "Stille, onderhoudsarme motoren en bediening",
+        "Duurzame materialen en een langlevende afwerking",
+        "Flexibele plaatsing: van zichtloos tot expressief design"
+      ],
+      "approach": {
+        "kicker": "Aanpak",
+        "title": "Alles draait om natuurlijk licht én controle.",
+        "lead": "Een zonwering is meer dan een schaduwplaats. Hij moet licht, warmte en privacy perfect in balans brengen — en dat in overeenstemming met de stijl van de woning.",
+        "bullets": [
+          "Persoonlijk advies op maat van de woning en de zonningsbehoefte",
+          "Keuze uit verschillende filterstroken en motoren",
+          "Nette afronding en een stevige, onderhoudsvrije plaatsing"
+        ],
+        "image": "images/projecten/5.jpg"
+      },
+      "closing": {
+        "kicker": "Klaar voor de volgende stap",
+        "title": "Op zoek naar een zonwering die comfort, besparing en stijl combinert?",
+        "lead": "Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.",
+        "ctas": [
+          {
+            "label": "Neem contact op",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Terug naar home",
+            "href": "index.html"
+          }
+        ]
+      },
+      "footer": {
+        "brandLine": "Comfortabele zonwering",
+        "links": [
+          {
+            "label": "Producten",
+            "href": "index.html#producten"
+          },
+          {
+            "label": "Projecten",
+            "href": "projecten.html"
+          },
+          {
+            "label": "Contact",
+            "href": "index.html#contact"
+          }
+        ]
+      }
+    },
+    "rolluiken": {
+      "meta": {
+        "title": "Rolluiken | Joris Menten bv",
+        "description": "Rolluiken van Joris Menten bv: meer privacy, betere isolatie en extra comfort in elke ruimte — functioneel én netjes afgewerkt."
+      },
+      "hero": {
+        "eyebrow": "Service detail · 15+ jaar ervaring",
+        "title": "Rolluiken die privacy, isolatie en stijl in één oplossing verenigen.",
+        "lead": "Rolluiken bieden meer privacy, helpen warmte en koude buiten te houden en geven je ramen een verzorgde uitstraling. Dit is precies waar Joris Menten bv op inzet.",
+        "ctas": [
+          {
+            "label": "Vraag advies",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Bekijk werk",
+            "href": "projecten.html"
+          }
+        ],
+        "chips": [
+          "Privacy",
+          "Isolatie",
+          "Comfort"
+        ],
+        "image": "images/rolluiken.jpg"
+      },
+      "statement": {
+        "image": "images/projecten/8.jpg",
+        "title": "Een scherm dat perfect aansluit bij de woning",
+        "caption": "Rolluiken die functionaliteit en stijl combineren — voor een binnen en buiten dat er even strak uitziet."
+      },
+      "benefitsSection": {
+        "kicker": "Voordelen",
+        "title": "Privacy en isolatie in één oogopslag.",
+        "lead": "De focus ligt op wat echt telt: een comfortabele binnentemperatuur, privacy vanbinnen en een nette afwerking die de woning versterkt.",
+        "image": "images/rolluiken.jpg"
+      },
+      "benefits": [
+        "Ideaal voor privacy en gerustheid binnenin",
+        "Isolatie tegen warmte, koude en geluid",
+        "Ruime keuze aan folies en kleuren",
+        "Duurzame materialen en een stevige beug",
+        "Manueel, elektrisch of gestuurd via app"
+      ],
+      "approach": {
+        "kicker": "Aanpak",
+        "title": "Alles draait om een comfortabele en nette afwerking.",
+        "lead": "Een rolluik moet naadloos aansluiten bij de woning — zowel functioneel als visueel. Daarom kiezen we materialen en een plaatsing die het hele plaatje strak maken.",
+        "bullets": [
+          "Exacte afmetingen en een stevige montage",
+          "Keuze uit verschillende folies en bediening",
+          "Een afwerking die er netjes en bedrukbaar uitziet"
+        ],
+        "image": "images/projecten/6.jpg"
+      },
+      "closing": {
+        "kicker": "Klaar voor de volgende stap",
+        "title": "Op zoek naar rolluiken die comfort en stijl combineren?",
+        "lead": "Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.",
+        "ctas": [
+          {
+            "label": "Neem contact op",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Terug naar home",
+            "href": "index.html"
+          }
+        ]
+      },
+      "footer": {
+        "brandLine": "Comfortabele rolluiken",
+        "links": [
+          {
+            "label": "Producten",
+            "href": "index.html#producten"
+          },
+          {
+            "label": "Projecten",
+            "href": "projecten.html"
+          },
+          {
+            "label": "Contact",
+            "href": "index.html#contact"
+          }
+        ]
+      }
+    },
+    "overkappingen": {
+      "meta": {
+        "title": "Overkappingen | Joris Menten bv",
+        "description": "Overkappingen van Joris Menten bv: meer gebruiksruimte en een luxe uitstraling voor terras en tuin — het buitenleven verlengd met stijl."
+      },
+      "hero": {
+        "eyebrow": "Service detail · 15+ jaar ervaring",
+        "title": "Overkappingen die buitenleven verlengen met stijl.",
+        "lead": "Een overkapping biedt bescherming tegen zon en weer en geeft je buitenruimte een stijlvolle, comfortabele uitstraling. Dit is precies waar Joris Menten bv op inzet.",
+        "ctas": [
+          {
+            "label": "Vraag advies",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Bekijk werk",
+            "href": "projecten.html"
+          }
+        ],
+        "chips": [
+          "Buitenleven",
+          "Stijlvol",
+          "Bescherming"
+        ],
+        "image": "images/terras.jpg"
+      },
+      "statement": {
+        "image": "images/projecten/7.jpg",
+        "title": "Een overkapping die ruimte en stijl creëert",
+        "caption": "Meer bereikbaarheid, een schaduwplek die perfect is voor rels en een design dat blijft inspireren."
+      },
+      "benefitsSection": {
+        "kicker": "Voordelen",
+        "title": "Meer gebruiksruimte en een luxe uitstraling in één oogopslag.",
+        "lead": "De focus ligt op wat echt telt: een comfortabele schaduw, een stevige constructie en een design dat naadloos aansluit bij de woning.",
+        "image": "images/terras.jpg"
+      },
+      "benefits": [
+        "Bescherming tegen zon, wind en regen",
+        "Meer nuttige oppervlakte op het terras",
+        "Stevige constructies voor maximale duurzaamheid",
+        "Keuze uit verschillende designopties en afwerkingen",
+        "Naadloze integratie met de woningstijl"
+      ],
+      "approach": {
+        "kicker": "Aanpak",
+        "title": "Alles draait om een terras dat perfect aansluit bij de woning.",
+        "lead": "Een overkapping is een investering in je buitenleven. Daarom kiezen we een design en materiaal dat niet alleen functioneel is, maar ook de stijl van je woning versterkt.",
+        "bullets": [
+          "Maatwerk op basis van het terrasoppervlak en de gewenste schaduw",
+          "Premium materialen die slijtage en weersinvloeden weerstaan",
+          "Een afwerking die er strak en verzorgd uitziet"
+        ],
+        "image": "images/projecten/9.jpg"
+      },
+      "closing": {
+        "kicker": "Klaar voor de volgende stap",
+        "title": "Op zoek naar een overkapping die stijl en comfort combinert?",
+        "lead": "Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.",
+        "ctas": [
+          {
+            "label": "Neem contact op",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Terug naar home",
+            "href": "index.html"
+          }
+        ]
+      },
+      "footer": {
+        "brandLine": "Stijlvol buitenleven",
+        "links": [
+          {
+            "label": "Producten",
+            "href": "index.html#producten"
+          },
+          {
+            "label": "Projecten",
+            "href": "projecten.html"
+          },
+          {
+            "label": "Contact",
+            "href": "index.html#contact"
+          }
+        ]
+      }
+    },
+    "vliegenwering": {
+      "meta": {
+        "title": "Vliegenwering | Joris Menten bv",
+        "description": "Vliegenwering van Joris Menten bv: maatwerk vliegenramen en vliegendeuren voor een zorgeloze toegang tot het terras zonder insecten."
+      },
+      "hero": {
+        "eyebrow": "Service detail · 15+ jaar ervaring",
+        "title": "Vliegenwering die comfort en bescherming combineren.",
+        "lead": "Maak je terras of woning insektenvrij met onze maatwerk vliegenramen en vliegendeuren. Discreet, duurzaam en perfect afgestemd op je ramen en deuren.",
+        "ctas": [
+          {
+            "label": "Vraag advies",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Bekijk werk",
+            "href": "projecten.html"
+          }
+        ],
+        "chips": [
+          "Maatwerk",
+          "Duurzaam",
+          "Discreet"
+        ],
+        "image": "images/vliegen.jpg"
+      },
+      "statement": {
+        "image": "images/projecten/10.jpg",
+        "title": "Zonder insecten, met frisse lucht",
+        "caption": "Vliegenramen en deuren die naadloos aansluiten bij je woning — voor ongestort genot van je terras en tuin."
+      },
+      "benefitsSection": {
+        "kicker": "Voordelen",
+        "title": "Perfecte afsluiting en duurzame materialen in één oogopslag.",
+        "lead": "De focus ligt op wat echt telt: een perfecte afsluiting, duurzame materialen en een afwerking die de esthetiek van je woning versterkt.",
+        "image": "images/vliegen.jpg"
+      },
+      "benefits": [
+        "Maatwerk horren die perfect passen in elke opening",
+        "Lichtgewicht, roestvrije aluminium profielen",
+        "Duurzame fiberglasgazes die niet uivreken of scheuren",
+        "Verschillende montages: opbouw, inbouw of schuivend",
+        "Een afwerking die onzichtbaar of als designaccent kan"
+      ],
+      "approach": {
+        "kicker": "Aanpak",
+        "title": "Alles draait om naadloze integratie.",
+        "lead": "Vliegenwering mag de uitstraling van je woning niet breken. Daarom meten we op de millimeter nauwkeurig, adviseren over de beste openingstype en plaatsen met oog voor detail.",
+        "bullets": [
+          "Gratis opmeten en advies op locatie",
+          "Keuze uit vaste, schuif-, rol- of pendelmodellen",
+          "Professionele plaatsing zonder schade aan bestaande kozijnen"
+        ],
+        "image": "images/projecten/6.jpg"
+      },
+      "closing": {
+        "kicker": "Klaar voor de volgende stap",
+        "title": "Wil je je terras of woning insektenvrij maken?",
+        "lead": "Neem contact op voor advies of een offerte. Kort, duidelijk en zonder omwegen.",
+        "ctas": [
+          {
+            "label": "Neem contact op",
+            "href": "index.html#contact"
+          },
+          {
+            "label": "Terug naar home",
+            "href": "index.html"
+          }
+        ]
+      },
+      "footer": {
+        "brandLine": "Zonder insecten, met frisse lucht",
+        "links": [
+          {
+            "label": "Producten",
+            "href": "index.html#producten"
+          },
+          {
+            "label": "Projecten",
+            "href": "projecten.html"
+          },
+          {
+            "label": "Contact",
+            "href": "index.html#contact"
+          }
+        ]
+      }
+    },
     "projecten": {
       "meta": {
-        "description": "Een krachtige selectie van realisaties van Joris Menten bv: garagepoorten, zonwering en andere buitenoplossingen."
+        "description": "Een krachtige selectie van realisaties van Joris Menten bv: poorten, zonwering en andere buitenoplossingen."
       },
       "hero": {
         "eyebrow": "Realisaties · Herselt",
@@ -614,8 +875,8 @@
             "href": "index.html#contact"
           },
           {
-            "label": "Bekijk garagepoorten",
-            "href": "garagepoorten.html"
+            "label": "Bekijk poorten",
+            "href": "poorten.html"
           }
         ],
         "chips": [
@@ -633,8 +894,8 @@
       "featuredProjects": {
         "hero": {
           "src": "images/projecten/1.jpeg",
-          "alt": "Garagepoort met strakke gevelintegratie",
-          "title": "Garagepoort · Gevelintegratie",
+          "alt": "Poort met strakke gevelintegratie",
+          "title": "Poort · Gevelintegratie",
           "caption": "Veilig, stil en visueel onderdeel van de woning."
         },
         "projects": [
@@ -737,8 +998,8 @@
             "href": "index.html"
           },
           {
-            "label": "Garagepoorten",
-            "href": "garagepoorten.html"
+            "label": "Poorten",
+            "href": "poorten.html"
           },
           {
             "label": "Contact",
